@@ -26,9 +26,15 @@ class FFAppState extends ChangeNotifier {
     _graphQLimageURL = value;
   }
 
-  String _imgPath = '';
-  String get imgPath => _imgPath;
-  set imgPath(String value) {
-    _imgPath = value;
+  String _debugVal = '';
+  String get debugVal => _debugVal;
+  set debugVal(String value) {
+    _debugVal = value;
+  }
+
+  String _debugVal2 = '';
+  String get debugVal2 => _debugVal2;
+  set debugVal2(String value) {
+    _debugVal2 = value;
   }
 }

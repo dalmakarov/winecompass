@@ -43,6 +43,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'MainPage',
           path: '/mainPage',
           builder: (context, params) => const MainPageWidget(),
+        ),
+        FFRoute(
+          name: 'Search',
+          path: '/search',
+          builder: (context, params) => const SearchWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

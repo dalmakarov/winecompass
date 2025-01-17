@@ -112,6 +112,10 @@ flutter:
       fonts:
         - asset: assets/fonts/Onest-VariableFont_wght.ttf
 
+    - family: SearchIcon
+      fonts:
+        - asset: assets/fonts/SearchIcon.ttf
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
