@@ -36,23 +36,24 @@ class GetAllDataCall {
         r'''$.data.tags.edges[?(@.node.widgetType=='BANNER')].node.articles.edges''',
         true,
       ) as List?;
-  static List<String>? imgBANNER(dynamic response) => (getJsonField(
+  static List? ratings(dynamic response) => getJsonField(
         response,
-        r'''$.data.tags.edges[?(@.node.widgetType=='BANNER')]..medium''',
+        r'''$.data.tags.edges[?(@.node.name=='Рейтинги')].node.articles.edges''',
         true,
-      ) as List?)
-          ?.withoutNulls
-          .map((x) => castToType<String>(x))
-          .withoutNulls
-          .toList();
-  static List? wines(dynamic response) => getJsonField(
+      ) as List?;
+  static List? expertArticles(dynamic response) => getJsonField(
         response,
-        r'''$.data.tags.edges[?(@.node.name == "Вина недели")].node.wines.edges''',
+        r'''$.data.tags.edges[?(@.node.name=='Статьи экспертов')].node.articles.edges''',
+        true,
+      ) as List?;
+  static List? russiaWinemaking(dynamic response) => getJsonField(
+        response,
+        r'''$.data.tags.edges[?(@.node.name=='Виноделие России')].node.articles.edges''',
         true,
       ) as List?;
 }
 
-class GetWineDetailsCall {
+class GetWineDetailsVariableCall {
   static Future<ApiCallResponse> call({
     String? slug = '100-ottenkov-krasnogo-saperavi',
   }) async {
@@ -64,7 +65,7 @@ class GetWineDetailsCall {
   }
 }''';
     return ApiManager.instance.makeApiCall(
-      callName: 'GetWineDetails',
+      callName: 'GetWineDetailsVariable',
       apiUrl: 'https://kultovo.ru/api/graphql#',
       callType: ApiCallType.POST,
       headers: {},
@@ -112,6 +113,36 @@ class WinesCall {
   static List? nodes(dynamic response) => getJsonField(
         response,
         r'''$.data.tags.edges[?(@.node.name == "Вина недели")].node.wines.edges[*]''',
+        true,
+      ) as List?;
+}
+
+class HighRatingWinesCall {
+  static Future<ApiCallResponse> call() async {
+    const ffApiRequestBody = '''
+{
+  "query": "query GetHighRatedWines { tags(name: \\"Вина с высоким рейтингом\\") { edges { node { name wines { edges { node { slug name color { name } winery { name } vintages { edges { node { year images { id title image isPrimary } description } } } } } } } } } }"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'HighRatingWines',
+      apiUrl: 'https://kultovo.ru/api/graphql#',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static List? nodes(dynamic response) => getJsonField(
+        response,
+        r'''$.data.tags.edges[?(@.node.name == "Вина с высоким рейтингом")].node.wines.edges[*]''',
         true,
       ) as List?;
 }
