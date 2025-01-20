@@ -48,11 +48,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'Search',
           path: '/search',
           builder: (context, params) => const SearchWidget(),
-        ),
-        FFRoute(
-          name: 'test',
-          path: '/test',
-          builder: (context, params) => const TestWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
