@@ -59,7 +59,7 @@ class GetWineDetailsVariableCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "query": "query GetWineDetails(\$slug: String!) { wines(slug: \$slug) { edges { node { id name slug brand { name } color { name } winery { name } vintages { edges { node { year images { id title image isPrimary } description } } } } } } }",
+  "query": "query GetWineBySlug(\$slug: String!) {\\n  wines(slug: \$slug) {\\n    edges {\\n      node {\\n        id\\n        name\\n        slug\\n        wineType {\\n          name\\n        }\\n        wineGrapes {\\n          grape {\\n            variety\\n            slug\\n          }\\n        }\\n        winery {\\n          name\\n        }\\n        country {\\n          name\\n        }\\n        appellation {\\n          name\\n        }\\n        vintages {\\n          edges {\\n            node {\\n              year\\n              abvMax\\n              description\\n              gastronomy\\n              images {\\n                image\\n              }\\n              vintageRatings {\\n                id\\n                score\\n                criticReview\\n                rating {\\n                  label\\n                  expert {\\n                    firstName\\n                    lastName\\n                    website {\\n                      url\\n                    }\\n                  }\\n                }\\n              }\\n            }\\n          }\\n        }\\n        overallRating {\\n          rating\\n          count\\n        }\\n      }\\n    }\\n  }\\n}",
   "variables": {
     "slug": "${escapeStringForJson(slug)}"
   }
@@ -145,6 +145,35 @@ class HighRatingWinesCall {
         r'''$.data.tags.edges[?(@.node.name == "Вина с высоким рейтингом")].node.wines.edges[*]''',
         true,
       ) as List?;
+}
+
+class TestCall {
+  static Future<ApiCallResponse> call({
+    String? slug = '100-ottenkov-krasnogo-saperavi',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "query": "query GetWineDetails(\$slug: String!) {\\n  wines(slug: \$slug) {\\n    edges {\\n      node {\\n        id\\n        name\\n        slug\\n        color {\\n          name\\n        }\\n        winery {\\n          name\\n        }\\n        vintages {\\n          edges {\\n            node {\\n              year\\n              description\\n              images {\\n                id\\n                title\\n                image\\n                isPrimary\\n              }\\n            }\\n          }\\n        }\\n        myRating {\\n          value\\n          review\\n        }\\n      }\\n    }\\n  }\\n}",
+  "variables": {
+    "slug": "${escapeStringForJson(slug)}"
+  }
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'test',
+      apiUrl: 'https://kultovo.ru/api/graphql#',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
 }
 
 class ApiPagingParams {

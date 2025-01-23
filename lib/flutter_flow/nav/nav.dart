@@ -48,6 +48,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'Search',
           path: '/search',
           builder: (context, params) => const SearchWidget(),
+        ),
+        FFRoute(
+          name: 'WineScreen',
+          path: '/wineScreen',
+          builder: (context, params) => WineScreenWidget(
+            slug: params.getParam(
+              'slug',
+              ParamType.String,
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

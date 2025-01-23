@@ -37,4 +37,16 @@ class FFAppState extends ChangeNotifier {
   set debugVal2(String value) {
     _debugVal2 = value;
   }
+
+  bool _ToggleMockUp0 = false;
+  bool get ToggleMockUp0 => _ToggleMockUp0;
+  set ToggleMockUp0(bool value) {
+    _ToggleMockUp0 = value;
+  }
+
+  bool _ToggleMockUp1 = false;
+  bool get ToggleMockUp1 => _ToggleMockUp1;
+  set ToggleMockUp1(bool value) {
+    _ToggleMockUp1 = value;
+  }
 }
