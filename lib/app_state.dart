@@ -49,4 +49,10 @@ class FFAppState extends ChangeNotifier {
   set ToggleMockUp1(bool value) {
     _ToggleMockUp1 = value;
   }
+
+  int _SelectedYear = 0;
+  int get SelectedYear => _SelectedYear;
+  set SelectedYear(int value) {
+    _SelectedYear = value;
+  }
 }
