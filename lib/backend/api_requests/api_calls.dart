@@ -59,7 +59,7 @@ class GetWineDetailsVariableCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "query": "query GetWineBySlug(\$slug: String!) {\\n  wines(slug: \$slug) {\\n    edges {\\n      node {\\n        id\\n        name\\n        slug\\n        wineType {\\n          name\\n        }\\n        wineGrapes {\\n          grape {\\n            variety\\n            slug\\n          }\\n        }\\n        winery {\\n          name\\n        }\\n        country {\\n          name\\n        }\\n        appellation {\\n          name\\n        }\\n        vintages {\\n          edges {\\n            node {\\n              year\\n              abvMax\\n              description\\n              gastronomy\\n              images {\\n                image\\n              }\\n              vintageRatings {\\n                id\\n                score\\n                criticReview\\n                rating {\\n                  label\\n                  expert {\\n                    firstName\\n                    lastName\\n                    website {\\n                      url\\n                    }\\n                  }\\n                }\\n              }\\n            }\\n          }\\n        }\\n        overallRating {\\n          rating\\n          count\\n        }\\n      }\\n    }\\n  }\\n}",
+  "query": "query GetWineBySlug(\$slug: String!) {\\n  wines(slug: \$slug) {\\n    edges {\\n      node {\\n        id\\n        name\\n        slug\\n        wineType {\\n          name\\n        }\\n        wineGrapes {\\n          grape {\\n            variety\\n            slug\\n          }\\n        }\\n        winery {\\n          name\\n        }\\n        brand {\\n          name\\n        }\\n        country {\\n          name\\n        }\\n        appellation {\\n          name\\n        }\\n        vintages {\\n          edges {\\n            node {\\n              year\\n              abvMax\\n              description\\n              gastronomy\\n              images {\\n                image\\n              }\\n              vintageRatings {\\n                id\\n                score\\n                criticReview\\n                rating {\\n                  label\\n                  expert {\\n                    firstName\\n                    lastName\\n                    website {\\n                      url\\n                    }\\n                  }\\n                }\\n              }\\n            }\\n          }\\n        }\\n        overallRating {\\n          rating\\n          count\\n        }\\n      }\\n    }\\n  }\\n}",
   "variables": {
     "slug": "${escapeStringForJson(slug)}"
   }
@@ -85,6 +85,20 @@ class GetWineDetailsVariableCall {
         response,
         r'''$.data.wines.edges[:].node.vintages.edges[:].node.images[:].image''',
       ));
+  static List? wineYear(dynamic response) => getJsonField(
+        response,
+        r'''$.data.wines.edges[*].node.vintages.edges[*]''',
+        true,
+      ) as List?;
+  static List<int>? wineYearChosen(dynamic response) => (getJsonField(
+        response,
+        r'''$.data.wines.edges[*].node.vintages.edges[*].node.year''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<int>(x))
+          .withoutNulls
+          .toList();
 }
 
 class WinesCall {
@@ -112,7 +126,7 @@ class WinesCall {
 
   static List? nodes(dynamic response) => getJsonField(
         response,
-        r'''$.data.tags.edges[?(@.node.name == "Вина недели")].node.wines.edges[*]''',
+        r'''$.data.tags.edges[?(@.node.name == "Вина недели")].node.wines.edges[:]''',
         true,
       ) as List?;
 }

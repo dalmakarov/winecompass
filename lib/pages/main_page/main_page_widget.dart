@@ -803,16 +803,16 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                             BorderRadius.only(
                                                           bottomLeft:
                                                               Radius.circular(
-                                                                  22.0),
+                                                                  20.0),
                                                           bottomRight:
                                                               Radius.circular(
-                                                                  22.0),
+                                                                  20.0),
                                                           topLeft:
                                                               Radius.circular(
-                                                                  22.0),
+                                                                  20.0),
                                                           topRight:
                                                               Radius.circular(
-                                                                  22.0),
+                                                                  20.0),
                                                         ),
                                                       ),
                                                       child: Align(
