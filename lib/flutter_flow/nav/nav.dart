@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '/backend/schema/structs/index.dart';
+
 import '/index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
@@ -53,6 +55,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'WineScreen',
           path: '/wineScreen',
           builder: (context, params) => WineScreenWidget(
+            slug: params.getParam(
+              'slug',
+              ParamType.String,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'Experts',
+          path: '/experts',
+          builder: (context, params) => ExpertsWidget(
             slug: params.getParam(
               'slug',
               ParamType.String,
@@ -129,6 +141,7 @@ class FFParameters {
     String paramName,
     ParamType type, {
     bool isList = false,
+    StructBuilder<T>? structBuilder,
   }) {
     if (futureParamValues.containsKey(paramName)) {
       return futureParamValues[paramName];
@@ -146,6 +159,7 @@ class FFParameters {
       param,
       type,
       isList,
+      structBuilder: structBuilder,
     );
   }
 }

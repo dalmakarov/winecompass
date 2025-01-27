@@ -915,93 +915,120 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                 width: 318.0,
                                                 child: Stack(
                                                   children: [
-                                                    Container(
-                                                      decoration: const BoxDecoration(
-                                                        color:
-                                                            Color(0xFFF5F5FA),
-                                                        borderRadius:
-                                                            BorderRadius.only(
-                                                          bottomLeft:
-                                                              Radius.circular(
-                                                                  28.0),
-                                                          bottomRight:
-                                                              Radius.circular(
-                                                                  28.0),
-                                                          topLeft:
-                                                              Radius.circular(
-                                                                  28.0),
-                                                          topRight:
-                                                              Radius.circular(
-                                                                  28.0),
-                                                        ),
-                                                      ),
-                                                      child: Align(
-                                                        alignment:
-                                                            const AlignmentDirectional(
-                                                                0.0, -1.0),
-                                                        child: Padding(
-                                                          padding:
-                                                              const EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      4.0,
-                                                                      0.0,
-                                                                      0.0),
-                                                          child: Container(
-                                                            width: 306.0,
-                                                            height: 156.0,
-                                                            decoration:
-                                                                const BoxDecoration(
-                                                              gradient:
-                                                                  LinearGradient(
-                                                                colors: [
-                                                                  Color(
-                                                                      0xFFFCFCFE),
-                                                                  Color(
-                                                                      0xFFE9EBEE)
-                                                                ],
-                                                                stops: [
-                                                                  0.0,
-                                                                  1.0
-                                                                ],
-                                                                begin:
-                                                                    AlignmentDirectional(
-                                                                        0.0,
-                                                                        -1.0),
-                                                                end:
-                                                                    AlignmentDirectional(
-                                                                        0, 1.0),
-                                                              ),
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .only(
-                                                                bottomLeft: Radius
-                                                                    .circular(
-                                                                        28.0),
-                                                                bottomRight: Radius
-                                                                    .circular(
-                                                                        28.0),
-                                                                topLeft: Radius
-                                                                    .circular(
-                                                                        28.0),
-                                                                topRight: Radius
-                                                                    .circular(
-                                                                        28.0),
-                                                              ),
+                                                    InkWell(
+                                                      splashColor:
+                                                          Colors.transparent,
+                                                      focusColor:
+                                                          Colors.transparent,
+                                                      hoverColor:
+                                                          Colors.transparent,
+                                                      highlightColor:
+                                                          Colors.transparent,
+                                                      onTap: () async {
+                                                        context.pushNamed(
+                                                          'Experts',
+                                                          queryParameters: {
+                                                            'slug':
+                                                                serializeParam(
+                                                              getJsonField(
+                                                                expertArcticlesItem,
+                                                                r'''$..node.slug''',
+                                                              ).toString(),
+                                                              ParamType.String,
                                                             ),
-                                                            child: ClipRRect(
-                                                              borderRadius:
-                                                                  BorderRadius
+                                                          }.withoutNulls,
+                                                        );
+                                                      },
+                                                      child: Container(
+                                                        decoration:
+                                                            const BoxDecoration(
+                                                          color:
+                                                              Color(0xFFF5F5FA),
+                                                          borderRadius:
+                                                              BorderRadius.only(
+                                                            bottomLeft:
+                                                                Radius.circular(
+                                                                    28.0),
+                                                            bottomRight:
+                                                                Radius.circular(
+                                                                    28.0),
+                                                            topLeft:
+                                                                Radius.circular(
+                                                                    28.0),
+                                                            topRight:
+                                                                Radius.circular(
+                                                                    28.0),
+                                                          ),
+                                                        ),
+                                                        child: Align(
+                                                          alignment:
+                                                              const AlignmentDirectional(
+                                                                  0.0, -1.0),
+                                                          child: Padding(
+                                                            padding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        4.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            child: Container(
+                                                              width: 306.0,
+                                                              height: 156.0,
+                                                              decoration:
+                                                                  const BoxDecoration(
+                                                                gradient:
+                                                                    LinearGradient(
+                                                                  colors: [
+                                                                    Color(
+                                                                        0xFFFCFCFE),
+                                                                    Color(
+                                                                        0xFFE9EBEE)
+                                                                  ],
+                                                                  stops: [
+                                                                    0.0,
+                                                                    1.0
+                                                                  ],
+                                                                  begin:
+                                                                      AlignmentDirectional(
+                                                                          0.0,
+                                                                          -1.0),
+                                                                  end:
+                                                                      AlignmentDirectional(
+                                                                          0,
+                                                                          1.0),
+                                                                ),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .only(
+                                                                  bottomLeft: Radius
                                                                       .circular(
-                                                                          8.0),
-                                                              child:
-                                                                  Image.network(
-                                                                '${FFAppState().graphQLimageURL}${getJsonField(
-                                                                  expertArcticlesItem,
-                                                                  r'''$..medium''',
-                                                                ).toString()}',
-                                                                fit: BoxFit
-                                                                    .cover,
+                                                                          28.0),
+                                                                  bottomRight: Radius
+                                                                      .circular(
+                                                                          28.0),
+                                                                  topLeft: Radius
+                                                                      .circular(
+                                                                          28.0),
+                                                                  topRight: Radius
+                                                                      .circular(
+                                                                          28.0),
+                                                                ),
+                                                              ),
+                                                              child: ClipRRect(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            8.0),
+                                                                child: Image
+                                                                    .network(
+                                                                  '${FFAppState().graphQLimageURL}${getJsonField(
+                                                                    expertArcticlesItem,
+                                                                    r'''$..medium''',
+                                                                  ).toString()}',
+                                                                  fit: BoxFit
+                                                                      .cover,
+                                                                ),
                                                               ),
                                                             ),
                                                           ),

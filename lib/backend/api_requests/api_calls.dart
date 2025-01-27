@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
 
 import '/flutter_flow/flutter_flow_util.dart';
@@ -161,19 +162,19 @@ class HighRatingWinesCall {
       ) as List?;
 }
 
-class TestCall {
+class ExpertsCall {
   static Future<ApiCallResponse> call({
-    String? slug = '100-ottenkov-krasnogo-saperavi',
+    String? slug = 'vlada-lesnichenko-znachitelnaya-chast-sostava-vina',
   }) async {
     final ffApiRequestBody = '''
 {
-  "query": "query GetWineDetails(\$slug: String!) {\\n  wines(slug: \$slug) {\\n    edges {\\n      node {\\n        id\\n        name\\n        slug\\n        color {\\n          name\\n        }\\n        winery {\\n          name\\n        }\\n        vintages {\\n          edges {\\n            node {\\n              year\\n              description\\n              images {\\n                id\\n                title\\n                image\\n                isPrimary\\n              }\\n            }\\n          }\\n        }\\n        myRating {\\n          value\\n          review\\n        }\\n      }\\n    }\\n  }\\n}",
+  "query": "query GetArticlesBySlug(\$slug: String = \\"slug\\") { articles(slug: \$slug) { edges { node { updatedAt title slug expert { avatar avatarThumbnail { medium } firstName lastName } content createdAt coverThumbnail { medium } } } } }",
   "variables": {
     "slug": "${escapeStringForJson(slug)}"
   }
 }''';
     return ApiManager.instance.makeApiCall(
-      callName: 'test',
+      callName: 'Experts',
       apiUrl: 'https://kultovo.ru/api/graphql#',
       callType: ApiCallType.POST,
       headers: {},
