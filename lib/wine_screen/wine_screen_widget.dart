@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:share_plus/share_plus.dart';
 import 'wine_screen_model.dart';
 export 'wine_screen_model.dart';
 
@@ -56,7 +57,7 @@ class _WineScreenWidgetState extends State<WineScreenWidget> {
                 height: 50.0,
                 child: CircularProgressIndicator(
                   valueColor: AlwaysStoppedAnimation<Color>(
-                    FlutterFlowTheme.of(context).primary,
+                    FlutterFlowTheme.of(context).alternate,
                   ),
                 ),
               ),
@@ -185,96 +186,169 @@ class _WineScreenWidgetState extends State<WineScreenWidget> {
                         ],
                       ),
                     ),
-                    Stack(
-                      children: [
-                        Material(
-                          color: Colors.transparent,
-                          child: ListTile(
-                            title: Text(
-                              getJsonField(
-                                wineScreenGetWineDetailsVariableResponse
-                                    .jsonBody,
-                                r'''$.data.wines.edges[0].node.name''',
-                              ).toString().maybeHandleOverflow(
-                                    maxChars: 32,
-                                    replacement: '…',
-                                  ),
-                              style: FlutterFlowTheme.of(context)
-                                  .titleLarge
-                                  .override(
-                                    fontFamily: FlutterFlowTheme.of(context)
-                                        .titleLargeFamily,
-                                    fontSize: 20.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w800,
-                                    useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .titleLargeFamily),
-                                  ),
-                            ),
-                            tileColor: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            dense: false,
-                            contentPadding: const EdgeInsetsDirectional.fromSTEB(
-                                12.0, 0.0, 0.0, 0.0),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(0.0),
-                            ),
-                          ),
-                        ),
-                        Align(
-                          alignment: const AlignmentDirectional(0.7, -1.0),
-                          child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                1.0, 0.0, 0.0, 0.0),
-                            child: Container(
-                              width: 50.0,
-                              height: 45.0,
-                              decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                              ),
-                              child: const Opacity(
-                                opacity: 0.4,
-                                child: Icon(
-                                  Icons.favorite_rounded,
-                                  color: Color(0xFF28303F),
-                                  size: 24.0,
+                    Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                      child: Stack(
+                        children: [
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Container(
+                                width: MediaQuery.sizeOf(context).width * 0.7,
+                                height: 45.0,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                ),
+                                child: ListView(
+                                  padding: EdgeInsets.zero,
+                                  shrinkWrap: true,
+                                  scrollDirection: Axis.horizontal,
+                                  children: [
+                                    SingleChildScrollView(
+                                      scrollDirection: Axis.horizontal,
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Container(
+                                            width: MediaQuery.sizeOf(context)
+                                                    .width *
+                                                0.7,
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                            ),
+                                            child: Align(
+                                              alignment: const AlignmentDirectional(
+                                                  -1.0, 0.0),
+                                              child: Text(
+                                                getJsonField(
+                                                  wineScreenGetWineDetailsVariableResponse
+                                                      .jsonBody,
+                                                  r'''$.data.wines.edges[0].node.name''',
+                                                ).toString(),
+                                                maxLines: 1,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
+                                                          fontSize: 18.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w800,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily),
+                                                        ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
-                            ),
-                          ),
-                        ),
-                        Align(
-                          alignment: const AlignmentDirectional(0.95, -1.0),
-                          child: Container(
-                            width: 50.0,
-                            height: 45.0,
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                            ),
-                            child: Opacity(
-                              opacity: 0.4,
-                              child: Icon(
-                                Icons.share_sharp,
-                                color: FlutterFlowTheme.of(context).primaryText,
-                                size: 24.0,
+                              Container(
+                                width: MediaQuery.sizeOf(context).width * 0.2,
+                                height: 45.0,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                ),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      width: 40.0,
+                                      height: 40.0,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                      ),
+                                      child: Opacity(
+                                        opacity: 0.4,
+                                        child: InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            _model.favIcolor =
+                                                _model.favIcolor ==
+                                                        const Color(0xFF28303F)
+                                                    ? const Color(0xFFD5386C)
+                                                    : (_model.favIcolor ==
+                                                            const Color(0xFFD5386C)
+                                                        ? const Color(0xFF28303F)
+                                                        : const Color(0x00000000));
+                                            safeSetState(() {});
+                                          },
+                                          child: Icon(
+                                            Icons.favorite_rounded,
+                                            color: _model.favIcolor,
+                                            size: 24.0,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Builder(
+                                      builder: (context) => InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          await Share.share(
+                                            'https://kultovo.ru/wine/${widget.slug}',
+                                            sharePositionOrigin:
+                                                getWidgetBoundingBox(context),
+                                          );
+                                        },
+                                        child: Container(
+                                          width: 40.0,
+                                          height: 40.0,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                          ),
+                                          child: Opacity(
+                                            opacity: 0.4,
+                                            child: Icon(
+                                              Icons.share_sharp,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              size: 24.0,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ),
+                            ],
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                     Material(
                       color: Colors.transparent,
                       child: ListTile(
                         subtitle: Text(
-                          getJsonField(
-                            wineScreenGetWineDetailsVariableResponse.jsonBody,
-                            r'''$.data.wines.edges[0].node.vintages.edges[0].node.gastronomy''',
-                          ).toString(),
+                          FFAppState().WineGastronomy,
                           style: FlutterFlowTheme.of(context)
                               .labelMedium
                               .override(
@@ -298,21 +372,17 @@ class _WineScreenWidgetState extends State<WineScreenWidget> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 12.0),
                       child: Container(
                         width: double.infinity,
-                        height: 148.0,
+                        height: 72.0,
                         decoration: BoxDecoration(
                           color:
                               FlutterFlowTheme.of(context).secondaryBackground,
                         ),
                         child: Builder(
                           builder: (context) {
-                            final years = GetWineDetailsVariableCall.wineYear(
-                                  wineScreenGetWineDetailsVariableResponse
-                                      .jsonBody,
-                                )?.toList() ??
-                                [];
+                            final years = FFAppState().WinesRate.toList();
 
                             return ListView.separated(
                               padding: EdgeInsets.zero,
@@ -321,62 +391,59 @@ class _WineScreenWidgetState extends State<WineScreenWidget> {
                               separatorBuilder: (_, __) => const SizedBox(width: 4.0),
                               itemBuilder: (context, yearsIndex) {
                                 final yearsItem = years[yearsIndex];
-                                return Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Container(
-                                      width: 101.0,
-                                      height: 88.0,
-                                      decoration: const BoxDecoration(
-                                        color: Color(0xFFF5F5FA),
-                                        borderRadius: BorderRadius.only(
-                                          bottomLeft: Radius.circular(22.0),
-                                          bottomRight: Radius.circular(22.0),
-                                          topLeft: Radius.circular(22.0),
-                                          topRight: Radius.circular(22.0),
+                                return Container(
+                                  width: 101.0,
+                                  decoration: const BoxDecoration(
+                                    color: Color(0xFFF5F5FA),
+                                    borderRadius: BorderRadius.only(
+                                      bottomLeft: Radius.circular(22.0),
+                                      bottomRight: Radius.circular(22.0),
+                                      topLeft: Radius.circular(22.0),
+                                      topRight: Radius.circular(22.0),
+                                    ),
+                                  ),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Container(
+                                        width: 60.0,
+                                        height: 30.0,
+                                        decoration: const BoxDecoration(
+                                          color: Color(0xFFF5F5FA),
                                         ),
-                                      ),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Container(
-                                            width: 60.0,
-                                            height: 30.0,
-                                            decoration: const BoxDecoration(
-                                              color: Color(0xFFF5F5FA),
-                                            ),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                const Align(
-                                                  alignment:
-                                                      AlignmentDirectional(
-                                                          -1.0, 0.0),
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                2.0, 0.0),
-                                                    child: Icon(
-                                                      Icons.star_rounded,
-                                                      color: Color(0xFFEEB850),
-                                                      size: 24.0,
-                                                    ),
-                                                  ),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            const Align(
+                                              alignment: AlignmentDirectional(
+                                                  -1.0, 0.0),
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 2.0, 0.0),
+                                                child: Icon(
+                                                  Icons.star_rounded,
+                                                  color: Color(0xFFEEB850),
+                                                  size: 24.0,
                                                 ),
-                                                Align(
-                                                  alignment:
-                                                      const AlignmentDirectional(
-                                                          0.0, 0.0),
-                                                  child: Text(
-                                                    getJsonField(
-                                                      yearsItem,
-                                                      r'''$.node.vintageRatings[0].score''',
-                                                    ).toString(),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
+                                              ),
+                                            ),
+                                            Align(
+                                              alignment: const AlignmentDirectional(
+                                                  0.0, 0.0),
+                                              child: Text(
+                                                valueOrDefault<String>(
+                                                  FFAppState()
+                                                      .WinesRate
+                                                      .elementAtOrNull(
+                                                          yearsIndex)
+                                                      ?.toString(),
+                                                  '0',
+                                                ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
                                                         .bodyLarge
                                                         .override(
                                                           fontFamily:
@@ -393,84 +460,154 @@ class _WineScreenWidgetState extends State<WineScreenWidget> {
                                                                           context)
                                                                       .bodyLargeFamily),
                                                         ),
-                                                  ),
-                                                ),
-                                              ].divide(const SizedBox(width: 2.0)),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 8.0),
-                                            child: ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                              child: Image.network(
-                                                '${FFAppState().graphQLimageURL}${getJsonField(
-                                                  yearsItem,
-                                                  r'''$.node.vintageRatings[0].rating.label''',
-                                                ).toString()}',
-                                                width: 77.0,
-                                                height: 34.0,
-                                                fit: BoxFit.contain,
                                               ),
                                             ),
-                                          ),
-                                        ],
+                                          ].divide(const SizedBox(width: 2.0)),
+                                        ),
                                       ),
-                                    ),
-                                    InkWell(
-                                      splashColor: Colors.transparent,
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      onTap: () async {
-                                        _model.currentYear = getJsonField(
-                                          yearsItem,
-                                          r'''$..year''',
-                                        );
-                                        safeSetState(() {});
-                                      },
-                                      child: Container(
-                                        width: 101.0,
-                                        height: 44.0,
-                                        decoration: const BoxDecoration(
-                                          color: Color(0xFFF5F5FA),
-                                          borderRadius: BorderRadius.only(
-                                            bottomLeft: Radius.circular(14.0),
-                                            bottomRight: Radius.circular(14.0),
-                                            topLeft: Radius.circular(14.0),
-                                            topRight: Radius.circular(14.0),
+                                      Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 0.0, 8.0),
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                          child: Image.network(
+                                            '${FFAppState().graphQLimageURL}${valueOrDefault<String>(
+                                              FFAppState()
+                                                  .WinesImage
+                                                  .elementAtOrNull(yearsIndex),
+                                              '0',
+                                            )}',
+                                            width: 77.0,
+                                            height: 34.0,
+                                            fit: BoxFit.contain,
                                           ),
                                         ),
-                                        child: Align(
-                                          alignment:
-                                              const AlignmentDirectional(0.0, 0.0),
-                                          child: Text(
-                                            getJsonField(
-                                              yearsItem,
-                                              r'''$..year''',
-                                            ).toString(),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily:
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              },
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                      child: Container(
+                        width: double.infinity,
+                        height: 48.0,
+                        decoration: BoxDecoration(
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                        ),
+                        child: Builder(
+                          builder: (context) {
+                            final yearsButtons =
+                                FFAppState().WinesYear.toList();
+
+                            return ListView.separated(
+                              padding: EdgeInsets.zero,
+                              scrollDirection: Axis.horizontal,
+                              itemCount: yearsButtons.length,
+                              separatorBuilder: (_, __) => const SizedBox(width: 4.0),
+                              itemBuilder: (context, yearsButtonsIndex) {
+                                final yearsButtonsItem =
+                                    yearsButtons[yearsButtonsIndex];
+                                return InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    if (yearsButtonsIndex == 0) {
+                                      FFAppState().WinesRate = getJsonField(
+                                        wineScreenGetWineDetailsVariableResponse
+                                            .jsonBody,
+                                        r'''$.data.wines.edges[0].node.vintages.edges[0].node.vintageRatings[:].score''',
+                                        true,
+                                      )!
+                                          .toList()
+                                          .cast<double>();
+                                      FFAppState().WinesImage = (getJsonField(
+                                        wineScreenGetWineDetailsVariableResponse
+                                            .jsonBody,
+                                        r'''$.data.wines.edges[0].node.vintages.edges[0].node.vintageRatings[:].rating.label''',
+                                        true,
+                                      ) as List)
+                                          .map<String>((s) => s.toString())
+                                          .toList()
+                                          .toList()
+                                          .cast<String>();
+                                      FFAppState().update(() {});
+                                    } else if (yearsButtonsIndex == 1) {
+                                      FFAppState().WinesRate = getJsonField(
+                                        wineScreenGetWineDetailsVariableResponse
+                                            .jsonBody,
+                                        r'''$.data.wines.edges[0].node.vintages.edges[1].node.vintageRatings[*].score''',
+                                        true,
+                                      )!
+                                          .toList()
+                                          .cast<double>();
+                                      FFAppState().WinesImage = (getJsonField(
+                                        wineScreenGetWineDetailsVariableResponse
+                                            .jsonBody,
+                                        r'''$.data.wines.edges[0].node.vintages.edges[1].node.vintageRatings[:].rating.label''',
+                                        true,
+                                      ) as List)
+                                          .map<String>((s) => s.toString())
+                                          .toList()
+                                          .toList()
+                                          .cast<String>();
+                                      FFAppState().update(() {});
+                                    } else {
+                                      FFAppState().WinesRate = [];
+                                      FFAppState().WinesImage = [];
+                                      safeSetState(() {});
+                                    }
+                                  },
+                                  child: Container(
+                                    width: 101.0,
+                                    height: 44.0,
+                                    decoration: const BoxDecoration(
+                                      color: Color(0xFFF5F5FA),
+                                      borderRadius: BorderRadius.only(
+                                        bottomLeft: Radius.circular(14.0),
+                                        bottomRight: Radius.circular(14.0),
+                                        topLeft: Radius.circular(14.0),
+                                        topRight: Radius.circular(14.0),
+                                      ),
+                                    ),
+                                    child: Align(
+                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                      child: Text(
+                                        valueOrDefault<String>(
+                                          FFAppState()
+                                              .WinesYear
+                                              .elementAtOrNull(
+                                                  yearsButtonsIndex)
+                                              ?.toString(),
+                                          '0',
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMediumFamily,
+                                              letterSpacing: 0.0,
+                                              useGoogleFonts: GoogleFonts
+                                                      .asMap()
+                                                  .containsKey(
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .bodyMediumFamily,
-                                                  letterSpacing: 0.0,
-                                                  useGoogleFonts: GoogleFonts
-                                                          .asMap()
-                                                      .containsKey(
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMediumFamily),
-                                                ),
-                                          ),
-                                        ),
+                                                          .bodyMediumFamily),
+                                            ),
                                       ),
                                     ),
-                                  ].divide(const SizedBox(height: 15.0)),
+                                  ),
                                 );
                               },
                             );
@@ -503,375 +640,288 @@ class _WineScreenWidgetState extends State<WineScreenWidget> {
                         ),
                       ),
                     ),
-                    Container(
-                      width: double.infinity,
-                      height: 190.0,
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                      ),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Align(
-                            alignment: const AlignmentDirectional(-1.0, 0.0),
-                            child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  12.0, 0.0, 12.0, 0.0),
-                              child: Text(
-                                getJsonField(
-                                  wineScreenGetWineDetailsVariableResponse
-                                      .jsonBody,
-                                  r'''$.data.wines.edges[0].node.vintages.edges[0].node.description''',
-                                ).toString(),
-                                textAlign: TextAlign.start,
-                                maxLines: 6,
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: FlutterFlowTheme.of(context)
-                                          .bodyMediumFamily,
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.normal,
-                                      useGoogleFonts: GoogleFonts.asMap()
-                                          .containsKey(
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMediumFamily),
-                                    ),
+                    Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 12.0),
+                      child: Container(
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                        ),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Text(
+                              getJsonField(
+                                wineScreenGetWineDetailsVariableResponse
+                                    .jsonBody,
+                                r'''$.data.wines.edges[0].node.vintages.edges[0].node.description''',
+                              ).toString(),
+                              textAlign: TextAlign.start,
+                              maxLines: 6,
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyMediumFamily,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.normal,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .bodyMediumFamily),
+                                  ),
+                            ),
+                            Container(
+                              width: double.infinity,
+                              height: 62.0,
+                              decoration: BoxDecoration(
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
                               ),
-                            ),
-                          ),
-                          Container(
-                            width: double.infinity,
-                            height: 62.0,
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                            ),
-                            child: ListView(
-                              padding: EdgeInsets.zero,
-                              scrollDirection: Axis.horizontal,
-                              children: [
-                                Container(
-                                  width: 101.0,
-                                  height: 31.0,
-                                  decoration: const BoxDecoration(
-                                    color: Color(0xFFF5F5FA),
-                                    borderRadius: BorderRadius.only(
-                                      bottomLeft: Radius.circular(14.0),
-                                      bottomRight: Radius.circular(14.0),
-                                      topLeft: Radius.circular(14.0),
-                                      topRight: Radius.circular(14.0),
-                                    ),
-                                  ),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Align(
-                                        alignment:
-                                            const AlignmentDirectional(-1.0, 0.0),
-                                        child: Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  10.0, 10.0, 0.0, 0.0),
-                                          child: Text(
-                                            'Тип',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMediumFamily,
-                                                  fontSize: 12.0,
-                                                  letterSpacing: 0.0,
-                                                  useGoogleFonts: GoogleFonts
-                                                          .asMap()
-                                                      .containsKey(
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMediumFamily),
-                                                ),
-                                          ),
+                              child: ListView(
+                                padding: EdgeInsets.zero,
+                                scrollDirection: Axis.horizontal,
+                                children: [
+                                  if (getJsonField(
+                                        wineScreenGetWineDetailsVariableResponse
+                                            .jsonBody,
+                                        r'''$.data.wines.edges[0].node.wineType.name''',
+                                      ) !=
+                                      null)
+                                    Container(
+                                      width: 101.0,
+                                      height: 31.0,
+                                      decoration: const BoxDecoration(
+                                        color: Color(0xFFF5F5FA),
+                                        borderRadius: BorderRadius.only(
+                                          bottomLeft: Radius.circular(14.0),
+                                          bottomRight: Radius.circular(14.0),
+                                          topLeft: Radius.circular(14.0),
+                                          topRight: Radius.circular(14.0),
                                         ),
                                       ),
-                                      Align(
-                                        alignment:
-                                            const AlignmentDirectional(-1.0, -1.0),
-                                        child: Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  10.0, 0.0, 10.0, 0.0),
-                                          child: Text(
-                                            getJsonField(
-                                              wineScreenGetWineDetailsVariableResponse
-                                                  .jsonBody,
-                                              r'''$.data.wines.edges[0].node.wineType.name''',
-                                            ).toString(),
-                                            maxLines: 1,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMediumFamily,
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.bold,
-                                                  useGoogleFonts: GoogleFonts
-                                                          .asMap()
-                                                      .containsKey(
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMediumFamily),
-                                                ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Container(
-                                  width: 259.0,
-                                  height: 31.0,
-                                  decoration: const BoxDecoration(
-                                    color: Color(0xFFF5F5FA),
-                                    borderRadius: BorderRadius.only(
-                                      bottomLeft: Radius.circular(14.0),
-                                      bottomRight: Radius.circular(14.0),
-                                      topLeft: Radius.circular(14.0),
-                                      topRight: Radius.circular(14.0),
-                                    ),
-                                  ),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Align(
-                                        alignment:
-                                            const AlignmentDirectional(-1.0, 0.0),
-                                        child: Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  10.0, 10.0, 0.0, 0.0),
-                                          child: Text(
-                                            'Сорта винограда',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMediumFamily,
-                                                  fontSize: 12.0,
-                                                  letterSpacing: 0.0,
-                                                  useGoogleFonts: GoogleFonts
-                                                          .asMap()
-                                                      .containsKey(
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMediumFamily),
-                                                ),
-                                          ),
-                                        ),
-                                      ),
-                                      Align(
-                                        alignment:
-                                            const AlignmentDirectional(-1.0, -1.0),
-                                        child: Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  10.0, 0.0, 10.0, 0.0),
-                                          child: Text(
-                                            '${getJsonField(
-                                                      wineScreenGetWineDetailsVariableResponse
-                                                          .jsonBody,
-                                                      r'''$.data.wines.edges[0].node.wineGrapes[0].grape.variety''',
-                                                    ) != null ? getJsonField(
-                                                    wineScreenGetWineDetailsVariableResponse
-                                                        .jsonBody,
-                                                    r'''$.data.wines.edges[0].node.wineGrapes[0].grape.variety''',
-                                                  ).toString() : ''} ${getJsonField(
-                                                      wineScreenGetWineDetailsVariableResponse
-                                                          .jsonBody,
-                                                      r'''$.data.wines.edges[0].node.wineGrapes[1].grape.variety''',
-                                                    ) != null ? getJsonField(
-                                                    wineScreenGetWineDetailsVariableResponse
-                                                        .jsonBody,
-                                                    r'''$.data.wines.edges[0].node.wineGrapes[1].grape.variety''',
-                                                  ).toString() : ''} ${getJsonField(
-                                                      wineScreenGetWineDetailsVariableResponse
-                                                          .jsonBody,
-                                                      r'''$.data.wines.edges[0].node.wineGrapes[2].grape.variety''',
-                                                    ) != null ? getJsonField(
-                                                    wineScreenGetWineDetailsVariableResponse
-                                                        .jsonBody,
-                                                    r'''$.data.wines.edges[0].node.wineGrapes[2].grape.variety''',
-                                                  ).toString() : ''} ${getJsonField(
-                                                      wineScreenGetWineDetailsVariableResponse
-                                                          .jsonBody,
-                                                      r'''$.data.wines.edges[0].node.wineGrapes[3].grape.variety''',
-                                                    ) != getJsonField(
-                                                      wineScreenGetWineDetailsVariableResponse
-                                                          .jsonBody,
-                                                      r'''$.data.wines.edges[0].node.wineGrapes[3].grape.variety''',
-                                                    ) ? getJsonField(
-                                                    wineScreenGetWineDetailsVariableResponse
-                                                        .jsonBody,
-                                                    r'''$.data.wines.edges[0].node.wineGrapes[3].grape.variety''',
-                                                  ).toString() : ''}'
-                                                .maybeHandleOverflow(
-                                              maxChars: 30,
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Align(
+                                            alignment:
+                                                const AlignmentDirectional(-1.0, 0.0),
+                                            child: Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      10.0, 10.0, 0.0, 4.0),
+                                              child: Text(
+                                                'Тип',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
+                                                          fontSize: 12.0,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily),
+                                                        ),
+                                              ),
                                             ),
-                                            maxLines: 1,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMediumFamily,
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.bold,
-                                                  useGoogleFonts: GoogleFonts
-                                                          .asMap()
-                                                      .containsKey(
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMediumFamily),
-                                                ),
                                           ),
-                                        ),
+                                          if (getJsonField(
+                                                wineScreenGetWineDetailsVariableResponse
+                                                    .jsonBody,
+                                                r'''$.data.wines.edges[0].node.wineType.name''',
+                                              ) !=
+                                              null)
+                                            Align(
+                                              alignment: const AlignmentDirectional(
+                                                  -1.0, -1.0),
+                                              child: Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        10.0, 0.0, 10.0, 0.0),
+                                                child: Text(
+                                                  getJsonField(
+                                                    wineScreenGetWineDetailsVariableResponse
+                                                        .jsonBody,
+                                                    r'''$.data.wines.edges[0].node.wineType.name''',
+                                                  ).toString(),
+                                                  maxLines: 1,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Onest Cyr',
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        useGoogleFonts:
+                                                            GoogleFonts.asMap()
+                                                                .containsKey(
+                                                                    'Onest Cyr'),
+                                                      ),
+                                                ),
+                                              ),
+                                            ),
+                                        ],
                                       ),
-                                    ],
-                                  ),
-                                ),
-                                Container(
-                                  width: 101.0,
-                                  height: 31.0,
-                                  decoration: const BoxDecoration(
-                                    color: Color(0xFFF5F5FA),
-                                    borderRadius: BorderRadius.only(
-                                      bottomLeft: Radius.circular(14.0),
-                                      bottomRight: Radius.circular(14.0),
-                                      topLeft: Radius.circular(14.0),
-                                      topRight: Radius.circular(14.0),
+                                    ),
+                                  Container(
+                                    height: 31.0,
+                                    decoration: const BoxDecoration(
+                                      color: Color(0xFFF5F5FA),
+                                      borderRadius: BorderRadius.only(
+                                        bottomLeft: Radius.circular(14.0),
+                                        bottomRight: Radius.circular(14.0),
+                                        topLeft: Radius.circular(14.0),
+                                        topRight: Radius.circular(14.0),
+                                      ),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          10.0, 0.0, 0.0, 0.0),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 10.0, 0.0, 4.0),
+                                            child: Text(
+                                              'Сорта винограда',
+                                              textAlign: TextAlign.center,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
+                                                        fontSize: 12.0,
+                                                        letterSpacing: 0.0,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily),
+                                                      ),
+                                            ),
+                                          ),
+                                          Container(
+                                            height: 20.0,
+                                            decoration: const BoxDecoration(
+                                              color: Color(0xFFF5F5FA),
+                                            ),
+                                            child: Builder(
+                                              builder: (context) {
+                                                final grapes = getJsonField(
+                                                  wineScreenGetWineDetailsVariableResponse
+                                                      .jsonBody,
+                                                  r'''$.data.wines.edges[:].node.wineGrapes[*].grape.variety''',
+                                                ).toList();
+
+                                                return ListView.separated(
+                                                  padding: const EdgeInsets.fromLTRB(
+                                                    2.0,
+                                                    0,
+                                                    2.0,
+                                                    0,
+                                                  ),
+                                                  primary: false,
+                                                  shrinkWrap: true,
+                                                  scrollDirection:
+                                                      Axis.horizontal,
+                                                  itemCount: grapes.length,
+                                                  separatorBuilder: (_, __) =>
+                                                      const SizedBox(width: 2.0),
+                                                  itemBuilder:
+                                                      (context, grapesIndex) {
+                                                    final grapesItem =
+                                                        grapes[grapesIndex];
+                                                    return Text(
+                                                      '${grapesItem.toString()}${() {
+                                                        return ', ';
+                                                                                                            }()}',
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Onest Cyr',
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            useGoogleFonts:
+                                                                GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        'Onest Cyr'),
+                                                          ),
+                                                    );
+                                                  },
+                                                );
+                                              },
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Align(
-                                        alignment:
-                                            const AlignmentDirectional(-1.0, 0.0),
-                                        child: Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  10.0, 10.0, 0.0, 0.0),
-                                          child: Text(
-                                            'Винодельня',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMediumFamily,
-                                                  fontSize: 12.0,
-                                                  letterSpacing: 0.0,
-                                                  useGoogleFonts: GoogleFonts
-                                                          .asMap()
-                                                      .containsKey(
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMediumFamily),
-                                                ),
-                                          ),
-                                        ),
+                                  Container(
+                                    width: 101.0,
+                                    height: 31.0,
+                                    decoration: const BoxDecoration(
+                                      color: Color(0xFFF5F5FA),
+                                      borderRadius: BorderRadius.only(
+                                        bottomLeft: Radius.circular(14.0),
+                                        bottomRight: Radius.circular(14.0),
+                                        topLeft: Radius.circular(14.0),
+                                        topRight: Radius.circular(14.0),
                                       ),
-                                      Align(
-                                        alignment:
-                                            const AlignmentDirectional(-1.0, -1.0),
-                                        child: Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  10.0, 0.0, 10.0, 0.0),
-                                          child: Text(
-                                            getJsonField(
-                                              wineScreenGetWineDetailsVariableResponse
-                                                  .jsonBody,
-                                              r'''$.data.wines.edges[0].node.winery.name''',
-                                            ).toString(),
-                                            maxLines: 1,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMediumFamily,
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.bold,
-                                                  useGoogleFonts: GoogleFonts
-                                                          .asMap()
-                                                      .containsKey(
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMediumFamily),
-                                                ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Container(
-                                  width: 109.0,
-                                  height: 31.0,
-                                  decoration: const BoxDecoration(
-                                    color: Color(0xFFF5F5FA),
-                                    borderRadius: BorderRadius.only(
-                                      bottomLeft: Radius.circular(14.0),
-                                      bottomRight: Radius.circular(14.0),
-                                      topLeft: Radius.circular(14.0),
-                                      topRight: Radius.circular(14.0),
                                     ),
-                                  ),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Align(
-                                        alignment:
-                                            const AlignmentDirectional(-1.0, 0.0),
-                                        child: Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  10.0, 10.0, 0.0, 0.0),
-                                          child: Text(
-                                            'Производитель',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMediumFamily,
-                                                  fontSize: 12.0,
-                                                  letterSpacing: 0.0,
-                                                  useGoogleFonts: GoogleFonts
-                                                          .asMap()
-                                                      .containsKey(
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMediumFamily),
-                                                ),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Align(
+                                          alignment:
+                                              const AlignmentDirectional(-1.0, 0.0),
+                                          child: Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    10.0, 10.0, 0.0, 4.0),
+                                            child: Text(
+                                              'Винодельня',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
+                                                        fontSize: 12.0,
+                                                        letterSpacing: 0.0,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily),
+                                                      ),
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                      if (getJsonField(
-                                            wineScreenGetWineDetailsVariableResponse
-                                                .jsonBody,
-                                            r'''$.data.wines.edges[0].node.brand.name''',
-                                          ) !=
-                                          null)
                                         Align(
                                           alignment:
                                               const AlignmentDirectional(-1.0, -1.0),
@@ -883,7 +933,7 @@ class _WineScreenWidgetState extends State<WineScreenWidget> {
                                               getJsonField(
                                                 wineScreenGetWineDetailsVariableResponse
                                                     .jsonBody,
-                                                r'''$.data.wines.edges[0].node.brand.name''',
+                                                r'''$.data.wines.edges[0].node.winery.name''',
                                               ).toString(),
                                               maxLines: 1,
                                               style:
@@ -907,245 +957,349 @@ class _WineScreenWidgetState extends State<WineScreenWidget> {
                                             ),
                                           ),
                                         ),
-                                    ],
-                                  ),
-                                ),
-                                Container(
-                                  width: 109.0,
-                                  height: 31.0,
-                                  decoration: const BoxDecoration(
-                                    color: Color(0xFFF5F5FA),
-                                    borderRadius: BorderRadius.only(
-                                      bottomLeft: Radius.circular(14.0),
-                                      bottomRight: Radius.circular(14.0),
-                                      topLeft: Radius.circular(14.0),
-                                      topRight: Radius.circular(14.0),
+                                      ],
                                     ),
                                   ),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Align(
-                                        alignment:
-                                            const AlignmentDirectional(-1.0, 0.0),
-                                        child: Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  10.0, 10.0, 0.0, 0.0),
-                                          child: Text(
-                                            'Страна, Регион',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMediumFamily,
-                                                  fontSize: 12.0,
-                                                  letterSpacing: 0.0,
-                                                  useGoogleFonts: GoogleFonts
-                                                          .asMap()
-                                                      .containsKey(
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMediumFamily),
-                                                ),
-                                          ),
+                                  if (getJsonField(
+                                        wineScreenGetWineDetailsVariableResponse
+                                            .jsonBody,
+                                        r'''$.data.wines.edges[0].node.brand.name''',
+                                      ) !=
+                                      null)
+                                    Container(
+                                      width: 109.0,
+                                      height: 31.0,
+                                      decoration: const BoxDecoration(
+                                        color: Color(0xFFF5F5FA),
+                                        borderRadius: BorderRadius.only(
+                                          bottomLeft: Radius.circular(14.0),
+                                          bottomRight: Radius.circular(14.0),
+                                          topLeft: Radius.circular(14.0),
+                                          topRight: Radius.circular(14.0),
                                         ),
                                       ),
-                                      Align(
-                                        alignment:
-                                            const AlignmentDirectional(-1.0, -1.0),
-                                        child: Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  10.0, 0.0, 10.0, 0.0),
-                                          child: Text(
-                                            getJsonField(
-                                              wineScreenGetWineDetailsVariableResponse
-                                                  .jsonBody,
-                                              r'''$.data.wines.edges[0].node.country.name''',
-                                            ).toString(),
-                                            maxLines: 1,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Onest Cyr',
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.bold,
-                                                  useGoogleFonts:
-                                                      GoogleFonts.asMap()
-                                                          .containsKey(
-                                                              'Onest Cyr'),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Align(
+                                            alignment:
+                                                const AlignmentDirectional(-1.0, 0.0),
+                                            child: Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      10.0, 10.0, 0.0, 4.0),
+                                              child: Text(
+                                                'Производитель',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
+                                                          fontSize: 12.0,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily),
+                                                        ),
+                                              ),
+                                            ),
+                                          ),
+                                          if (getJsonField(
+                                                wineScreenGetWineDetailsVariableResponse
+                                                    .jsonBody,
+                                                r'''$.data.wines.edges[0].node.brand.name''',
+                                              ) !=
+                                              null)
+                                            Align(
+                                              alignment: const AlignmentDirectional(
+                                                  -1.0, -1.0),
+                                              child: Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        10.0, 0.0, 10.0, 0.0),
+                                                child: Text(
+                                                  getJsonField(
+                                                    wineScreenGetWineDetailsVariableResponse
+                                                        .jsonBody,
+                                                    r'''$.data.wines.edges[0].node.brand.name''',
+                                                  ).toString(),
+                                                  maxLines: 1,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily),
+                                                      ),
                                                 ),
+                                              ),
+                                            ),
+                                        ],
+                                      ),
+                                    ),
+                                  Container(
+                                    width: 109.0,
+                                    height: 31.0,
+                                    decoration: const BoxDecoration(
+                                      color: Color(0xFFF5F5FA),
+                                      borderRadius: BorderRadius.only(
+                                        bottomLeft: Radius.circular(14.0),
+                                        bottomRight: Radius.circular(14.0),
+                                        topLeft: Radius.circular(14.0),
+                                        topRight: Radius.circular(14.0),
+                                      ),
+                                    ),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Align(
+                                          alignment:
+                                              const AlignmentDirectional(-1.0, 0.0),
+                                          child: Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    10.0, 10.0, 0.0, 4.0),
+                                            child: Text(
+                                              'Страна, Регион',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
+                                                        fontSize: 12.0,
+                                                        letterSpacing: 0.0,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily),
+                                                      ),
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Container(
-                                  width: 145.0,
-                                  height: 31.0,
-                                  decoration: const BoxDecoration(
-                                    color: Color(0xFFF5F5FA),
-                                    borderRadius: BorderRadius.only(
-                                      bottomLeft: Radius.circular(14.0),
-                                      bottomRight: Radius.circular(14.0),
-                                      topLeft: Radius.circular(14.0),
-                                      topRight: Radius.circular(14.0),
+                                        Align(
+                                          alignment:
+                                              const AlignmentDirectional(-1.0, -1.0),
+                                          child: Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    10.0, 0.0, 10.0, 0.0),
+                                            child: Text(
+                                              getJsonField(
+                                                wineScreenGetWineDetailsVariableResponse
+                                                    .jsonBody,
+                                                r'''$.data.wines.edges[0].node.country.name''',
+                                              ).toString(),
+                                              maxLines: 1,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Onest Cyr',
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        useGoogleFonts:
+                                                            GoogleFonts.asMap()
+                                                                .containsKey(
+                                                                    'Onest Cyr'),
+                                                      ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Align(
-                                        alignment:
-                                            const AlignmentDirectional(-1.0, 0.0),
-                                        child: Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  10.0, 10.0, 0.0, 0.0),
-                                          child: Text(
-                                            'Аппеласьен',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMediumFamily,
-                                                  fontSize: 12.0,
-                                                  letterSpacing: 0.0,
-                                                  useGoogleFonts: GoogleFonts
-                                                          .asMap()
-                                                      .containsKey(
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMediumFamily),
-                                                ),
+                                  Container(
+                                    width: 145.0,
+                                    height: 31.0,
+                                    decoration: const BoxDecoration(
+                                      color: Color(0xFFF5F5FA),
+                                      borderRadius: BorderRadius.only(
+                                        bottomLeft: Radius.circular(14.0),
+                                        bottomRight: Radius.circular(14.0),
+                                        topLeft: Radius.circular(14.0),
+                                        topRight: Radius.circular(14.0),
+                                      ),
+                                    ),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Align(
+                                          alignment:
+                                              const AlignmentDirectional(-1.0, 0.0),
+                                          child: Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    10.0, 10.0, 0.0, 4.0),
+                                            child: Text(
+                                              'Аппеласьен',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
+                                                        fontSize: 12.0,
+                                                        letterSpacing: 0.0,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily),
+                                                      ),
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                      Align(
-                                        alignment:
-                                            const AlignmentDirectional(-1.0, -1.0),
-                                        child: Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  10.0, 0.0, 10.0, 0.0),
-                                          child: Text(
-                                            getJsonField(
-                                              wineScreenGetWineDetailsVariableResponse
-                                                  .jsonBody,
-                                              r'''$.data.wines.edges[0].node.appellation.name''',
-                                            ).toString(),
-                                            maxLines: 1,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMediumFamily,
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.bold,
-                                                  useGoogleFonts: GoogleFonts
-                                                          .asMap()
-                                                      .containsKey(
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMediumFamily),
-                                                ),
+                                        Align(
+                                          alignment:
+                                              const AlignmentDirectional(-1.0, -1.0),
+                                          child: Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    10.0, 0.0, 10.0, 0.0),
+                                            child: Text(
+                                              getJsonField(
+                                                wineScreenGetWineDetailsVariableResponse
+                                                    .jsonBody,
+                                                r'''$.data.wines.edges[0].node.appellation.name''',
+                                              ).toString(),
+                                              maxLines: 1,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily),
+                                                      ),
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Container(
-                                  width: 91.0,
-                                  height: 31.0,
-                                  decoration: const BoxDecoration(
-                                    color: Color(0xFFF5F5FA),
-                                    borderRadius: BorderRadius.only(
-                                      bottomLeft: Radius.circular(14.0),
-                                      bottomRight: Radius.circular(14.0),
-                                      topLeft: Radius.circular(14.0),
-                                      topRight: Radius.circular(14.0),
+                                      ],
                                     ),
                                   ),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Align(
-                                        alignment:
-                                            const AlignmentDirectional(-1.0, 0.0),
-                                        child: Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  10.0, 10.0, 0.0, 0.0),
-                                          child: Text(
-                                            'Крепость',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMediumFamily,
-                                                  fontSize: 12.0,
-                                                  letterSpacing: 0.0,
-                                                  useGoogleFonts: GoogleFonts
-                                                          .asMap()
-                                                      .containsKey(
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMediumFamily),
-                                                ),
+                                  Container(
+                                    width: 91.0,
+                                    height: 31.0,
+                                    decoration: const BoxDecoration(
+                                      color: Color(0xFFF5F5FA),
+                                      borderRadius: BorderRadius.only(
+                                        bottomLeft: Radius.circular(14.0),
+                                        bottomRight: Radius.circular(14.0),
+                                        topLeft: Radius.circular(14.0),
+                                        topRight: Radius.circular(14.0),
+                                      ),
+                                    ),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Align(
+                                          alignment:
+                                              const AlignmentDirectional(-1.0, 0.0),
+                                          child: Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    10.0, 10.0, 0.0, 4.0),
+                                            child: Text(
+                                              'Крепость',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
+                                                        fontSize: 12.0,
+                                                        letterSpacing: 0.0,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily),
+                                                      ),
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                      Align(
-                                        alignment:
-                                            const AlignmentDirectional(-1.0, -1.0),
-                                        child: Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  10.0, 0.0, 10.0, 0.0),
-                                          child: Text(
-                                            getJsonField(
-                                              wineScreenGetWineDetailsVariableResponse
-                                                  .jsonBody,
-                                              r'''$.data.wines.edges[*].node.vintages.edges[0].node.abvMax''',
-                                            ).toString(),
-                                            maxLines: 1,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMediumFamily,
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.bold,
-                                                  useGoogleFonts: GoogleFonts
-                                                          .asMap()
-                                                      .containsKey(
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMediumFamily),
-                                                ),
+                                        Align(
+                                          alignment:
+                                              const AlignmentDirectional(-1.0, -1.0),
+                                          child: Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    10.0, 0.0, 10.0, 0.0),
+                                            child: Text(
+                                              getJsonField(
+                                                wineScreenGetWineDetailsVariableResponse
+                                                    .jsonBody,
+                                                r'''$.data.wines.edges[*].node.vintages.edges[0].node.abvMax''',
+                                              ).toString(),
+                                              maxLines: 1,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily),
+                                                      ),
+                                            ),
                                           ),
                                         ),
-                                      ),
-                                    ],
+                                      ],
+                                    ),
                                   ),
-                                ),
-                              ].divide(const SizedBox(width: 10.0)),
+                                ].divide(const SizedBox(width: 10.0)),
+                              ),
                             ),
-                          ),
-                        ].divide(const SizedBox(height: 20.0)),
+                          ].divide(const SizedBox(height: 20.0)),
+                        ),
                       ),
                     ),
                   ],

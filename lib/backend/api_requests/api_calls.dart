@@ -91,22 +91,18 @@ class GetWineDetailsVariableCall {
         r'''$.data.wines.edges[*].node.vintages.edges[*]''',
         true,
       ) as List?;
-  static List<int>? wineYearChosen(dynamic response) => (getJsonField(
+  static List? wineYearChosen(dynamic response) => getJsonField(
         response,
-        r'''$.data.wines.edges[*].node.vintages.edges[*].node.year''',
+        r'''$.data.wines.edges[*].node.vintages.edges[*].node''',
         true,
-      ) as List?)
-          ?.withoutNulls
-          .map((x) => castToType<int>(x))
-          .withoutNulls
-          .toList();
+      ) as List?;
 }
 
 class WinesCall {
   static Future<ApiCallResponse> call() async {
     const ffApiRequestBody = '''
 {
-  "query": "query GetWeeklyWines { tags(name: \\"Вина недели\\") { edges { node { name wines { edges { node { slug name color { name } winery { name } vintages { edges { node { year images { id title image isPrimary } description } } } } } } } } } }"
+  "query": "query GetWeeklyWines { tags(name: \\"Вина недели\\") { edges { node { name wines { edges { node { slug name color { name } winery { name } vintages { edges { node { year description gastronomy vintageRatings { score rating { labelThumbnail { medium } } id } images { id title image isPrimary } } } } } } } } } } }"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Wines',
@@ -162,7 +158,7 @@ class HighRatingWinesCall {
       ) as List?;
 }
 
-class ExpertsCall {
+class ArticlesCall {
   static Future<ApiCallResponse> call({
     String? slug = 'vlada-lesnichenko-znachitelnaya-chast-sostava-vina',
   }) async {
@@ -174,7 +170,66 @@ class ExpertsCall {
   }
 }''';
     return ApiManager.instance.makeApiCall(
-      callName: 'Experts',
+      callName: 'Articles',
+      apiUrl: 'https://kultovo.ru/api/graphql#',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: true,
+      decodeUtf8: true,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class WHighRatingWineCall {
+  static Future<ApiCallResponse> call() async {
+    const ffApiRequestBody = '''
+{
+  "query": "query GetHighRatedWines { tags(name: \\"Вина с высоким рейтингом\\") { edges { node { name wines { edges { node { slug name color { name } winery { name } vintages { edges { node { year description gastronomy images { id title image isPrimary } vintageRatings { id score rating { label } } } } } } } } } } } }"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'wHighRatingWine',
+      apiUrl: 'https://kultovo.ru/api/graphql#',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static List? nodes(dynamic response) => getJsonField(
+        response,
+        r'''$.data.tags.edges[?(@.node.name == "Вина с высоким рейтингом")].node.wines.edges[*].node''',
+        true,
+      ) as List?;
+}
+
+class YearButtonCopyCall {
+  static Future<ApiCallResponse> call({
+    String? slug = 'dolinnoe-2',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "query": "query GetWineByYear(\$slug: String!) {\\n  wines(slug: \$slug) {\\n    edges {\\n      node {\\n        id\\n        name\\n        slug\\n        vintages {\\n          edges {\\n            node {\\n              year\\n              gastronomy\\n              vintageRatings {\\n                id\\n                score\\n                rating {\\n                  label\\n                }\\n              }\\n            }\\n          }\\n        }\\n      }\\n    }\\n  }\\n}",
+  "variables": {
+    "slug": "${escapeStringForJson(slug)}"
+  }
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'YearButton Copy',
       apiUrl: 'https://kultovo.ru/api/graphql#',
       callType: ApiCallType.POST,
       headers: {},

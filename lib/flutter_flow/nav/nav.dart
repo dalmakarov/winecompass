@@ -62,9 +62,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'Experts',
-          path: '/experts',
-          builder: (context, params) => ExpertsWidget(
+          name: 'Articles',
+          path: '/articles',
+          builder: (context, params) => ArticlesWidget(
             slug: params.getParam(
               'slug',
               ParamType.String,

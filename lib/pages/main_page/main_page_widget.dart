@@ -62,7 +62,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                 height: 50.0,
                 child: CircularProgressIndicator(
                   valueColor: AlwaysStoppedAnimation<Color>(
-                    FlutterFlowTheme.of(context).primary,
+                    FlutterFlowTheme.of(context).alternate,
                   ),
                 ),
               ),
@@ -503,7 +503,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                             valueColor:
                                                 AlwaysStoppedAnimation<Color>(
                                               FlutterFlowTheme.of(context)
-                                                  .primary,
+                                                  .alternate,
                                             ),
                                           ),
                                         ),
@@ -568,6 +568,47 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                                 ),
                                                               }.withoutNulls,
                                                             );
+
+                                                            FFAppState()
+                                                                    .WineGastronomy =
+                                                                getJsonField(
+                                                              winesListItem,
+                                                              r'''$.node.vintages.edges[0].node.gastronomy''',
+                                                            ).toString();
+                                                            FFAppState()
+                                                                    .WinesYear =
+                                                                getJsonField(
+                                                              winesListItem,
+                                                              r'''$.node.vintages.edges[:].node.year''',
+                                                              true,
+                                                            )!
+                                                                    .toList()
+                                                                    .cast<
+                                                                        int>();
+                                                            FFAppState()
+                                                                    .WinesRate =
+                                                                getJsonField(
+                                                              winesListItem,
+                                                              r'''$.node.vintages.edges[0].node.vintageRatings[:].score''',
+                                                              true,
+                                                            )!
+                                                                    .toList()
+                                                                    .cast<
+                                                                        double>();
+                                                            FFAppState()
+                                                                    .WinesImage =
+                                                                (getJsonField(
+                                                              winesListItem,
+                                                              r'''$.node.vintages.edges[0].node.vintageRatings[:].rating.labelThumbnail.medium''',
+                                                              true,
+                                                            ) as List)
+                                                                    .map<String>(
+                                                                        (s) => s
+                                                                            .toString())
+                                                                    .toList()
+                                                                    .toList()
+                                                                    .cast<
+                                                                        String>();
                                                           },
                                                           child: Container(
                                                             width:
@@ -698,7 +739,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                           child: Text(
                                                             getJsonField(
                                                               winesListItem,
-                                                              r'''$..node.name''',
+                                                              r'''$..name''',
                                                             ).toString(),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
@@ -795,50 +836,77 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                 height: 72.0,
                                                 child: Stack(
                                                   children: [
-                                                    Container(
-                                                      decoration: const BoxDecoration(
-                                                        color:
-                                                            Color(0xFFF5F5FA),
-                                                        borderRadius:
-                                                            BorderRadius.only(
-                                                          bottomLeft:
-                                                              Radius.circular(
-                                                                  20.0),
-                                                          bottomRight:
-                                                              Radius.circular(
-                                                                  20.0),
-                                                          topLeft:
-                                                              Radius.circular(
-                                                                  20.0),
-                                                          topRight:
-                                                              Radius.circular(
-                                                                  20.0),
-                                                        ),
-                                                      ),
-                                                      child: Align(
-                                                        alignment:
-                                                            const AlignmentDirectional(
-                                                                0.0, 0.0),
-                                                        child: Padding(
-                                                          padding:
-                                                              const EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      13.0,
-                                                                      13.0,
-                                                                      13.0,
-                                                                      13.0),
-                                                          child: ClipRRect(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        8.0),
-                                                            child:
-                                                                Image.network(
-                                                              '${FFAppState().graphQLimageURL}${getJsonField(
+                                                    InkWell(
+                                                      splashColor:
+                                                          Colors.transparent,
+                                                      focusColor:
+                                                          Colors.transparent,
+                                                      hoverColor:
+                                                          Colors.transparent,
+                                                      highlightColor:
+                                                          Colors.transparent,
+                                                      onTap: () async {
+                                                        context.pushNamed(
+                                                          'Articles',
+                                                          queryParameters: {
+                                                            'slug':
+                                                                serializeParam(
+                                                              getJsonField(
                                                                 ratingsMainItem,
-                                                                r'''$..medium''',
-                                                              ).toString()}',
-                                                              fit: BoxFit.cover,
+                                                                r'''$..node.slug''',
+                                                              ).toString(),
+                                                              ParamType.String,
+                                                            ),
+                                                          }.withoutNulls,
+                                                        );
+                                                      },
+                                                      child: Container(
+                                                        decoration:
+                                                            const BoxDecoration(
+                                                          color:
+                                                              Color(0xFFF5F5FA),
+                                                          borderRadius:
+                                                              BorderRadius.only(
+                                                            bottomLeft:
+                                                                Radius.circular(
+                                                                    20.0),
+                                                            bottomRight:
+                                                                Radius.circular(
+                                                                    20.0),
+                                                            topLeft:
+                                                                Radius.circular(
+                                                                    20.0),
+                                                            topRight:
+                                                                Radius.circular(
+                                                                    20.0),
+                                                          ),
+                                                        ),
+                                                        child: Align(
+                                                          alignment:
+                                                              const AlignmentDirectional(
+                                                                  0.0, 0.0),
+                                                          child: Padding(
+                                                            padding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        13.0,
+                                                                        13.0,
+                                                                        13.0,
+                                                                        13.0),
+                                                            child: ClipRRect(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          8.0),
+                                                              child:
+                                                                  Image.network(
+                                                                '${FFAppState().graphQLimageURL}${getJsonField(
+                                                                  ratingsMainItem,
+                                                                  r'''$..medium''',
+                                                                ).toString()}',
+                                                                fit: BoxFit
+                                                                    .cover,
+                                                              ),
                                                             ),
                                                           ),
                                                         ),
@@ -926,7 +994,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                           Colors.transparent,
                                                       onTap: () async {
                                                         context.pushNamed(
-                                                          'Experts',
+                                                          'Articles',
                                                           queryParameters: {
                                                             'slug':
                                                                 serializeParam(
@@ -1110,7 +1178,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                   ),
                                 ),
                                 FutureBuilder<ApiCallResponse>(
-                                  future: HighRatingWinesCall.call(),
+                                  future: WHighRatingWineCall.call(),
                                   builder: (context, snapshot) {
                                     // Customize what your widget looks like when it's loading.
                                     if (!snapshot.hasData) {
@@ -1122,13 +1190,13 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                             valueColor:
                                                 AlwaysStoppedAnimation<Color>(
                                               FlutterFlowTheme.of(context)
-                                                  .primary,
+                                                  .alternate,
                                             ),
                                           ),
                                         ),
                                       );
                                     }
-                                    final highRatingWinesHighRatingWinesResponse =
+                                    final highRatingWinesWHighRatingWineResponse =
                                         snapshot.data!;
 
                                     return Container(
@@ -1140,8 +1208,8 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                           Builder(
                                             builder: (context) {
                                               final highRatingWines =
-                                                  HighRatingWinesCall.nodes(
-                                                        highRatingWinesHighRatingWinesResponse
+                                                  WHighRatingWineCall.nodes(
+                                                        highRatingWinesWHighRatingWineResponse
                                                             .jsonBody,
                                                       )?.toList() ??
                                                       [];
@@ -1166,116 +1234,183 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                     height: 200.0,
                                                     child: Stack(
                                                       children: [
-                                                        Container(
-                                                          width:
-                                                              double.infinity,
-                                                          height:
-                                                              double.infinity,
-                                                          decoration:
-                                                              const BoxDecoration(
-                                                            color: Color(
-                                                                0xFFF5F5FA),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .only(
-                                                              bottomLeft: Radius
-                                                                  .circular(
-                                                                      28.0),
-                                                              bottomRight:
-                                                                  Radius
-                                                                      .circular(
-                                                                          28.0),
-                                                              topLeft: Radius
-                                                                  .circular(
-                                                                      28.0),
-                                                              topRight: Radius
-                                                                  .circular(
-                                                                      28.0),
-                                                            ),
-                                                          ),
-                                                          child: Align(
-                                                            alignment:
-                                                                const AlignmentDirectional(
-                                                                    0.0, -1.0),
-                                                            child: Padding(
-                                                              padding:
-                                                                  const EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          4.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              child: Container(
-                                                                width: 160.0,
-                                                                height: 156.0,
-                                                                decoration:
-                                                                    const BoxDecoration(
-                                                                  gradient:
-                                                                      LinearGradient(
-                                                                    colors: [
-                                                                      Color(
-                                                                          0xFFFCFCFE),
-                                                                      Color(
-                                                                          0xFFE9EBEE)
-                                                                    ],
-                                                                    stops: [
-                                                                      0.0,
-                                                                      1.0
-                                                                    ],
-                                                                    begin:
-                                                                        AlignmentDirectional(
-                                                                            0.0,
-                                                                            -1.0),
-                                                                    end: AlignmentDirectional(
-                                                                        0, 1.0),
-                                                                  ),
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .only(
-                                                                    bottomLeft:
-                                                                        Radius.circular(
-                                                                            28.0),
-                                                                    bottomRight:
-                                                                        Radius.circular(
-                                                                            28.0),
-                                                                    topLeft: Radius
-                                                                        .circular(
-                                                                            28.0),
-                                                                    topRight: Radius
-                                                                        .circular(
-                                                                            28.0),
-                                                                  ),
+                                                        InkWell(
+                                                          splashColor: Colors
+                                                              .transparent,
+                                                          focusColor: Colors
+                                                              .transparent,
+                                                          hoverColor: Colors
+                                                              .transparent,
+                                                          highlightColor: Colors
+                                                              .transparent,
+                                                          onTap: () async {
+                                                            context.pushNamed(
+                                                              'WineScreen',
+                                                              queryParameters: {
+                                                                'slug':
+                                                                    serializeParam(
+                                                                  getJsonField(
+                                                                    highRatingWinesItem,
+                                                                    r'''$.slug''',
+                                                                  ).toString(),
+                                                                  ParamType
+                                                                      .String,
                                                                 ),
-                                                                child: Align(
-                                                                  alignment:
-                                                                      const AlignmentDirectional(
+                                                              }.withoutNulls,
+                                                            );
+
+                                                            FFAppState()
+                                                                    .WineGastronomy =
+                                                                getJsonField(
+                                                              highRatingWinesItem,
+                                                              r'''$.vintages.edges[0].node.gastronomy''',
+                                                            ).toString();
+                                                            FFAppState()
+                                                                    .WinesYear =
+                                                                getJsonField(
+                                                              highRatingWinesItem,
+                                                              r'''$.slug.vintages.edges[0].node.year''',
+                                                              true,
+                                                            )!
+                                                                    .toList()
+                                                                    .cast<
+                                                                        int>();
+                                                            FFAppState()
+                                                                    .WinesRate =
+                                                                getJsonField(
+                                                              highRatingWinesItem,
+                                                              r'''$.slug.vintages.edges[0].node.vintageRatings.score''',
+                                                              true,
+                                                            )!
+                                                                    .toList()
+                                                                    .cast<
+                                                                        double>();
+                                                            FFAppState()
+                                                                    .WinesImage =
+                                                                (getJsonField(
+                                                              highRatingWinesWHighRatingWineResponse
+                                                                  .jsonBody,
+                                                              r'''$.slug.vintages.edges[0].node.vintageRatings.rating.label''',
+                                                              true,
+                                                            ) as List)
+                                                                    .map<String>(
+                                                                        (s) => s
+                                                                            .toString())
+                                                                    .toList()
+                                                                    .toList()
+                                                                    .cast<
+                                                                        String>();
+                                                          },
+                                                          child: Container(
+                                                            width:
+                                                                double.infinity,
+                                                            height:
+                                                                double.infinity,
+                                                            decoration:
+                                                                const BoxDecoration(
+                                                              color: Color(
+                                                                  0xFFF5F5FA),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .only(
+                                                                bottomLeft: Radius
+                                                                    .circular(
+                                                                        28.0),
+                                                                bottomRight: Radius
+                                                                    .circular(
+                                                                        28.0),
+                                                                topLeft: Radius
+                                                                    .circular(
+                                                                        28.0),
+                                                                topRight: Radius
+                                                                    .circular(
+                                                                        28.0),
+                                                              ),
+                                                            ),
+                                                            child: Align(
+                                                              alignment:
+                                                                  const AlignmentDirectional(
+                                                                      0.0,
+                                                                      -1.0),
+                                                              child: Padding(
+                                                                padding:
+                                                                    const EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            4.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                child:
+                                                                    Container(
+                                                                  width: 160.0,
+                                                                  height: 156.0,
+                                                                  decoration:
+                                                                      const BoxDecoration(
+                                                                    gradient:
+                                                                        LinearGradient(
+                                                                      colors: [
+                                                                        Color(
+                                                                            0xFFFCFCFE),
+                                                                        Color(
+                                                                            0xFFE9EBEE)
+                                                                      ],
+                                                                      stops: [
+                                                                        0.0,
+                                                                        1.0
+                                                                      ],
+                                                                      begin: AlignmentDirectional(
                                                                           0.0,
                                                                           -1.0),
-                                                                  child:
-                                                                      Padding(
-                                                                    padding: const EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            6.0,
-                                                                            13.0,
-                                                                            6.0,
-                                                                            13.0),
+                                                                      end: AlignmentDirectional(
+                                                                          0,
+                                                                          1.0),
+                                                                    ),
+                                                                    borderRadius:
+                                                                        BorderRadius
+                                                                            .only(
+                                                                      bottomLeft:
+                                                                          Radius.circular(
+                                                                              28.0),
+                                                                      bottomRight:
+                                                                          Radius.circular(
+                                                                              28.0),
+                                                                      topLeft: Radius
+                                                                          .circular(
+                                                                              28.0),
+                                                                      topRight:
+                                                                          Radius.circular(
+                                                                              28.0),
+                                                                    ),
+                                                                  ),
+                                                                  child: Align(
+                                                                    alignment:
+                                                                        const AlignmentDirectional(
+                                                                            0.0,
+                                                                            -1.0),
                                                                     child:
-                                                                        ClipRRect(
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              8.0),
-                                                                      child: Image
-                                                                          .network(
-                                                                        '${FFAppState().graphQLimageURL}${getJsonField(
-                                                                          highRatingWinesItem,
-                                                                          r'''$.node.vintages.edges[0].node.images[0].image''',
-                                                                        ).toString()}',
-                                                                        width:
-                                                                            48.0,
-                                                                        height:
-                                                                            125.0,
-                                                                        fit: BoxFit
-                                                                            .cover,
+                                                                        Padding(
+                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                          6.0,
+                                                                          13.0,
+                                                                          6.0,
+                                                                          13.0),
+                                                                      child:
+                                                                          ClipRRect(
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(8.0),
+                                                                        child: Image
+                                                                            .network(
+                                                                          '${FFAppState().graphQLimageURL}${getJsonField(
+                                                                            highRatingWinesItem,
+                                                                            r'''$.vintages.edges[0].node.images[0].image''',
+                                                                          ).toString()}',
+                                                                          width:
+                                                                              48.0,
+                                                                          height:
+                                                                              125.0,
+                                                                          fit: BoxFit
+                                                                              .cover,
+                                                                        ),
                                                                       ),
                                                                     ),
                                                                   ),
@@ -1299,7 +1434,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                             child: Text(
                                                               getJsonField(
                                                                 highRatingWinesItem,
-                                                                r'''$..node.name''',
+                                                                r'''$.name''',
                                                               ).toString(),
                                                               style: FlutterFlowTheme
                                                                       .of(context)
@@ -1409,58 +1544,87 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                                     4.0,
                                                                     0.0,
                                                                     0.0),
-                                                        child: Container(
-                                                          width: 242.0,
-                                                          height: 131.0,
-                                                          decoration:
-                                                              const BoxDecoration(
-                                                            gradient:
-                                                                LinearGradient(
-                                                              colors: [
-                                                                Color(
-                                                                    0xFFFCFCFE),
-                                                                Color(
-                                                                    0xFFE9EBEE)
-                                                              ],
-                                                              stops: [0.0, 1.0],
-                                                              begin:
-                                                                  AlignmentDirectional(
-                                                                      0.0,
-                                                                      -1.0),
-                                                              end:
-                                                                  AlignmentDirectional(
-                                                                      0, 1.0),
-                                                            ),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .only(
-                                                              bottomLeft: Radius
-                                                                  .circular(
-                                                                      28.0),
-                                                              bottomRight:
-                                                                  Radius
-                                                                      .circular(
-                                                                          28.0),
-                                                              topLeft: Radius
-                                                                  .circular(
-                                                                      28.0),
-                                                              topRight: Radius
-                                                                  .circular(
-                                                                      28.0),
-                                                            ),
-                                                          ),
-                                                          child: ClipRRect(
-                                                            borderRadius:
-                                                                BorderRadius
+                                                        child: InkWell(
+                                                          splashColor: Colors
+                                                              .transparent,
+                                                          focusColor: Colors
+                                                              .transparent,
+                                                          hoverColor: Colors
+                                                              .transparent,
+                                                          highlightColor: Colors
+                                                              .transparent,
+                                                          onTap: () async {
+                                                            context.pushNamed(
+                                                              'Articles',
+                                                              queryParameters: {
+                                                                'slug':
+                                                                    serializeParam(
+                                                                  getJsonField(
+                                                                    russiaWinemakingItem,
+                                                                    r'''$..node.slug''',
+                                                                  ).toString(),
+                                                                  ParamType
+                                                                      .String,
+                                                                ),
+                                                              }.withoutNulls,
+                                                            );
+                                                          },
+                                                          child: Container(
+                                                            width: 242.0,
+                                                            height: 131.0,
+                                                            decoration:
+                                                                const BoxDecoration(
+                                                              gradient:
+                                                                  LinearGradient(
+                                                                colors: [
+                                                                  Color(
+                                                                      0xFFFCFCFE),
+                                                                  Color(
+                                                                      0xFFE9EBEE)
+                                                                ],
+                                                                stops: [
+                                                                  0.0,
+                                                                  1.0
+                                                                ],
+                                                                begin:
+                                                                    AlignmentDirectional(
+                                                                        0.0,
+                                                                        -1.0),
+                                                                end:
+                                                                    AlignmentDirectional(
+                                                                        0, 1.0),
+                                                              ),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .only(
+                                                                bottomLeft: Radius
                                                                     .circular(
-                                                                        8.0),
-                                                            child:
-                                                                Image.network(
-                                                              '${FFAppState().graphQLimageURL}${getJsonField(
-                                                                russiaWinemakingItem,
-                                                                r'''$..medium''',
-                                                              ).toString()}',
-                                                              fit: BoxFit.cover,
+                                                                        28.0),
+                                                                bottomRight: Radius
+                                                                    .circular(
+                                                                        28.0),
+                                                                topLeft: Radius
+                                                                    .circular(
+                                                                        28.0),
+                                                                topRight: Radius
+                                                                    .circular(
+                                                                        28.0),
+                                                              ),
+                                                            ),
+                                                            child: ClipRRect(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          8.0),
+                                                              child:
+                                                                  Image.network(
+                                                                '${FFAppState().graphQLimageURL}${getJsonField(
+                                                                  russiaWinemakingItem,
+                                                                  r'''$..medium''',
+                                                                ).toString()}',
+                                                                fit: BoxFit
+                                                                    .cover,
+                                                              ),
                                                             ),
                                                           ),
                                                         ),

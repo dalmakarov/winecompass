@@ -6,8 +6,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'search_model.dart';
 export 'search_model.dart';
 
+/// from Main Screen
 class SearchWidget extends StatefulWidget {
-  /// from Main Screen
   const SearchWidget({super.key});
 
   @override

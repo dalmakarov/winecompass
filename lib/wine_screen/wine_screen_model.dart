@@ -7,6 +7,28 @@ class WineScreenModel extends FlutterFlowModel<WineScreenWidget> {
 
   int? currentYear;
 
+  List<double> rating = [];
+  void addToRating(double item) => rating.add(item);
+  void removeFromRating(double item) => rating.remove(item);
+  void removeAtIndexFromRating(int index) => rating.removeAt(index);
+  void insertAtIndexInRating(int index, double item) =>
+      rating.insert(index, item);
+  void updateRatingAtIndex(int index, Function(double) updateFn) =>
+      rating[index] = updateFn(rating[index]);
+
+  String? gastronomy;
+
+  List<String> image = [];
+  void addToImage(String item) => image.add(item);
+  void removeFromImage(String item) => image.remove(item);
+  void removeAtIndexFromImage(int index) => image.removeAt(index);
+  void insertAtIndexInImage(int index, String item) =>
+      image.insert(index, item);
+  void updateImageAtIndex(int index, Function(String) updateFn) =>
+      image[index] = updateFn(image[index]);
+
+  Color? favIcolor = const Color(0xff28303f);
+
   @override
   void initState(BuildContext context) {}
 
