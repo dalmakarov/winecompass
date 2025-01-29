@@ -1279,7 +1279,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                                     .WinesRate =
                                                                 getJsonField(
                                                               whighRatingWinesItem,
-                                                              r'''$.vintages.edges[0].node.vintageRatings.score''',
+                                                              r'''$.vintages.edges[:].node.vintageRatings[0].score''',
                                                               true,
                                                             )!
                                                                     .toList()
@@ -1288,9 +1288,8 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                             FFAppState()
                                                                     .WinesImage =
                                                                 (getJsonField(
-                                                              highRatingWinesWHighRatingWineResponse
-                                                                  .jsonBody,
-                                                              r'''$.vintages.edges[0].node.vintageRatings.rating.label''',
+                                                              whighRatingWinesItem,
+                                                              r'''$.vintages.edges[:].node.vintageRatings[0].rating.label''',
                                                               true,
                                                             ) as List)
                                                                     .map<String>(

@@ -220,6 +220,15 @@ class WHighRatingWineCall {
         r'''$.data.tags.edges[?(@.node.name == "Вина с высоким рейтингом")].node.wines.edges[*].node''',
         true,
       ) as List?;
+  static List<double>? yy(dynamic response) => (getJsonField(
+        response,
+        r'''$.data.tags.edges[?(@.node.name == "Вина с высоким рейтингом")].node.wines.edges[*].node.vintages.edges[:].node.vintageRatings[0].score''',
+        true,
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<double>(x))
+          .withoutNulls
+          .toList();
 }
 
 class YearButtonCopyCall {

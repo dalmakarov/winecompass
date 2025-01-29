@@ -124,6 +124,10 @@ class _WineScreenWidgetState extends State<WineScreenWidget> {
                               highlightColor: Colors.transparent,
                               onTap: () async {
                                 context.safePop();
+                                FFAppState().WinesYear = [];
+                                FFAppState().WinesImage = [];
+                                FFAppState().WinesRate = [];
+                                FFAppState().SelectedYear = null;
                               },
                               child: Container(
                                 width: 80.0,
@@ -261,7 +265,6 @@ class _WineScreenWidgetState extends State<WineScreenWidget> {
                                 ),
                               ),
                               Container(
-                                width: MediaQuery.sizeOf(context).width * 0.2,
                                 height: 45.0,
                                 decoration: BoxDecoration(
                                   color: FlutterFlowTheme.of(context)
@@ -279,7 +282,10 @@ class _WineScreenWidgetState extends State<WineScreenWidget> {
                                             .secondaryBackground,
                                       ),
                                       child: Opacity(
-                                        opacity: 0.4,
+                                        opacity: _model.favIcolor ==
+                                                const Color(0xFFD5386C)
+                                            ? 1.0
+                                            : 0.4,
                                         child: InkWell(
                                           splashColor: Colors.transparent,
                                           focusColor: Colors.transparent,
@@ -377,9 +383,8 @@ class _WineScreenWidgetState extends State<WineScreenWidget> {
                       child: Container(
                         width: double.infinity,
                         height: 72.0,
-                        decoration: BoxDecoration(
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
+                        decoration: const BoxDecoration(
+                          color: Colors.white,
                         ),
                         child: Builder(
                           builder: (context) {
@@ -395,7 +400,7 @@ class _WineScreenWidgetState extends State<WineScreenWidget> {
                                 return Container(
                                   width: 104.0,
                                   decoration: const BoxDecoration(
-                                    color: Color(0xFFF5F5FA),
+                                    color: Color(0xFFF2F2F2),
                                     borderRadius: BorderRadius.only(
                                       bottomLeft: Radius.circular(22.0),
                                       bottomRight: Radius.circular(22.0),
@@ -542,7 +547,9 @@ class _WineScreenWidgetState extends State<WineScreenWidget> {
                                           .toList()
                                           .toList()
                                           .cast<String>();
-                                      FFAppState().update(() {});
+                                      FFAppState().SelectedYear =
+                                          yearsButtonsIndex;
+                                      safeSetState(() {});
                                     } else if (yearsButtonsIndex == 1) {
                                       FFAppState().WinesRate = getJsonField(
                                         wineScreenGetWineDetailsVariableResponse
@@ -562,23 +569,32 @@ class _WineScreenWidgetState extends State<WineScreenWidget> {
                                           .toList()
                                           .toList()
                                           .cast<String>();
-                                      FFAppState().update(() {});
+                                      FFAppState().SelectedYear =
+                                          yearsButtonsIndex;
+                                      safeSetState(() {});
                                     } else {
                                       FFAppState().WinesRate = [];
                                       FFAppState().WinesImage = [];
+                                      FFAppState().SelectedYear = 0;
                                       safeSetState(() {});
                                     }
                                   },
                                   child: Container(
                                     width: 104.0,
                                     height: 44.0,
-                                    decoration: const BoxDecoration(
-                                      color: Color(0xFFF5F5FA),
-                                      borderRadius: BorderRadius.only(
+                                    decoration: BoxDecoration(
+                                      color: const Color(0xFFF2F2F2),
+                                      borderRadius: const BorderRadius.only(
                                         bottomLeft: Radius.circular(14.0),
                                         bottomRight: Radius.circular(14.0),
                                         topLeft: Radius.circular(14.0),
                                         topRight: Radius.circular(14.0),
+                                      ),
+                                      border: Border.all(
+                                        color: yearsButtonsIndex ==
+                                                FFAppState().SelectedYear
+                                            ? const Color(0xFF154E78)
+                                            : const Color(0x00000000),
                                       ),
                                     ),
                                     child: Align(
@@ -692,10 +708,10 @@ class _WineScreenWidgetState extends State<WineScreenWidget> {
                                       ) !=
                                       null)
                                     Container(
-                                      width: 101.0,
+                                      width: 80.0,
                                       height: 31.0,
                                       decoration: const BoxDecoration(
-                                        color: Color(0xFFF5F5FA),
+                                        color: Color(0xFFF2F2F2),
                                         borderRadius: BorderRadius.only(
                                           bottomLeft: Radius.circular(14.0),
                                           bottomRight: Radius.circular(14.0),
@@ -783,7 +799,7 @@ class _WineScreenWidgetState extends State<WineScreenWidget> {
                                     Container(
                                       height: 31.0,
                                       decoration: const BoxDecoration(
-                                        color: Color(0xFFF5F5FA),
+                                        color: Color(0xFFF2F2F2),
                                         borderRadius: BorderRadius.only(
                                           bottomLeft: Radius.circular(14.0),
                                           bottomRight: Radius.circular(14.0),
@@ -918,7 +934,7 @@ class _WineScreenWidgetState extends State<WineScreenWidget> {
                                     width: 101.0,
                                     height: 31.0,
                                     decoration: const BoxDecoration(
-                                      color: Color(0xFFF5F5FA),
+                                      color: Color(0xFFF2F2F2),
                                       borderRadius: BorderRadius.only(
                                         bottomLeft: Radius.circular(14.0),
                                         bottomRight: Radius.circular(14.0),
@@ -1006,7 +1022,7 @@ class _WineScreenWidgetState extends State<WineScreenWidget> {
                                       width: 109.0,
                                       height: 31.0,
                                       decoration: const BoxDecoration(
-                                        color: Color(0xFFF5F5FA),
+                                        color: Color(0xFFF2F2F2),
                                         borderRadius: BorderRadius.only(
                                           bottomLeft: Radius.circular(14.0),
                                           bottomRight: Radius.circular(14.0),
@@ -1094,7 +1110,7 @@ class _WineScreenWidgetState extends State<WineScreenWidget> {
                                     width: 109.0,
                                     height: 31.0,
                                     decoration: const BoxDecoration(
-                                      color: Color(0xFFF5F5FA),
+                                      color: Color(0xFFF2F2F2),
                                       borderRadius: BorderRadius.only(
                                         bottomLeft: Radius.circular(14.0),
                                         bottomRight: Radius.circular(14.0),
@@ -1171,7 +1187,7 @@ class _WineScreenWidgetState extends State<WineScreenWidget> {
                                     width: 145.0,
                                     height: 31.0,
                                     decoration: const BoxDecoration(
-                                      color: Color(0xFFF5F5FA),
+                                      color: Color(0xFFF2F2F2),
                                       borderRadius: BorderRadius.only(
                                         bottomLeft: Radius.circular(14.0),
                                         bottomRight: Radius.circular(14.0),
@@ -1253,7 +1269,7 @@ class _WineScreenWidgetState extends State<WineScreenWidget> {
                                     width: 91.0,
                                     height: 31.0,
                                     decoration: const BoxDecoration(
-                                      color: Color(0xFFF5F5FA),
+                                      color: Color(0xFFF2F2F2),
                                       borderRadius: BorderRadius.only(
                                         bottomLeft: Radius.circular(14.0),
                                         bottomRight: Radius.circular(14.0),
