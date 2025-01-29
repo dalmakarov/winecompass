@@ -96,6 +96,11 @@ class GetWineDetailsVariableCall {
         r'''$.data.wines.edges[*].node.vintages.edges[*].node''',
         true,
       ) as List?;
+  static List? allData(dynamic response) => getJsonField(
+        response,
+        r'''$''',
+        true,
+      ) as List?;
 }
 
 class WinesCall {
