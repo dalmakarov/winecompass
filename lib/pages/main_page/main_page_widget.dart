@@ -739,7 +739,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                           child: Text(
                                                             getJsonField(
                                                               winesListItem,
-                                                              r'''$..name''',
+                                                              r'''$.node.name''',
                                                             ).toString(),
                                                             style: FlutterFlowTheme
                                                                     .of(context)
@@ -1207,7 +1207,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                         children: [
                                           Builder(
                                             builder: (context) {
-                                              final highRatingWines =
+                                              final whighRatingWines =
                                                   WHighRatingWineCall.nodes(
                                                         highRatingWinesWHighRatingWineResponse
                                                             .jsonBody,
@@ -1221,14 +1221,14 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                 scrollDirection:
                                                     Axis.horizontal,
                                                 itemCount:
-                                                    highRatingWines.length,
+                                                    whighRatingWines.length,
                                                 separatorBuilder: (_, __) =>
                                                     const SizedBox(width: 3.0),
                                                 itemBuilder: (context,
-                                                    highRatingWinesIndex) {
-                                                  final highRatingWinesItem =
-                                                      highRatingWines[
-                                                          highRatingWinesIndex];
+                                                    whighRatingWinesIndex) {
+                                                  final whighRatingWinesItem =
+                                                      whighRatingWines[
+                                                          whighRatingWinesIndex];
                                                   return SizedBox(
                                                     width: 172.0,
                                                     height: 200.0,
@@ -1250,7 +1250,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                                 'slug':
                                                                     serializeParam(
                                                                   getJsonField(
-                                                                    highRatingWinesItem,
+                                                                    whighRatingWinesItem,
                                                                     r'''$.slug''',
                                                                   ).toString(),
                                                                   ParamType
@@ -1262,14 +1262,14 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                             FFAppState()
                                                                     .WineGastronomy =
                                                                 getJsonField(
-                                                              highRatingWinesItem,
+                                                              whighRatingWinesItem,
                                                               r'''$.vintages.edges[0].node.gastronomy''',
                                                             ).toString();
                                                             FFAppState()
                                                                     .WinesYear =
                                                                 getJsonField(
-                                                              highRatingWinesItem,
-                                                              r'''$.slug.vintages.edges[0].node.year''',
+                                                              whighRatingWinesItem,
+                                                              r'''$.vintages.edges[:].node.year''',
                                                               true,
                                                             )!
                                                                     .toList()
@@ -1278,8 +1278,8 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                             FFAppState()
                                                                     .WinesRate =
                                                                 getJsonField(
-                                                              highRatingWinesItem,
-                                                              r'''$.slug.vintages.edges[0].node.vintageRatings.score''',
+                                                              whighRatingWinesItem,
+                                                              r'''$.vintages.edges[0].node.vintageRatings.score''',
                                                               true,
                                                             )!
                                                                     .toList()
@@ -1290,7 +1290,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                                 (getJsonField(
                                                               highRatingWinesWHighRatingWineResponse
                                                                   .jsonBody,
-                                                              r'''$.slug.vintages.edges[0].node.vintageRatings.rating.label''',
+                                                              r'''$.vintages.edges[0].node.vintageRatings.rating.label''',
                                                               true,
                                                             ) as List)
                                                                     .map<String>(
@@ -1401,7 +1401,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                                         child: Image
                                                                             .network(
                                                                           '${FFAppState().graphQLimageURL}${getJsonField(
-                                                                            highRatingWinesItem,
+                                                                            whighRatingWinesItem,
                                                                             r'''$.vintages.edges[0].node.images[0].image''',
                                                                           ).toString()}',
                                                                           width:
@@ -1433,7 +1433,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                                         16.0),
                                                             child: Text(
                                                               getJsonField(
-                                                                highRatingWinesItem,
+                                                                whighRatingWinesItem,
                                                                 r'''$.name''',
                                                               ).toString(),
                                                               style: FlutterFlowTheme

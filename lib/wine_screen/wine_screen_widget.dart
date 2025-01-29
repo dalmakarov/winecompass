@@ -392,7 +392,7 @@ class _WineScreenWidgetState extends State<WineScreenWidget> {
                               itemBuilder: (context, yearsIndex) {
                                 final yearsItem = years[yearsIndex];
                                 return Container(
-                                  width: 101.0,
+                                  width: 104.0,
                                   decoration: const BoxDecoration(
                                     color: Color(0xFFF5F5FA),
                                     borderRadius: BorderRadius.only(
@@ -569,7 +569,7 @@ class _WineScreenWidgetState extends State<WineScreenWidget> {
                                     }
                                   },
                                   child: Container(
-                                    width: 101.0,
+                                    width: 104.0,
                                     height: 44.0,
                                     decoration: const BoxDecoration(
                                       color: Color(0xFFF5F5FA),
@@ -786,95 +786,109 @@ class _WineScreenWidgetState extends State<WineScreenWidget> {
                                     ),
                                     child: Padding(
                                       padding: const EdgeInsetsDirectional.fromSTEB(
-                                          10.0, 0.0, 0.0, 0.0),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 10.0, 0.0, 4.0),
-                                            child: Text(
-                                              'Сорта винограда',
-                                              textAlign: TextAlign.center,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMediumFamily,
-                                                        fontSize: 12.0,
-                                                        letterSpacing: 0.0,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMediumFamily),
-                                                      ),
+                                          10.0, 0.0, 10.0, 0.0),
+                                      child: SingleChildScrollView(
+                                        primary: false,
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 10.0, 0.0, 4.0),
+                                              child: Text(
+                                                'Сорта винограда',
+                                                textAlign: TextAlign.center,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
+                                                          fontSize: 12.0,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily),
+                                                        ),
+                                              ),
                                             ),
-                                          ),
-                                          Container(
-                                            height: 20.0,
-                                            decoration: const BoxDecoration(
-                                              color: Color(0xFFF5F5FA),
-                                            ),
-                                            child: Builder(
-                                              builder: (context) {
-                                                final grapes = getJsonField(
-                                                  wineScreenGetWineDetailsVariableResponse
-                                                      .jsonBody,
-                                                  r'''$.data.wines.edges[:].node.wineGrapes[*].grape.variety''',
-                                                ).toList();
+                                            Container(
+                                              height: 20.0,
+                                              decoration: const BoxDecoration(
+                                                color: Color(0xFFF5F5FA),
+                                              ),
+                                              child: Builder(
+                                                builder: (context) {
+                                                  final grapes = getJsonField(
+                                                    wineScreenGetWineDetailsVariableResponse
+                                                        .jsonBody,
+                                                    r'''$.data.wines.edges[:].node.wineGrapes[:].grape.variety''',
+                                                  ).toList();
 
-                                                return ListView.separated(
-                                                  padding: const EdgeInsets.fromLTRB(
-                                                    2.0,
-                                                    0,
-                                                    2.0,
-                                                    0,
-                                                  ),
-                                                  primary: false,
-                                                  shrinkWrap: true,
-                                                  scrollDirection:
-                                                      Axis.horizontal,
-                                                  itemCount: grapes.length,
-                                                  separatorBuilder: (_, __) =>
-                                                      const SizedBox(width: 2.0),
-                                                  itemBuilder:
-                                                      (context, grapesIndex) {
-                                                    final grapesItem =
-                                                        grapes[grapesIndex];
-                                                    return Text(
-                                                      '${grapesItem.toString()}${() {
-                                                        return ', ';
-                                                                                                            }()}',
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .bodyMedium
-                                                          .override(
-                                                            fontFamily:
-                                                                'Onest Cyr',
-                                                            letterSpacing: 0.0,
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            useGoogleFonts:
-                                                                GoogleFonts
-                                                                        .asMap()
-                                                                    .containsKey(
-                                                                        'Onest Cyr'),
-                                                          ),
-                                                    );
-                                                  },
-                                                );
-                                              },
+                                                  return ListView.separated(
+                                                    padding:
+                                                        const EdgeInsets.fromLTRB(
+                                                      2.0,
+                                                      0,
+                                                      2.0,
+                                                      0,
+                                                    ),
+                                                    primary: false,
+                                                    shrinkWrap: true,
+                                                    scrollDirection:
+                                                        Axis.horizontal,
+                                                    itemCount: grapes.length,
+                                                    separatorBuilder: (_, __) =>
+                                                        const SizedBox(width: 4.0),
+                                                    itemBuilder:
+                                                        (context, grapesIndex) {
+                                                      final grapesItem =
+                                                          grapes[grapesIndex];
+                                                      return SingleChildScrollView(
+                                                        scrollDirection:
+                                                            Axis.horizontal,
+                                                        child: Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          children: [
+                                                            Text(
+                                                              grapesItem
+                                                                  .toString(),
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Onest Cyr',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold,
+                                                                    useGoogleFonts: GoogleFonts
+                                                                            .asMap()
+                                                                        .containsKey(
+                                                                            'Onest Cyr'),
+                                                                  ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      );
+                                                    },
+                                                  );
+                                                },
+                                              ),
                                             ),
-                                          ),
-                                        ],
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ),
