@@ -127,7 +127,7 @@ class _WineScreenWidgetState extends State<WineScreenWidget> {
                                 FFAppState().WinesYear = [];
                                 FFAppState().WinesImage = [];
                                 FFAppState().WinesRate = [];
-                                FFAppState().SelectedYear = null;
+                                FFAppState().SelectedYear = 0;
                               },
                               child: Container(
                                 width: 80.0,
@@ -377,128 +377,132 @@ class _WineScreenWidgetState extends State<WineScreenWidget> {
                         ),
                       ),
                     ),
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 12.0),
-                      child: Container(
-                        width: double.infinity,
-                        height: 72.0,
-                        decoration: const BoxDecoration(
-                          color: Colors.white,
-                        ),
-                        child: Builder(
-                          builder: (context) {
-                            final years = FFAppState().WinesRate.toList();
+                    if (FFAppState().WinesRate.isNotEmpty)
+                      Padding(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
+                            12.0, 0.0, 12.0, 12.0),
+                        child: Container(
+                          width: double.infinity,
+                          height: 72.0,
+                          decoration: const BoxDecoration(
+                            color: Colors.white,
+                          ),
+                          child: Builder(
+                            builder: (context) {
+                              final years = FFAppState().WinesRate.toList();
 
-                            return ListView.separated(
-                              padding: EdgeInsets.zero,
-                              scrollDirection: Axis.horizontal,
-                              itemCount: years.length,
-                              separatorBuilder: (_, __) => const SizedBox(width: 4.0),
-                              itemBuilder: (context, yearsIndex) {
-                                final yearsItem = years[yearsIndex];
-                                return Container(
-                                  width: 104.0,
-                                  decoration: const BoxDecoration(
-                                    color: Color(0xFFF2F2F2),
-                                    borderRadius: BorderRadius.only(
-                                      bottomLeft: Radius.circular(22.0),
-                                      bottomRight: Radius.circular(22.0),
-                                      topLeft: Radius.circular(22.0),
-                                      topRight: Radius.circular(22.0),
-                                    ),
-                                  ),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Container(
-                                        width: 60.0,
-                                        height: 30.0,
-                                        decoration: const BoxDecoration(
-                                          color: Color(0xFFF5F5FA),
-                                        ),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            const Align(
-                                              alignment: AlignmentDirectional(
-                                                  -1.0, 0.0),
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 2.0, 0.0),
-                                                child: Icon(
-                                                  Icons.star_rounded,
-                                                  color: Color(0xFFEEB850),
-                                                  size: 24.0,
-                                                ),
-                                              ),
-                                            ),
-                                            Align(
-                                              alignment: const AlignmentDirectional(
-                                                  0.0, 0.0),
-                                              child: Text(
-                                                valueOrDefault<String>(
-                                                  FFAppState()
-                                                      .WinesRate
-                                                      .elementAtOrNull(
-                                                          yearsIndex)
-                                                      ?.toString(),
-                                                  '0',
-                                                ),
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyLarge
-                                                        .override(
-                                                          fontFamily:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .bodyLargeFamily,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          useGoogleFonts: GoogleFonts
-                                                                  .asMap()
-                                                              .containsKey(
-                                                                  FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyLargeFamily),
-                                                        ),
-                                              ),
-                                            ),
-                                          ].divide(const SizedBox(width: 2.0)),
-                                        ),
+                              return ListView.separated(
+                                padding: EdgeInsets.zero,
+                                scrollDirection: Axis.horizontal,
+                                itemCount: years.length,
+                                separatorBuilder: (_, __) =>
+                                    const SizedBox(width: 4.0),
+                                itemBuilder: (context, yearsIndex) {
+                                  final yearsItem = years[yearsIndex];
+                                  return Container(
+                                    width: 104.0,
+                                    decoration: const BoxDecoration(
+                                      color: Color(0xFFF2F2F2),
+                                      borderRadius: BorderRadius.only(
+                                        bottomLeft: Radius.circular(22.0),
+                                        bottomRight: Radius.circular(22.0),
+                                        topLeft: Radius.circular(22.0),
+                                        topRight: Radius.circular(22.0),
                                       ),
-                                      Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 0.0, 0.0, 8.0),
-                                        child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                          child: Image.network(
-                                            '${FFAppState().graphQLimageURL}${valueOrDefault<String>(
-                                              FFAppState()
-                                                  .WinesImage
-                                                  .elementAtOrNull(yearsIndex),
-                                              '0',
-                                            )}',
-                                            width: 77.0,
-                                            height: 34.0,
-                                            fit: BoxFit.contain,
+                                    ),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Container(
+                                          width: 80.0,
+                                          height: 30.0,
+                                          decoration: const BoxDecoration(
+                                            color: Color(0xFFF5F5FA),
+                                          ),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              const Align(
+                                                alignment: AlignmentDirectional(
+                                                    -1.0, 0.0),
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 2.0, 0.0),
+                                                  child: Icon(
+                                                    Icons.star_rounded,
+                                                    color: Color(0xFFEEB850),
+                                                    size: 24.0,
+                                                  ),
+                                                ),
+                                              ),
+                                              Align(
+                                                alignment: const AlignmentDirectional(
+                                                    0.0, 0.0),
+                                                child: Text(
+                                                  valueOrDefault<String>(
+                                                    FFAppState()
+                                                        .WinesRate
+                                                        .elementAtOrNull(
+                                                            yearsIndex)
+                                                        ?.toString(),
+                                                    '0',
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyLarge
+                                                      .override(
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyLargeFamily,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyLargeFamily),
+                                                      ),
+                                                ),
+                                              ),
+                                            ].divide(const SizedBox(width: 2.0)),
                                           ),
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                );
-                              },
-                            );
-                          },
+                                        Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 8.0),
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                            child: Image.network(
+                                              '${FFAppState().graphQLimageURL}${valueOrDefault<String>(
+                                                FFAppState()
+                                                    .WinesImage
+                                                    .elementAtOrNull(
+                                                        yearsIndex),
+                                                '0',
+                                              )}',
+                                              width: 77.0,
+                                              height: 34.0,
+                                              fit: BoxFit.contain,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                },
+                              );
+                            },
+                          ),
                         ),
                       ),
-                    ),
                     Padding(
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
@@ -551,10 +555,15 @@ class _WineScreenWidgetState extends State<WineScreenWidget> {
                                           yearsButtonsIndex;
                                       safeSetState(() {});
                                     } else if (yearsButtonsIndex == 1) {
+                                      FFAppState().WinesRate = [];
+                                      FFAppState().WinesImage = [];
+                                      FFAppState().SelectedYear =
+                                          yearsButtonsIndex;
+                                      FFAppState().update(() {});
                                       FFAppState().WinesRate = getJsonField(
                                         wineScreenGetWineDetailsVariableResponse
                                             .jsonBody,
-                                        r'''$.data.wines.edges[0].node.vintages.edges[1].node.vintageRatings[*].score''',
+                                        r'''$.data.wines.edges[0].node.vintages.edges[1].node.vintageRatings[:].score''',
                                         true,
                                       )!
                                           .toList()
@@ -571,12 +580,7 @@ class _WineScreenWidgetState extends State<WineScreenWidget> {
                                           .cast<String>();
                                       FFAppState().SelectedYear =
                                           yearsButtonsIndex;
-                                      safeSetState(() {});
-                                    } else {
-                                      FFAppState().WinesRate = [];
-                                      FFAppState().WinesImage = [];
-                                      FFAppState().SelectedYear = 0;
-                                      safeSetState(() {});
+                                      FFAppState().update(() {});
                                     }
                                   },
                                   child: Container(

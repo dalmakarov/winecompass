@@ -92,18 +92,15 @@ class _ArticlesWidgetState extends State<ArticlesWidget> {
                                 22.0, 22.0, 22.0, 0.0),
                             child: Container(
                               width: double.infinity,
-                              decoration: BoxDecoration(
-                                color: const Color(0xFFF2F2F2),
+                              decoration: const BoxDecoration(
+                                color: Color(0xFFF2F2F2),
                                 image: DecorationImage(
-                                  fit: BoxFit.contain,
+                                  fit: BoxFit.fill,
                                   image: CachedNetworkImageProvider(
-                                    '${FFAppState().graphQLimageURL}${getJsonField(
-                                      articlesArticlesResponse.jsonBody,
-                                      r'''$.data.articles.edges[0].node.coverThumbnail.medium''',
-                                    ).toString()}',
+                                    'https://kultovo.ru/images/article.png',
                                   ),
                                 ),
-                                borderRadius: const BorderRadius.only(
+                                borderRadius: BorderRadius.only(
                                   bottomLeft: Radius.circular(40.0),
                                   bottomRight: Radius.circular(40.0),
                                   topLeft: Radius.circular(28.0),
