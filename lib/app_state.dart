@@ -38,6 +38,18 @@ class FFAppState extends ChangeNotifier {
     _safeInit(() {
       _WineGastronomy = prefs.getString('ff_WineGastronomy') ?? _WineGastronomy;
     });
+    _safeInit(() {
+      _userMail = prefs.getString('ff_userMail') ?? _userMail;
+    });
+    _safeInit(() {
+      _userPassword = prefs.getString('ff_userPassword') ?? _userPassword;
+    });
+    _safeInit(() {
+      _userLoggedIn = prefs.getBool('ff_userLoggedIn') ?? _userLoggedIn;
+    });
+    _safeInit(() {
+      _userName = prefs.getString('ff_userName') ?? _userName;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -207,6 +219,34 @@ class FFAppState extends ChangeNotifier {
   set WineGastronomy(String value) {
     _WineGastronomy = value;
     prefs.setString('ff_WineGastronomy', value);
+  }
+
+  String _userMail = '';
+  String get userMail => _userMail;
+  set userMail(String value) {
+    _userMail = value;
+    prefs.setString('ff_userMail', value);
+  }
+
+  String _userPassword = '';
+  String get userPassword => _userPassword;
+  set userPassword(String value) {
+    _userPassword = value;
+    prefs.setString('ff_userPassword', value);
+  }
+
+  bool _userLoggedIn = false;
+  bool get userLoggedIn => _userLoggedIn;
+  set userLoggedIn(bool value) {
+    _userLoggedIn = value;
+    prefs.setBool('ff_userLoggedIn', value);
+  }
+
+  String _userName = '';
+  String get userName => _userName;
+  set userName(String value) {
+    _userName = value;
+    prefs.setString('ff_userName', value);
   }
 }
 

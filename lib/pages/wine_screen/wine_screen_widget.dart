@@ -871,7 +871,6 @@ class _WineScreenWidgetState extends State<WineScreenWidget> {
                                                         0,
                                                       ),
                                                       primary: false,
-                                                      shrinkWrap: true,
                                                       scrollDirection:
                                                           Axis.horizontal,
                                                       itemCount: grapes.length,

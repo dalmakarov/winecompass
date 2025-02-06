@@ -1798,7 +1798,13 @@ class _MainPageWidgetState extends State<MainPageWidget>
                           () async {},
                           () async {},
                           () async {},
-                          () async {}
+                          () async {
+                            if (FFAppState().userLoggedIn == true) {
+                              context.pushNamed('profilePage');
+                            } else {
+                              context.pushNamed('loginPage');
+                            }
+                          }
                         ][i]();
                       },
                     ),

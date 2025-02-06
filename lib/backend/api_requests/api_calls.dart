@@ -260,6 +260,30 @@ class YearButtonCopyCall {
   }
 }
 
+class AuthCall {
+  static Future<ApiCallResponse> call() async {
+    const ffApiRequestBody = '''
+{
+  "query": "query MyQuery {\\n  me {\\n    email\\n    firstName\\n    isActive\\n    dateJoined\\n  }\\n}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'Auth',
+      apiUrl: 'https://kultovo.ru/api/graphql#',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
 class ApiPagingParams {
   int nextPageNumber = 0;
   int numItems = 0;
