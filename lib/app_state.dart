@@ -56,6 +56,10 @@ class FFAppState extends ChangeNotifier {
     _safeInit(() {
       _currentCountry = prefs.getString('ff_currentCountry') ?? _currentCountry;
     });
+    _safeInit(() {
+      _activeFavoriteItem =
+          prefs.getString('ff_activeFavoriteItem') ?? _activeFavoriteItem;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -279,6 +283,13 @@ class FFAppState extends ChangeNotifier {
   bool get emailMatch => _emailMatch;
   set emailMatch(bool value) {
     _emailMatch = value;
+  }
+
+  String _activeFavoriteItem = '';
+  String get activeFavoriteItem => _activeFavoriteItem;
+  set activeFavoriteItem(String value) {
+    _activeFavoriteItem = value;
+    prefs.setString('ff_activeFavoriteItem', value);
   }
 }
 

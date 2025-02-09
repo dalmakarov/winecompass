@@ -56,7 +56,7 @@ class GetAllDataCall {
 
 class GetWineDetailsVariableCall {
   static Future<ApiCallResponse> call({
-    String? slug = '100-ottenkov-krasnogo-saperavi',
+    String? slug = '',
   }) async {
     final ffApiRequestBody = '''
 {
