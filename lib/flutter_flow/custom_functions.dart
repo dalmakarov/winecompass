@@ -16,3 +16,11 @@ String? removeBrackets(List<String>? inputList) {
   }
   return inputList.join(', ');
 }
+
+bool checkEMail(String? email) {
+  if (email == null || email.isEmpty || email.length > 254) {
+    return false;
+  }
+  final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+  return emailRegex.hasMatch(email);
+}

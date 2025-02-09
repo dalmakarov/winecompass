@@ -50,6 +50,12 @@ class FFAppState extends ChangeNotifier {
     _safeInit(() {
       _userName = prefs.getString('ff_userName') ?? _userName;
     });
+    _safeInit(() {
+      _offerAccept = prefs.getBool('ff_offerAccept') ?? _offerAccept;
+    });
+    _safeInit(() {
+      _currentCountry = prefs.getString('ff_currentCountry') ?? _currentCountry;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -247,6 +253,32 @@ class FFAppState extends ChangeNotifier {
   set userName(String value) {
     _userName = value;
     prefs.setString('ff_userName', value);
+  }
+
+  bool _offerAccept = false;
+  bool get offerAccept => _offerAccept;
+  set offerAccept(bool value) {
+    _offerAccept = value;
+    prefs.setBool('ff_offerAccept', value);
+  }
+
+  String _currentCountry = '';
+  String get currentCountry => _currentCountry;
+  set currentCountry(String value) {
+    _currentCountry = value;
+    prefs.setString('ff_currentCountry', value);
+  }
+
+  int _ActiveTabIndex = 0;
+  int get ActiveTabIndex => _ActiveTabIndex;
+  set ActiveTabIndex(int value) {
+    _ActiveTabIndex = value;
+  }
+
+  bool _emailMatch = false;
+  bool get emailMatch => _emailMatch;
+  set emailMatch(bool value) {
+    _emailMatch = value;
   }
 }
 

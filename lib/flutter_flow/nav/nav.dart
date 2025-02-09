@@ -34,12 +34,38 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       navigatorKey: appNavigatorKey,
-      errorBuilder: (context, state) => const MainPageWidget(),
+      errorBuilder: (context, state) => appStateNotifier.showSplashImage
+          ? Builder(
+              builder: (context) => Container(
+                color: Colors.transparent,
+                child: Center(
+                  child: Image.asset(
+                    'assets/images/icon.png',
+                    width: 250.0,
+                    fit: BoxFit.fill,
+                  ),
+                ),
+              ),
+            )
+          : const MainPageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) => const MainPageWidget(),
+          builder: (context, _) => appStateNotifier.showSplashImage
+              ? Builder(
+                  builder: (context) => Container(
+                    color: Colors.transparent,
+                    child: Center(
+                      child: Image.asset(
+                        'assets/images/icon.png',
+                        width: 250.0,
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                  ),
+                )
+              : const MainPageWidget(),
         ),
         FFRoute(
           name: 'MainPage',
@@ -80,6 +106,26 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'loginPage',
           path: '/loginPage',
           builder: (context, params) => const LoginPageWidget(),
+        ),
+        FFRoute(
+          name: 'restorePassword',
+          path: '/restorePassword',
+          builder: (context, params) => const RestorePasswordWidget(),
+        ),
+        FFRoute(
+          name: 'registrationPage',
+          path: '/registrationPage',
+          builder: (context, params) => const RegistrationPageWidget(),
+        ),
+        FFRoute(
+          name: 'passPage',
+          path: '/passPage',
+          builder: (context, params) => const PassPageWidget(),
+        ),
+        FFRoute(
+          name: 'countryChoose',
+          path: '/countryChoose',
+          builder: (context, params) => const CountryChooseWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
