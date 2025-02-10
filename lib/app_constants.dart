@@ -37,4 +37,26 @@ abstract class FFAppConstants {
     'vinodelnya-lefkadiya',
     'agrofirma-zolotaya-balka'
   ];
+  static const List<String> ArticlesCategories = ['Вина', 'Новости'];
+  static const List<String> PopularWines = [
+    'risling',
+    'kupazh-132',
+    'imperial-vintazh',
+    'kyuve-1-rezerv'
+  ];
+  static const List<String> ArticleSelection = [
+    'vyisokij-rejting',
+    'sezonnyie-vina'
+  ];
+  static const List<String> HighRatingWines = [
+    'gubernatorskoe-rozovoe',
+    'red-blend-nobl-selekshn-2',
+    'saperavi-limitirovannaya-seriya',
+    'shardone-semejnyij-rezerv'
+  ];
+  static const List<String> ArticlesNewbies = [
+    'mihail-nikolaev-russkoe-vino-samoe-bezopasnoe-v-',
+    'vlada-lesnichenko-znachitelnaya-chast-sostava-vina',
+    'stavropole'
+  ];
 }

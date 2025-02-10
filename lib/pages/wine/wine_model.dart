@@ -1,8 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'wine_screen_widget.dart' show WineScreenWidget;
+import 'wine_widget.dart' show WineWidget;
 import 'package:flutter/material.dart';
 
-class WineScreenModel extends FlutterFlowModel<WineScreenWidget> {
+class WineModel extends FlutterFlowModel<WineWidget> {
   ///  Local state fields for this page.
 
   int? currentYear;

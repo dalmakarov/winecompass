@@ -58,7 +58,10 @@ class _MainPageWidgetState extends State<MainPageWidget>
           4),
     )..addListener(() => safeSetState(() {}));
     _model.textController1 ??= TextEditingController();
-    _model.textFieldFocusNode ??= FocusNode();
+    _model.textFieldFocusNode1 ??= FocusNode();
+
+    _model.textController2 ??= TextEditingController();
+    _model.textFieldFocusNode2 ??= FocusNode();
 
     _model.emailTextController ??=
         TextEditingController(text: FFAppState().userMail);
@@ -336,7 +339,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                           child: TextFormField(
                                             controller: _model.textController1,
                                             focusNode:
-                                                _model.textFieldFocusNode,
+                                                _model.textFieldFocusNode1,
                                             autofocus: false,
                                             obscureText: false,
                                             decoration: InputDecoration(
@@ -585,7 +588,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                               .transparent,
                                                           onTap: () async {
                                                             context.pushNamed(
-                                                              'WineScreen',
+                                                              'Wine',
                                                               queryParameters: {
                                                                 'slug':
                                                                     serializeParam(
@@ -1275,7 +1278,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                               .transparent,
                                                           onTap: () async {
                                                             context.pushNamed(
-                                                              'WineScreen',
+                                                              'Wine',
                                                               queryParameters: {
                                                                 'slug':
                                                                     serializeParam(
@@ -1712,16 +1715,1444 @@ class _MainPageWidgetState extends State<MainPageWidget>
                           ),
                         ),
                         KeepAliveWidgetWrapper(
-                          builder: (context) => const Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [],
+                          builder: (context) => Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                8.0, 0.0, 8.0, 0.0),
+                            child: SingleChildScrollView(
+                              primary: false,
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Container(
+                                    width: double.infinity,
+                                    height: 48.0,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                    ),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  12.0, 0.0, 8.0, 0.0),
+                                          child: Icon(
+                                            FFIcons.kloupe2,
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryText,
+                                            size: 22.0,
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: SizedBox(
+                                            width: double.infinity,
+                                            child: TextFormField(
+                                              controller:
+                                                  _model.textController2,
+                                              focusNode:
+                                                  _model.textFieldFocusNode2,
+                                              autofocus: false,
+                                              obscureText: false,
+                                              decoration: InputDecoration(
+                                                isDense: true,
+                                                labelStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMediumFamily,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMediumFamily),
+                                                        ),
+                                                hintText: 'Вино',
+                                                hintStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .labelMediumFamily,
+                                                          color:
+                                                              const Color(0xFFAFB0B4),
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMediumFamily),
+                                                        ),
+                                                enabledBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide: const BorderSide(
+                                                    color: Color(0x00000000),
+                                                    width: 1.0,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          16.0),
+                                                ),
+                                                focusedBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide: const BorderSide(
+                                                    color: Color(0x00000000),
+                                                    width: 1.0,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          16.0),
+                                                ),
+                                                errorBorder: OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .error,
+                                                    width: 1.0,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          16.0),
+                                                ),
+                                                focusedErrorBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .error,
+                                                    width: 1.0,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          16.0),
+                                                ),
+                                                filled: true,
+                                                fillColor: const Color(0xFFF5F5FA),
+                                                hoverColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .alternate,
+                                              ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMediumFamily,
+                                                        fontSize: 16.0,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily),
+                                                      ),
+                                              cursorColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              validator: _model
+                                                  .textController2Validator
+                                                  .asValidator(context),
+                                            ),
+                                          ),
+                                        ),
+                                        Align(
+                                          alignment:
+                                              const AlignmentDirectional(1.0, 0.0),
+                                          child: FFButtonWidget(
+                                            onPressed: () {
+                                              print('Button pressed ...');
+                                            },
+                                            text: 'Отмена',
+                                            options: FFButtonOptions(
+                                              height: 40.0,
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      16.0, 0.0, 16.0, 0.0),
+                                              iconPadding: const EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                              textStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyLarge
+                                                      .override(
+                                                        fontFamily:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyLargeFamily,
+                                                        fontSize: 14.0,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        useGoogleFonts: GoogleFonts
+                                                                .asMap()
+                                                            .containsKey(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyLargeFamily),
+                                                      ),
+                                              elevation: 0.0,
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        12.0, 0.0, 12.0, 0.0),
+                                    child: Container(
+                                      width: double.infinity,
+                                      height: 48.0,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                      ),
+                                      child: Builder(
+                                        builder: (context) {
+                                          final favorites =
+                                              FFAppConstants.Favorites.toList();
+
+                                          return ListView.separated(
+                                            padding: EdgeInsets.zero,
+                                            scrollDirection: Axis.horizontal,
+                                            itemCount: favorites.length,
+                                            separatorBuilder: (_, __) =>
+                                                const SizedBox(width: 8.0),
+                                            itemBuilder:
+                                                (context, favoritesIndex) {
+                                              final favoritesItem =
+                                                  favorites[favoritesIndex];
+                                              return InkWell(
+                                                splashColor: Colors.transparent,
+                                                focusColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
+                                                highlightColor:
+                                                    Colors.transparent,
+                                                onTap: () async {
+                                                  FFAppState()
+                                                          .activeFavoriteItem =
+                                                      favoritesItem;
+                                                  safeSetState(() {});
+                                                },
+                                                child: Container(
+                                                  width: 104.0,
+                                                  height: 44.0,
+                                                  decoration: BoxDecoration(
+                                                    color: favoritesItem ==
+                                                            FFAppState()
+                                                                .activeFavoriteItem
+                                                        ? const Color(0xFF143161)
+                                                        : FlutterFlowTheme.of(
+                                                                context)
+                                                            .alternate,
+                                                    borderRadius:
+                                                        const BorderRadius.only(
+                                                      bottomLeft:
+                                                          Radius.circular(14.0),
+                                                      bottomRight:
+                                                          Radius.circular(14.0),
+                                                      topLeft:
+                                                          Radius.circular(14.0),
+                                                      topRight:
+                                                          Radius.circular(14.0),
+                                                    ),
+                                                  ),
+                                                  child: Align(
+                                                    alignment:
+                                                        const AlignmentDirectional(
+                                                            0.0, 0.0),
+                                                    child: Text(
+                                                      favoritesItem,
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Onest Cyr',
+                                                            color: favoritesItem ==
+                                                                    FFAppState()
+                                                                        .activeFavoriteItem
+                                                                ? FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryBackground
+                                                                : FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryText,
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                            useGoogleFonts:
+                                                                GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        'Onest Cyr'),
+                                                          ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              );
+                                            },
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                  ),
+                                  Material(
+                                    color: Colors.transparent,
+                                    child: ListTile(
+                                      title: Text(
+                                        'Популярные вина',
+                                        style: FlutterFlowTheme.of(context)
+                                            .titleLarge
+                                            .override(
+                                              fontFamily: 'Onest Cyr',
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.bold,
+                                              useGoogleFonts:
+                                                  GoogleFonts.asMap()
+                                                      .containsKey('Onest Cyr'),
+                                            ),
+                                      ),
+                                      tileColor: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      dense: false,
+                                      contentPadding:
+                                          const EdgeInsetsDirectional.fromSTEB(
+                                              12.0, 0.0, 12.0, 0.0),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    width: double.infinity,
+                                    height: 220.0,
+                                    decoration: const BoxDecoration(),
+                                    child: Stack(
+                                      children: [
+                                        Align(
+                                          alignment:
+                                              const AlignmentDirectional(0.0, 0.0),
+                                          child: Builder(
+                                            builder: (context) {
+                                              final popularWines =
+                                                  FFAppConstants.PopularWines
+                                                      .toList();
+
+                                              return ListView.separated(
+                                                padding: const EdgeInsets.symmetric(
+                                                    horizontal: 3.0),
+                                                primary: false,
+                                                scrollDirection:
+                                                    Axis.horizontal,
+                                                itemCount: popularWines.length,
+                                                separatorBuilder: (_, __) =>
+                                                    const SizedBox(width: 3.0),
+                                                itemBuilder: (context,
+                                                    popularWinesIndex) {
+                                                  final popularWinesItem =
+                                                      popularWines[
+                                                          popularWinesIndex];
+                                                  return FutureBuilder<
+                                                      ApiCallResponse>(
+                                                    future:
+                                                        GetWineDetailsVariableCall
+                                                            .call(
+                                                      slug: popularWinesItem,
+                                                    ),
+                                                    builder:
+                                                        (context, snapshot) {
+                                                      // Customize what your widget looks like when it's loading.
+                                                      if (!snapshot.hasData) {
+                                                        return Center(
+                                                          child: SizedBox(
+                                                            width: 50.0,
+                                                            height: 50.0,
+                                                            child:
+                                                                CircularProgressIndicator(
+                                                              valueColor:
+                                                                  AlwaysStoppedAnimation<
+                                                                      Color>(
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .alternate,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        );
+                                                      }
+                                                      final stackGetWineDetailsVariableResponse =
+                                                          snapshot.data!;
+
+                                                      return SizedBox(
+                                                        width: 172.0,
+                                                        height: 200.0,
+                                                        child: Stack(
+                                                          children: [
+                                                            InkWell(
+                                                              splashColor: Colors
+                                                                  .transparent,
+                                                              focusColor: Colors
+                                                                  .transparent,
+                                                              hoverColor: Colors
+                                                                  .transparent,
+                                                              highlightColor:
+                                                                  Colors
+                                                                      .transparent,
+                                                              onTap: () async {
+                                                                context
+                                                                    .pushNamed(
+                                                                  'Wine',
+                                                                  queryParameters:
+                                                                      {
+                                                                    'slug':
+                                                                        serializeParam(
+                                                                      popularWinesItem,
+                                                                      ParamType
+                                                                          .String,
+                                                                    ),
+                                                                  }.withoutNulls,
+                                                                );
+
+                                                                FFAppState()
+                                                                        .WineGastronomy =
+                                                                    getJsonField(
+                                                                  stackGetWineDetailsVariableResponse
+                                                                      .jsonBody,
+                                                                  r'''$.data.wines.edges[*].node.vintages.edges[*].node.gastronomy''',
+                                                                ).toString();
+                                                                FFAppState()
+                                                                        .WinesYear =
+                                                                    getJsonField(
+                                                                  stackGetWineDetailsVariableResponse
+                                                                      .jsonBody,
+                                                                  r'''$.data.wines.edges[*].node.vintages.edges[*].node.year''',
+                                                                  true,
+                                                                )!
+                                                                        .toList()
+                                                                        .cast<
+                                                                            int>();
+                                                                FFAppState()
+                                                                        .WinesRate =
+                                                                    getJsonField(
+                                                                  stackGetWineDetailsVariableResponse
+                                                                      .jsonBody,
+                                                                  r'''$.data.wines.edges[*].node.vintages.edges[*].node.vintageRatings[*].score''',
+                                                                  true,
+                                                                )!
+                                                                        .toList()
+                                                                        .cast<
+                                                                            double>();
+                                                                FFAppState()
+                                                                        .WinesImage =
+                                                                    (getJsonField(
+                                                                  stackGetWineDetailsVariableResponse
+                                                                      .jsonBody,
+                                                                  r'''$.data.wines.edges[*].node.vintages.edges[*].node.vintageRatings[*].rating.label''',
+                                                                  true,
+                                                                ) as List)
+                                                                        .map<String>((s) => s
+                                                                            .toString())
+                                                                        .toList()
+                                                                        .toList()
+                                                                        .cast<
+                                                                            String>();
+                                                              },
+                                                              child: Container(
+                                                                width: double
+                                                                    .infinity,
+                                                                height: double
+                                                                    .infinity,
+                                                                decoration:
+                                                                    const BoxDecoration(
+                                                                  color: Color(
+                                                                      0xFFF5F5FA),
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .only(
+                                                                    bottomLeft:
+                                                                        Radius.circular(
+                                                                            28.0),
+                                                                    bottomRight:
+                                                                        Radius.circular(
+                                                                            28.0),
+                                                                    topLeft: Radius
+                                                                        .circular(
+                                                                            28.0),
+                                                                    topRight: Radius
+                                                                        .circular(
+                                                                            28.0),
+                                                                  ),
+                                                                ),
+                                                                child: Align(
+                                                                  alignment:
+                                                                      const AlignmentDirectional(
+                                                                          0.0,
+                                                                          -1.0),
+                                                                  child:
+                                                                      Padding(
+                                                                    padding: const EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            4.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                    child:
+                                                                        Container(
+                                                                      width:
+                                                                          160.0,
+                                                                      height:
+                                                                          156.0,
+                                                                      decoration:
+                                                                          const BoxDecoration(
+                                                                        gradient:
+                                                                            LinearGradient(
+                                                                          colors: [
+                                                                            Color(0xFFFCFCFE),
+                                                                            Color(0xFFE9EBEE)
+                                                                          ],
+                                                                          stops: [
+                                                                            0.0,
+                                                                            1.0
+                                                                          ],
+                                                                          begin: AlignmentDirectional(
+                                                                              0.0,
+                                                                              -1.0),
+                                                                          end: AlignmentDirectional(
+                                                                              0,
+                                                                              1.0),
+                                                                        ),
+                                                                        borderRadius:
+                                                                            BorderRadius.only(
+                                                                          bottomLeft:
+                                                                              Radius.circular(28.0),
+                                                                          bottomRight:
+                                                                              Radius.circular(28.0),
+                                                                          topLeft:
+                                                                              Radius.circular(28.0),
+                                                                          topRight:
+                                                                              Radius.circular(28.0),
+                                                                        ),
+                                                                      ),
+                                                                      child:
+                                                                          Align(
+                                                                        alignment: const AlignmentDirectional(
+                                                                            0.0,
+                                                                            -1.0),
+                                                                        child:
+                                                                            Padding(
+                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                              6.0,
+                                                                              13.0,
+                                                                              6.0,
+                                                                              13.0),
+                                                                          child:
+                                                                              ClipRRect(
+                                                                            borderRadius:
+                                                                                BorderRadius.circular(8.0),
+                                                                            child:
+                                                                                Image.network(
+                                                                              '${FFAppState().graphQLimageURL}${getJsonField(
+                                                                                stackGetWineDetailsVariableResponse.jsonBody,
+                                                                                r'''$.data.wines.edges[:].node.vintages.edges[0].node.images[0].image''',
+                                                                              ).toString()}',
+                                                                              width: 48.0,
+                                                                              height: 125.0,
+                                                                              fit: BoxFit.cover,
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            Padding(
+                                                              padding:
+                                                                  const EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          12.0,
+                                                                          170.0,
+                                                                          8.0,
+                                                                          0.0),
+                                                              child: Text(
+                                                                getJsonField(
+                                                                  stackGetWineDetailsVariableResponse
+                                                                      .jsonBody,
+                                                                  r'''$.data.wines.edges[:].node.name''',
+                                                                ).toString(),
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Onest Cyr',
+                                                                      color: const Color(
+                                                                          0xFF070707),
+                                                                      fontSize:
+                                                                          12.0,
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w500,
+                                                                      useGoogleFonts: GoogleFonts
+                                                                              .asMap()
+                                                                          .containsKey(
+                                                                              'Onest Cyr'),
+                                                                    ),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      );
+                                                    },
+                                                  );
+                                                },
+                                              );
+                                            },
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Material(
+                                    color: Colors.transparent,
+                                    child: ListTile(
+                                      title: Text(
+                                        'Подборки',
+                                        style: FlutterFlowTheme.of(context)
+                                            .titleLarge
+                                            .override(
+                                              fontFamily: 'Onest Cyr',
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.bold,
+                                              useGoogleFonts:
+                                                  GoogleFonts.asMap()
+                                                      .containsKey('Onest Cyr'),
+                                            ),
+                                      ),
+                                      tileColor: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      dense: false,
+                                      contentPadding:
+                                          const EdgeInsetsDirectional.fromSTEB(
+                                              12.0, 0.0, 12.0, 0.0),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    width: double.infinity,
+                                    height: 160.0,
+                                    decoration: const BoxDecoration(),
+                                    child: Stack(
+                                      children: [
+                                        Builder(
+                                          builder: (context) {
+                                            final selectionArtItem =
+                                                FFAppConstants.ArticleSelection
+                                                    .toList();
+
+                                            return ListView.separated(
+                                              padding: const EdgeInsets.symmetric(
+                                                  horizontal: 3.0),
+                                              primary: false,
+                                              scrollDirection: Axis.horizontal,
+                                              itemCount:
+                                                  selectionArtItem.length,
+                                              separatorBuilder: (_, __) =>
+                                                  const SizedBox(width: 3.0),
+                                              itemBuilder: (context,
+                                                  selectionArtItemIndex) {
+                                                final selectionArtItemItem =
+                                                    selectionArtItem[
+                                                        selectionArtItemIndex];
+                                                return FutureBuilder<
+                                                    ApiCallResponse>(
+                                                  future: ArticlesCall.call(
+                                                    slug: selectionArtItemItem,
+                                                  ),
+                                                  builder: (context, snapshot) {
+                                                    // Customize what your widget looks like when it's loading.
+                                                    if (!snapshot.hasData) {
+                                                      return Center(
+                                                        child: SizedBox(
+                                                          width: 50.0,
+                                                          height: 50.0,
+                                                          child:
+                                                              CircularProgressIndicator(
+                                                            valueColor:
+                                                                AlwaysStoppedAnimation<
+                                                                    Color>(
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .alternate,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      );
+                                                    }
+                                                    final stackArticlesResponse =
+                                                        snapshot.data!;
+
+                                                    return Stack(
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      4.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          child: InkWell(
+                                                            splashColor: Colors
+                                                                .transparent,
+                                                            focusColor: Colors
+                                                                .transparent,
+                                                            hoverColor: Colors
+                                                                .transparent,
+                                                            highlightColor:
+                                                                Colors
+                                                                    .transparent,
+                                                            onTap: () async {
+                                                              context.pushNamed(
+                                                                'Articles',
+                                                                queryParameters:
+                                                                    {
+                                                                  'slug':
+                                                                      serializeParam(
+                                                                    selectionArtItemItem,
+                                                                    ParamType
+                                                                        .String,
+                                                                  ),
+                                                                }.withoutNulls,
+                                                              );
+                                                            },
+                                                            child: Container(
+                                                              width: 210.0,
+                                                              height: 155.0,
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                image:
+                                                                    DecorationImage(
+                                                                  fit: BoxFit
+                                                                      .cover,
+                                                                  image: Image
+                                                                      .network(
+                                                                    '${FFAppState().graphQLimageURL}${getJsonField(
+                                                                      stackArticlesResponse
+                                                                          .jsonBody,
+                                                                      r'''$.data.articles.edges[*].node.coverThumbnail.medium''',
+                                                                    ).toString()}',
+                                                                  ).image,
+                                                                ),
+                                                                gradient:
+                                                                    const LinearGradient(
+                                                                  colors: [
+                                                                    Color(
+                                                                        0xFFFCFCFE),
+                                                                    Color(
+                                                                        0xFFE9EBEE)
+                                                                  ],
+                                                                  stops: [
+                                                                    0.0,
+                                                                    1.0
+                                                                  ],
+                                                                  begin:
+                                                                      AlignmentDirectional(
+                                                                          0.0,
+                                                                          -1.0),
+                                                                  end:
+                                                                      AlignmentDirectional(
+                                                                          0,
+                                                                          1.0),
+                                                                ),
+                                                                borderRadius:
+                                                                    const BorderRadius
+                                                                        .only(
+                                                                  bottomLeft: Radius
+                                                                      .circular(
+                                                                          28.0),
+                                                                  bottomRight: Radius
+                                                                      .circular(
+                                                                          28.0),
+                                                                  topLeft: Radius
+                                                                      .circular(
+                                                                          28.0),
+                                                                  topRight: Radius
+                                                                      .circular(
+                                                                          28.0),
+                                                                ),
+                                                              ),
+                                                              child: ClipRRect(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            8.0),
+                                                                child: Image
+                                                                    .network(
+                                                                  '${FFAppState().graphQLimageURL}${getJsonField(
+                                                                    stackArticlesResponse
+                                                                        .jsonBody,
+                                                                    r'''$.data.articles.edges[*].node.coverThumbnail.medium''',
+                                                                  ).toString()}',
+                                                                  fit: BoxFit
+                                                                      .cover,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      16.0,
+                                                                      22.0,
+                                                                      8.0,
+                                                                      0.0),
+                                                          child: Text(
+                                                            getJsonField(
+                                                              stackArticlesResponse
+                                                                  .jsonBody,
+                                                              r'''$.data.articles.edges[*].node.title''',
+                                                            )
+                                                                .toString()
+                                                                .maybeHandleOverflow(
+                                                                  maxChars: 32,
+                                                                  replacement:
+                                                                      '…',
+                                                                ),
+                                                            maxLines: 2,
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Onest Cyr',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryBackground,
+                                                                  fontSize:
+                                                                      12.0,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .bold,
+                                                                  useGoogleFonts: GoogleFonts
+                                                                          .asMap()
+                                                                      .containsKey(
+                                                                          'Onest Cyr'),
+                                                                ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    );
+                                                  },
+                                                );
+                                              },
+                                            );
+                                          },
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Material(
+                                    color: Colors.transparent,
+                                    child: ListTile(
+                                      title: Text(
+                                        'Высокий рейтинг',
+                                        style: FlutterFlowTheme.of(context)
+                                            .titleLarge
+                                            .override(
+                                              fontFamily: 'Onest Cyr',
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.bold,
+                                              useGoogleFonts:
+                                                  GoogleFonts.asMap()
+                                                      .containsKey('Onest Cyr'),
+                                            ),
+                                      ),
+                                      tileColor: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      dense: false,
+                                      contentPadding:
+                                          const EdgeInsetsDirectional.fromSTEB(
+                                              12.0, 0.0, 12.0, 0.0),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    width: double.infinity,
+                                    height: 220.0,
+                                    decoration: const BoxDecoration(),
+                                    child: Stack(
+                                      children: [
+                                        Builder(
+                                          builder: (context) {
+                                            final highRateWines = FFAppConstants
+                                                .HighRatingWines.toList();
+
+                                            return ListView.separated(
+                                              padding: const EdgeInsets.symmetric(
+                                                  horizontal: 3.0),
+                                              primary: false,
+                                              scrollDirection: Axis.horizontal,
+                                              itemCount: highRateWines.length,
+                                              separatorBuilder: (_, __) =>
+                                                  const SizedBox(width: 3.0),
+                                              itemBuilder: (context,
+                                                  highRateWinesIndex) {
+                                                final highRateWinesItem =
+                                                    highRateWines[
+                                                        highRateWinesIndex];
+                                                return FutureBuilder<
+                                                    ApiCallResponse>(
+                                                  future:
+                                                      GetWineDetailsVariableCall
+                                                          .call(
+                                                    slug: highRateWinesItem,
+                                                  ),
+                                                  builder: (context, snapshot) {
+                                                    // Customize what your widget looks like when it's loading.
+                                                    if (!snapshot.hasData) {
+                                                      return Center(
+                                                        child: SizedBox(
+                                                          width: 50.0,
+                                                          height: 50.0,
+                                                          child:
+                                                              CircularProgressIndicator(
+                                                            valueColor:
+                                                                AlwaysStoppedAnimation<
+                                                                    Color>(
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .alternate,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      );
+                                                    }
+                                                    final stackGetWineDetailsVariableResponse =
+                                                        snapshot.data!;
+
+                                                    return SizedBox(
+                                                      width: 172.0,
+                                                      height: 200.0,
+                                                      child: Stack(
+                                                        children: [
+                                                          InkWell(
+                                                            splashColor: Colors
+                                                                .transparent,
+                                                            focusColor: Colors
+                                                                .transparent,
+                                                            hoverColor: Colors
+                                                                .transparent,
+                                                            highlightColor:
+                                                                Colors
+                                                                    .transparent,
+                                                            onTap: () async {
+                                                              context.pushNamed(
+                                                                'Wine',
+                                                                queryParameters:
+                                                                    {
+                                                                  'slug':
+                                                                      serializeParam(
+                                                                    highRateWinesItem,
+                                                                    ParamType
+                                                                        .String,
+                                                                  ),
+                                                                }.withoutNulls,
+                                                              );
+
+                                                              FFAppState()
+                                                                      .WineGastronomy =
+                                                                  getJsonField(
+                                                                stackGetWineDetailsVariableResponse
+                                                                    .jsonBody,
+                                                                r'''$.data.wines.edges[*].node.vintages.edges[*].node.gastronomy''',
+                                                              ).toString();
+                                                              FFAppState()
+                                                                      .WinesYear =
+                                                                  getJsonField(
+                                                                stackGetWineDetailsVariableResponse
+                                                                    .jsonBody,
+                                                                r'''$.data.wines.edges[*].node.vintages.edges[*].node.year''',
+                                                                true,
+                                                              )!
+                                                                      .toList()
+                                                                      .cast<
+                                                                          int>();
+                                                              FFAppState()
+                                                                      .WinesRate =
+                                                                  getJsonField(
+                                                                stackGetWineDetailsVariableResponse
+                                                                    .jsonBody,
+                                                                r'''$.data.wines.edges[*].node.vintages.edges[*].node.vintageRatings[*].score''',
+                                                                true,
+                                                              )!
+                                                                      .toList()
+                                                                      .cast<
+                                                                          double>();
+                                                              FFAppState()
+                                                                      .WinesImage =
+                                                                  (getJsonField(
+                                                                stackGetWineDetailsVariableResponse
+                                                                    .jsonBody,
+                                                                r'''$.data.wines.edges[*].node.vintages.edges[*].node.vintageRatings[*].rating.label''',
+                                                                true,
+                                                              ) as List)
+                                                                      .map<String>(
+                                                                          (s) => s
+                                                                              .toString())
+                                                                      .toList()
+                                                                      .toList()
+                                                                      .cast<
+                                                                          String>();
+                                                            },
+                                                            child: Container(
+                                                              width: double
+                                                                  .infinity,
+                                                              height: double
+                                                                  .infinity,
+                                                              decoration:
+                                                                  const BoxDecoration(
+                                                                color: Color(
+                                                                    0xFFF5F5FA),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .only(
+                                                                  bottomLeft: Radius
+                                                                      .circular(
+                                                                          28.0),
+                                                                  bottomRight: Radius
+                                                                      .circular(
+                                                                          28.0),
+                                                                  topLeft: Radius
+                                                                      .circular(
+                                                                          28.0),
+                                                                  topRight: Radius
+                                                                      .circular(
+                                                                          28.0),
+                                                                ),
+                                                              ),
+                                                              child: Align(
+                                                                alignment:
+                                                                    const AlignmentDirectional(
+                                                                        0.0,
+                                                                        -1.0),
+                                                                child: Padding(
+                                                                  padding: const EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          4.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                                  child:
+                                                                      Container(
+                                                                    width:
+                                                                        160.0,
+                                                                    height:
+                                                                        156.0,
+                                                                    decoration:
+                                                                        const BoxDecoration(
+                                                                      gradient:
+                                                                          LinearGradient(
+                                                                        colors: [
+                                                                          Color(
+                                                                              0xFFFCFCFE),
+                                                                          Color(
+                                                                              0xFFE9EBEE)
+                                                                        ],
+                                                                        stops: [
+                                                                          0.0,
+                                                                          1.0
+                                                                        ],
+                                                                        begin: AlignmentDirectional(
+                                                                            0.0,
+                                                                            -1.0),
+                                                                        end: AlignmentDirectional(
+                                                                            0,
+                                                                            1.0),
+                                                                      ),
+                                                                      borderRadius:
+                                                                          BorderRadius
+                                                                              .only(
+                                                                        bottomLeft:
+                                                                            Radius.circular(28.0),
+                                                                        bottomRight:
+                                                                            Radius.circular(28.0),
+                                                                        topLeft:
+                                                                            Radius.circular(28.0),
+                                                                        topRight:
+                                                                            Radius.circular(28.0),
+                                                                      ),
+                                                                    ),
+                                                                    child:
+                                                                        Align(
+                                                                      alignment:
+                                                                          const AlignmentDirectional(
+                                                                              0.0,
+                                                                              -1.0),
+                                                                      child:
+                                                                          Padding(
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                            6.0,
+                                                                            13.0,
+                                                                            6.0,
+                                                                            13.0),
+                                                                        child:
+                                                                            ClipRRect(
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(8.0),
+                                                                          child:
+                                                                              Image.network(
+                                                                            '${FFAppState().graphQLimageURL}${getJsonField(
+                                                                              stackGetWineDetailsVariableResponse.jsonBody,
+                                                                              r'''$.data.wines.edges[:].node.vintages.edges[0].node.images[0].image''',
+                                                                            ).toString()}',
+                                                                            width:
+                                                                                48.0,
+                                                                            height:
+                                                                                125.0,
+                                                                            fit:
+                                                                                BoxFit.cover,
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        12.0,
+                                                                        170.0,
+                                                                        8.0,
+                                                                        0.0),
+                                                            child: Text(
+                                                              getJsonField(
+                                                                stackGetWineDetailsVariableResponse
+                                                                    .jsonBody,
+                                                                r'''$.data.wines.edges[:].node.name''',
+                                                              ).toString(),
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Onest Cyr',
+                                                                    color: const Color(
+                                                                        0xFF070707),
+                                                                    fontSize:
+                                                                        12.0,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w500,
+                                                                    useGoogleFonts: GoogleFonts
+                                                                            .asMap()
+                                                                        .containsKey(
+                                                                            'Onest Cyr'),
+                                                                  ),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    );
+                                                  },
+                                                );
+                                              },
+                                            );
+                                          },
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Material(
+                                    color: Colors.transparent,
+                                    child: ListTile(
+                                      title: Text(
+                                        'Для начинающих',
+                                        style: FlutterFlowTheme.of(context)
+                                            .titleLarge
+                                            .override(
+                                              fontFamily: 'Onest Cyr',
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.bold,
+                                              useGoogleFonts:
+                                                  GoogleFonts.asMap()
+                                                      .containsKey('Onest Cyr'),
+                                            ),
+                                      ),
+                                      tileColor: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      dense: false,
+                                      contentPadding:
+                                          const EdgeInsetsDirectional.fromSTEB(
+                                              12.0, 0.0, 12.0, 0.0),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                      ),
+                                    ),
+                                  ),
+                                  Builder(
+                                    builder: (context) {
+                                      final articlesNewbiesItems =
+                                          FFAppConstants.ArticlesNewbies
+                                              .toList();
+
+                                      return ListView.separated(
+                                        padding:
+                                            const EdgeInsets.symmetric(vertical: 3.0),
+                                        primary: false,
+                                        shrinkWrap: true,
+                                        scrollDirection: Axis.vertical,
+                                        itemCount: articlesNewbiesItems.length,
+                                        separatorBuilder: (_, __) =>
+                                            const SizedBox(height: 3.0),
+                                        itemBuilder: (context,
+                                            articlesNewbiesItemsIndex) {
+                                          final articlesNewbiesItemsItem =
+                                              articlesNewbiesItems[
+                                                  articlesNewbiesItemsIndex];
+                                          return FutureBuilder<ApiCallResponse>(
+                                            future: ArticlesCall.call(
+                                              slug: articlesNewbiesItemsItem,
+                                            ),
+                                            builder: (context, snapshot) {
+                                              // Customize what your widget looks like when it's loading.
+                                              if (!snapshot.hasData) {
+                                                return Center(
+                                                  child: SizedBox(
+                                                    width: 50.0,
+                                                    height: 50.0,
+                                                    child:
+                                                        CircularProgressIndicator(
+                                                      valueColor:
+                                                          AlwaysStoppedAnimation<
+                                                              Color>(
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .alternate,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                );
+                                              }
+                                              final articlesFavItemArticlesResponse =
+                                                  snapshot.data!;
+
+                                              return InkWell(
+                                                splashColor: Colors.transparent,
+                                                focusColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
+                                                highlightColor:
+                                                    Colors.transparent,
+                                                onTap: () async {
+                                                  context.pushNamed(
+                                                    'Articles',
+                                                    queryParameters: {
+                                                      'slug': serializeParam(
+                                                        articlesNewbiesItemsItem,
+                                                        ParamType.String,
+                                                      ),
+                                                    }.withoutNulls,
+                                                  );
+                                                },
+                                                child: Container(
+                                                  width: double.infinity,
+                                                  decoration: const BoxDecoration(
+                                                    color: Color(0xFFF5F5FA),
+                                                    borderRadius:
+                                                        BorderRadius.only(
+                                                      bottomLeft:
+                                                          Radius.circular(28.0),
+                                                      bottomRight:
+                                                          Radius.circular(28.0),
+                                                      topLeft:
+                                                          Radius.circular(28.0),
+                                                      topRight:
+                                                          Radius.circular(28.0),
+                                                    ),
+                                                  ),
+                                                  child: SingleChildScrollView(
+                                                    scrollDirection:
+                                                        Axis.horizontal,
+                                                    child: Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Container(
+                                                          width: 140.0,
+                                                          height: 140.0,
+                                                          decoration:
+                                                              const BoxDecoration(
+                                                            gradient:
+                                                                LinearGradient(
+                                                              colors: [
+                                                                Color(
+                                                                    0xFFFCFCFE),
+                                                                Color(
+                                                                    0xFFE9EBEE)
+                                                              ],
+                                                              stops: [0.0, 1.0],
+                                                              begin:
+                                                                  AlignmentDirectional(
+                                                                      0.0,
+                                                                      -1.0),
+                                                              end:
+                                                                  AlignmentDirectional(
+                                                                      0, 1.0),
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .only(
+                                                              bottomLeft: Radius
+                                                                  .circular(
+                                                                      28.0),
+                                                              bottomRight:
+                                                                  Radius
+                                                                      .circular(
+                                                                          28.0),
+                                                              topLeft: Radius
+                                                                  .circular(
+                                                                      28.0),
+                                                              topRight: Radius
+                                                                  .circular(
+                                                                      28.0),
+                                                            ),
+                                                          ),
+                                                          child: Align(
+                                                            alignment:
+                                                                const AlignmentDirectional(
+                                                                    0.0, -1.0),
+                                                            child: Padding(
+                                                              padding:
+                                                                  const EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          6.0,
+                                                                          13.0,
+                                                                          6.0,
+                                                                          13.0),
+                                                              child: ClipRRect(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            8.0),
+                                                                child: Image
+                                                                    .network(
+                                                                  '${FFAppState().graphQLimageURL}${getJsonField(
+                                                                    articlesFavItemArticlesResponse
+                                                                        .jsonBody,
+                                                                    r'''$.data.articles.edges[*].node.coverThumbnail.medium''',
+                                                                  ).toString()}',
+                                                                  width: 120.0,
+                                                                  height: 120.0,
+                                                                  fit: BoxFit
+                                                                      .cover,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              const EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      8.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          child: Container(
+                                                            width: 210.0,
+                                                            height: 100.0,
+                                                            decoration:
+                                                                const BoxDecoration(),
+                                                            child: Text(
+                                                              getJsonField(
+                                                                articlesFavItemArticlesResponse
+                                                                    .jsonBody,
+                                                                r'''$.data.articles.edges[*].node.title''',
+                                                              )
+                                                                  .toString()
+                                                                  .maybeHandleOverflow(
+                                                                    maxChars:
+                                                                        42,
+                                                                    replacement:
+                                                                        '…',
+                                                                  ),
+                                                              maxLines: 5,
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .labelLarge
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .labelLargeFamily,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    useGoogleFonts: GoogleFonts
+                                                                            .asMap()
+                                                                        .containsKey(
+                                                                            FlutterFlowTheme.of(context).labelLargeFamily),
+                                                                  ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ),
+                                              );
+                                            },
+                                          );
+                                        },
+                                      );
+                                    },
+                                  ),
+                                ]
+                                    .divide(const SizedBox(height: 12.0))
+                                    .addToStart(const SizedBox(height: 12.0)),
+                              ),
+                            ),
                           ),
                         ),
                         KeepAliveWidgetWrapper(
-                          builder: (context) => const Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [],
-                          ),
+                          builder: (context) => Container(),
                         ),
                         KeepAliveWidgetWrapper(
                           builder: (context) => SingleChildScrollView(
@@ -1835,8 +3266,9 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                                   ? FlutterFlowTheme.of(
                                                                           context)
                                                                       .secondaryBackground
-                                                                  : const Color(
-                                                                      0xFF143161),
+                                                                  : FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText,
                                                               letterSpacing:
                                                                   0.0,
                                                               fontWeight:
@@ -1919,7 +3351,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                       Colors.transparent,
                                                   onTap: () async {
                                                     context.pushNamed(
-                                                      'WineScreen',
+                                                      'Wine',
                                                       queryParameters: {
                                                         'slug': serializeParam(
                                                           favWinesItem,

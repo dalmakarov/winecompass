@@ -78,9 +78,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => const SearchWidget(),
         ),
         FFRoute(
-          name: 'WineScreen',
-          path: '/wineScreen',
-          builder: (context, params) => WineScreenWidget(
+          name: 'Wine',
+          path: '/wine',
+          builder: (context, params) => WineWidget(
             slug: params.getParam(
               'slug',
               ParamType.String,

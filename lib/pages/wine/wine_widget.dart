@@ -6,11 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
-import 'wine_screen_model.dart';
-export 'wine_screen_model.dart';
+import 'wine_model.dart';
+export 'wine_model.dart';
 
-class WineScreenWidget extends StatefulWidget {
-  const WineScreenWidget({
+class WineWidget extends StatefulWidget {
+  const WineWidget({
     super.key,
     String? slug,
   }) : slug = slug ?? 'kokur-saryi-pandas';
@@ -18,18 +18,18 @@ class WineScreenWidget extends StatefulWidget {
   final String slug;
 
   @override
-  State<WineScreenWidget> createState() => _WineScreenWidgetState();
+  State<WineWidget> createState() => _WineWidgetState();
 }
 
-class _WineScreenWidgetState extends State<WineScreenWidget> {
-  late WineScreenModel _model;
+class _WineWidgetState extends State<WineWidget> {
+  late WineModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => WineScreenModel());
+    _model = createModel(context, () => WineModel());
   }
 
   @override
@@ -65,7 +65,7 @@ class _WineScreenWidgetState extends State<WineScreenWidget> {
             ),
           );
         }
-        final wineScreenGetWineDetailsVariableResponse = snapshot.data!;
+        final wineGetWineDetailsVariableResponse = snapshot.data!;
 
         return GestureDetector(
           onTap: () {
@@ -104,8 +104,7 @@ class _WineScreenWidgetState extends State<WineScreenWidget> {
                                 borderRadius: BorderRadius.circular(8.0),
                                 child: Image.network(
                                   '${FFAppState().graphQLimageURL}${getJsonField(
-                                    wineScreenGetWineDetailsVariableResponse
-                                        .jsonBody,
+                                    wineGetWineDetailsVariableResponse.jsonBody,
                                     r'''$.data.wines.edges[0].node.vintages.edges[0].node.images[0].image''',
                                   ).toString()}',
                                   width: 120.0,
@@ -231,7 +230,7 @@ class _WineScreenWidgetState extends State<WineScreenWidget> {
                                                   -1.0, 0.0),
                                               child: Text(
                                                 getJsonField(
-                                                  wineScreenGetWineDetailsVariableResponse
+                                                  wineGetWineDetailsVariableResponse
                                                       .jsonBody,
                                                   r'''$.data.wines.edges[0].node.name''',
                                                 ).toString(),
@@ -293,13 +292,7 @@ class _WineScreenWidgetState extends State<WineScreenWidget> {
                                           highlightColor: Colors.transparent,
                                           onTap: () async {
                                             _model.favIcolor =
-                                                _model.favIcolor ==
-                                                        const Color(0xFF28303F)
-                                                    ? const Color(0xFFD5386C)
-                                                    : (_model.favIcolor ==
-                                                            const Color(0xFFD5386C)
-                                                        ? const Color(0xFF28303F)
-                                                        : const Color(0x00000000));
+                                                const Color(0x00000000);
                                             safeSetState(() {});
                                           },
                                           child: Icon(
@@ -534,7 +527,7 @@ class _WineScreenWidgetState extends State<WineScreenWidget> {
                                   onTap: () async {
                                     if (yearsButtonsIndex == 0) {
                                       FFAppState().WinesRate = getJsonField(
-                                        wineScreenGetWineDetailsVariableResponse
+                                        wineGetWineDetailsVariableResponse
                                             .jsonBody,
                                         r'''$.data.wines.edges[0].node.vintages.edges[0].node.vintageRatings[:].score''',
                                         true,
@@ -542,7 +535,7 @@ class _WineScreenWidgetState extends State<WineScreenWidget> {
                                           .toList()
                                           .cast<double>();
                                       FFAppState().WinesImage = (getJsonField(
-                                        wineScreenGetWineDetailsVariableResponse
+                                        wineGetWineDetailsVariableResponse
                                             .jsonBody,
                                         r'''$.data.wines.edges[0].node.vintages.edges[0].node.vintageRatings[:].rating.label''',
                                         true,
@@ -561,7 +554,7 @@ class _WineScreenWidgetState extends State<WineScreenWidget> {
                                           yearsButtonsIndex;
                                       FFAppState().update(() {});
                                       FFAppState().WinesRate = getJsonField(
-                                        wineScreenGetWineDetailsVariableResponse
+                                        wineGetWineDetailsVariableResponse
                                             .jsonBody,
                                         r'''$.data.wines.edges[0].node.vintages.edges[1].node.vintageRatings[:].score''',
                                         true,
@@ -569,7 +562,7 @@ class _WineScreenWidgetState extends State<WineScreenWidget> {
                                           .toList()
                                           .cast<double>();
                                       FFAppState().WinesImage = (getJsonField(
-                                        wineScreenGetWineDetailsVariableResponse
+                                        wineGetWineDetailsVariableResponse
                                             .jsonBody,
                                         r'''$.data.wines.edges[0].node.vintages.edges[1].node.vintageRatings[:].rating.label''',
                                         true,
@@ -675,8 +668,7 @@ class _WineScreenWidgetState extends State<WineScreenWidget> {
                           children: [
                             Text(
                               getJsonField(
-                                wineScreenGetWineDetailsVariableResponse
-                                    .jsonBody,
+                                wineGetWineDetailsVariableResponse.jsonBody,
                                 r'''$.data.wines.edges[0].node.vintages.edges[0].node.description''',
                               ).toString(),
                               textAlign: TextAlign.start,
@@ -706,7 +698,7 @@ class _WineScreenWidgetState extends State<WineScreenWidget> {
                                 scrollDirection: Axis.horizontal,
                                 children: [
                                   if (getJsonField(
-                                        wineScreenGetWineDetailsVariableResponse
+                                        wineGetWineDetailsVariableResponse
                                             .jsonBody,
                                         r'''$.data.wines.edges[0].node.wineType.name''',
                                       ) !=
@@ -756,7 +748,7 @@ class _WineScreenWidgetState extends State<WineScreenWidget> {
                                             ),
                                           ),
                                           if (getJsonField(
-                                                wineScreenGetWineDetailsVariableResponse
+                                                wineGetWineDetailsVariableResponse
                                                     .jsonBody,
                                                 r'''$.data.wines.edges[0].node.wineType.name''',
                                               ) !=
@@ -770,7 +762,7 @@ class _WineScreenWidgetState extends State<WineScreenWidget> {
                                                         10.0, 0.0, 10.0, 0.0),
                                                 child: Text(
                                                   getJsonField(
-                                                    wineScreenGetWineDetailsVariableResponse
+                                                    wineGetWineDetailsVariableResponse
                                                         .jsonBody,
                                                     r'''$.data.wines.edges[0].node.wineType.name''',
                                                   ).toString(),
@@ -795,7 +787,7 @@ class _WineScreenWidgetState extends State<WineScreenWidget> {
                                       ),
                                     ),
                                   if (getJsonField(
-                                        wineScreenGetWineDetailsVariableResponse
+                                        wineGetWineDetailsVariableResponse
                                             .jsonBody,
                                         r'''$.data.wines.edges[:].node.wineGrapes[0].grape.variety''',
                                       ) !=
@@ -857,7 +849,7 @@ class _WineScreenWidgetState extends State<WineScreenWidget> {
                                                     final grapes =
                                                         GetWineDetailsVariableCall
                                                                 .allData(
-                                                              wineScreenGetWineDetailsVariableResponse
+                                                              wineGetWineDetailsVariableResponse
                                                                   .jsonBody,
                                                             )?.toList() ??
                                                             [];
@@ -986,7 +978,7 @@ class _WineScreenWidgetState extends State<WineScreenWidget> {
                                                     10.0, 0.0, 10.0, 0.0),
                                             child: Text(
                                               getJsonField(
-                                                wineScreenGetWineDetailsVariableResponse
+                                                wineGetWineDetailsVariableResponse
                                                     .jsonBody,
                                                 r'''$.data.wines.edges[0].node.winery.name''',
                                               ).toString(),
@@ -1016,7 +1008,7 @@ class _WineScreenWidgetState extends State<WineScreenWidget> {
                                     ),
                                   ),
                                   if (getJsonField(
-                                        wineScreenGetWineDetailsVariableResponse
+                                        wineGetWineDetailsVariableResponse
                                             .jsonBody,
                                         r'''$.data.wines.edges[0].node.brand.name''',
                                       ) !=
@@ -1066,7 +1058,7 @@ class _WineScreenWidgetState extends State<WineScreenWidget> {
                                             ),
                                           ),
                                           if (getJsonField(
-                                                wineScreenGetWineDetailsVariableResponse
+                                                wineGetWineDetailsVariableResponse
                                                     .jsonBody,
                                                 r'''$.data.wines.edges[0].node.brand.name''',
                                               ) !=
@@ -1080,7 +1072,7 @@ class _WineScreenWidgetState extends State<WineScreenWidget> {
                                                         10.0, 0.0, 10.0, 0.0),
                                                 child: Text(
                                                   getJsonField(
-                                                    wineScreenGetWineDetailsVariableResponse
+                                                    wineGetWineDetailsVariableResponse
                                                         .jsonBody,
                                                     r'''$.data.wines.edges[0].node.brand.name''',
                                                   ).toString(),
@@ -1162,7 +1154,7 @@ class _WineScreenWidgetState extends State<WineScreenWidget> {
                                                     10.0, 0.0, 10.0, 0.0),
                                             child: Text(
                                               getJsonField(
-                                                wineScreenGetWineDetailsVariableResponse
+                                                wineGetWineDetailsVariableResponse
                                                     .jsonBody,
                                                 r'''$.data.wines.edges[0].node.country.name''',
                                               ).toString(),
@@ -1239,7 +1231,7 @@ class _WineScreenWidgetState extends State<WineScreenWidget> {
                                                     10.0, 0.0, 10.0, 0.0),
                                             child: Text(
                                               getJsonField(
-                                                wineScreenGetWineDetailsVariableResponse
+                                                wineGetWineDetailsVariableResponse
                                                     .jsonBody,
                                                 r'''$.data.wines.edges[0].node.appellation.name''',
                                               ).toString(),
@@ -1321,7 +1313,7 @@ class _WineScreenWidgetState extends State<WineScreenWidget> {
                                                     10.0, 0.0, 10.0, 0.0),
                                             child: Text(
                                               getJsonField(
-                                                wineScreenGetWineDetailsVariableResponse
+                                                wineGetWineDetailsVariableResponse
                                                     .jsonBody,
                                                 r'''$.data.wines.edges[*].node.vintages.edges[0].node.abvMax''',
                                               ).toString(),
