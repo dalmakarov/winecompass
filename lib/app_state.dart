@@ -291,6 +291,18 @@ class FFAppState extends ChangeNotifier {
     _activeFavoriteItem = value;
     prefs.setString('ff_activeFavoriteItem', value);
   }
+
+  bool _favorWine = false;
+  bool get favorWine => _favorWine;
+  set favorWine(bool value) {
+    _favorWine = value;
+  }
+
+  String _activeArticleItem = '';
+  String get activeArticleItem => _activeArticleItem;
+  set activeArticleItem(String value) {
+    _activeArticleItem = value;
+  }
 }
 
 void _safeInit(Function() initializeField) {

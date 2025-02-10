@@ -85,6 +85,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               'slug',
               ParamType.String,
             ),
+            favWine: params.getParam(
+              'favWine',
+              ParamType.bool,
+            ),
           ),
         ),
         FFRoute(

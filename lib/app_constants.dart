@@ -59,4 +59,13 @@ abstract class FFAppConstants {
     'vlada-lesnichenko-znachitelnaya-chast-sostava-vina',
     'stavropole'
   ];
+  static const List<String> news = [
+    'karina-sogoyan-chego-poka-kategoricheski-net-v-ros',
+    'tsitron-tsyurupinskij-sejchas-nuzhno-byistree-pere'
+  ];
+  static const List<String> newArticles = [
+    'mihail-nikolaev-russkoe-vino-samoe-bezopasnoe-v-',
+    'vlada-lesnichenko-znachitelnaya-chast-sostava-vina',
+    'karina-sogoyan-chego-poka-kategoricheski-net-v-ros'
+  ];
 }

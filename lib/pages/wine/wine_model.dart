@@ -27,8 +27,6 @@ class WineModel extends FlutterFlowModel<WineWidget> {
   void updateImageAtIndex(int index, Function(String) updateFn) =>
       image[index] = updateFn(image[index]);
 
-  Color? favIcolor = const Color(0xff28303f);
-
   @override
   void initState(BuildContext context) {}
 

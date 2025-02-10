@@ -13,9 +13,13 @@ class WineWidget extends StatefulWidget {
   const WineWidget({
     super.key,
     String? slug,
+    this.favWine,
   }) : slug = slug ?? 'kokur-saryi-pandas';
 
   final String slug;
+
+  /// Favorite icon
+  final bool? favWine;
 
   @override
   State<WineWidget> createState() => _WineWidgetState();
@@ -127,6 +131,7 @@ class _WineWidgetState extends State<WineWidget> {
                                 FFAppState().WinesImage = [];
                                 FFAppState().WinesRate = [];
                                 FFAppState().SelectedYear = 0;
+                                FFAppState().favorWine = false;
                               },
                               child: Container(
                                 width: 80.0,
@@ -281,25 +286,13 @@ class _WineWidgetState extends State<WineWidget> {
                                             .secondaryBackground,
                                       ),
                                       child: Opacity(
-                                        opacity: _model.favIcolor ==
-                                                const Color(0xFFD5386C)
-                                            ? 1.0
-                                            : 0.4,
-                                        child: InkWell(
-                                          splashColor: Colors.transparent,
-                                          focusColor: Colors.transparent,
-                                          hoverColor: Colors.transparent,
-                                          highlightColor: Colors.transparent,
-                                          onTap: () async {
-                                            _model.favIcolor =
-                                                const Color(0x00000000);
-                                            safeSetState(() {});
-                                          },
-                                          child: Icon(
-                                            Icons.favorite_rounded,
-                                            color: _model.favIcolor,
-                                            size: 24.0,
-                                          ),
+                                        opacity: 0.4,
+                                        child: Icon(
+                                          Icons.favorite_rounded,
+                                          color: FFAppState().favorWine
+                                              ? const Color(0xFFD5386C)
+                                              : const Color(0xFF28303F),
+                                          size: 24.0,
                                         ),
                                       ),
                                     ),
