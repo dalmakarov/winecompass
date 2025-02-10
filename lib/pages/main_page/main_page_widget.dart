@@ -2014,7 +2014,9 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                       ),
                                     ),
                                   ),
-                                  if (FFAppState().activeArticleItem == 'Вина')
+                                  if ((FFAppState().activeArticleItem ==
+                                          'Вина') ||
+                                      (FFAppState().activeArticleItem == ''))
                                     Column(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [

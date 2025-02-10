@@ -298,7 +298,7 @@ class FFAppState extends ChangeNotifier {
     _favorWine = value;
   }
 
-  String _activeArticleItem = '';
+  String _activeArticleItem = 'Вина';
   String get activeArticleItem => _activeArticleItem;
   set activeArticleItem(String value) {
     _activeArticleItem = value;
