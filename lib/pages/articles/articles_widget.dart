@@ -14,7 +14,7 @@ class ArticlesWidget extends StatefulWidget {
   const ArticlesWidget({
     super.key,
     String? slug,
-  }) : slug = slug ?? 'kokur-saryi-pandas';
+  }) : this.slug = slug ?? 'kokur-saryi-pandas';
 
   final String slug;
 
@@ -83,16 +83,16 @@ class _ArticlesWidgetState extends State<ArticlesWidget> {
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    SizedBox(
+                    Container(
                       height: 360.0,
                       child: Stack(
                         children: [
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 22.0, 22.0, 22.0, 0.0),
                             child: Container(
                               width: double.infinity,
-                              decoration: const BoxDecoration(
+                              decoration: BoxDecoration(
                                 color: Color(0xFFF2F2F2),
                                 image: DecorationImage(
                                   fit: BoxFit.fill,
@@ -110,7 +110,7 @@ class _ArticlesWidgetState extends State<ArticlesWidget> {
                             ),
                           ),
                           Align(
-                            alignment: const AlignmentDirectional(1.0, -1.0),
+                            alignment: AlignmentDirectional(1.0, -1.0),
                             child: InkWell(
                               splashColor: Colors.transparent,
                               focusColor: Colors.transparent,
@@ -122,19 +122,19 @@ class _ArticlesWidgetState extends State<ArticlesWidget> {
                               child: Container(
                                 width: 95.0,
                                 height: 95.0,
-                                decoration: const BoxDecoration(),
+                                decoration: BoxDecoration(),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 14.0, 14.0, 0.0),
                                   child: Stack(
                                     children: [
                                       Align(
                                         alignment:
-                                            const AlignmentDirectional(0.0, 0.0),
+                                            AlignmentDirectional(0.0, 0.0),
                                         child: Container(
                                           width: 32.0,
                                           height: 32.0,
-                                          decoration: const BoxDecoration(
+                                          decoration: BoxDecoration(
                                             color: Color(0xFFECECEC),
                                             borderRadius: BorderRadius.only(
                                               bottomLeft: Radius.circular(24.0),
@@ -144,7 +144,7 @@ class _ArticlesWidgetState extends State<ArticlesWidget> {
                                               topRight: Radius.circular(24.0),
                                             ),
                                           ),
-                                          child: const Icon(
+                                          child: Icon(
                                             Icons.close_rounded,
                                             color: Color(0xFF706F6F),
                                             size: 24.0,
@@ -169,11 +169,11 @@ class _ArticlesWidgetState extends State<ArticlesWidget> {
                       child: Stack(
                         children: [
                           Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: Container(
                               width: 62.0,
                               height: 5.0,
-                              decoration: const BoxDecoration(
+                              decoration: BoxDecoration(
                                 color: Color(0xFFECECEC),
                                 borderRadius: BorderRadius.only(
                                   bottomLeft: Radius.circular(24.0),
@@ -187,13 +187,13 @@ class _ArticlesWidgetState extends State<ArticlesWidget> {
                         ],
                       ),
                     ),
-                    SizedBox(
+                    Container(
                       width: double.infinity,
                       height: 56.0,
                       child: Stack(
                         children: [
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 22.0, 0.0, 22.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -213,7 +213,7 @@ class _ArticlesWidgetState extends State<ArticlesWidget> {
                                         ).toString()}',
                                       ).image,
                                     ),
-                                    borderRadius: const BorderRadius.only(
+                                    borderRadius: BorderRadius.only(
                                       bottomLeft: Radius.circular(26.0),
                                       bottomRight: Radius.circular(26.0),
                                       topLeft: Radius.circular(26.0),
@@ -226,7 +226,7 @@ class _ArticlesWidgetState extends State<ArticlesWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       12.0, 0.0, 0.0, 0.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
@@ -247,7 +247,7 @@ class _ArticlesWidgetState extends State<ArticlesWidget> {
                                             .bodyMedium
                                             .override(
                                               fontFamily: 'Onest Cyr',
-                                              color: const Color(0xFF143161),
+                                              color: Color(0xFF143161),
                                               letterSpacing: 0.0,
                                               useGoogleFonts:
                                                   GoogleFonts.asMap()
@@ -272,7 +272,7 @@ class _ArticlesWidgetState extends State<ArticlesWidget> {
                                                       FlutterFlowTheme.of(
                                                               context)
                                                           .bodyMediumFamily,
-                                                  color: const Color(0xFF7A7A7A),
+                                                  color: Color(0xFF7A7A7A),
                                                   fontSize: 12.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.normal,
@@ -286,12 +286,12 @@ class _ArticlesWidgetState extends State<ArticlesWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     8.0, 0.0, 8.0, 0.0),
                                             child: Container(
                                               width: 1.0,
                                               height: 16.0,
-                                              decoration: const BoxDecoration(
+                                              decoration: BoxDecoration(
                                                 color: Color(0x7A7A7A4D),
                                               ),
                                             ),
@@ -306,7 +306,7 @@ class _ArticlesWidgetState extends State<ArticlesWidget> {
                                                       FlutterFlowTheme.of(
                                                               context)
                                                           .bodyMediumFamily,
-                                                  color: const Color(0xFF7A7A7A),
+                                                  color: Color(0xFF7A7A7A),
                                                   fontSize: 12.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.normal,
@@ -333,7 +333,7 @@ class _ArticlesWidgetState extends State<ArticlesWidget> {
                                                       FlutterFlowTheme.of(
                                                               context)
                                                           .bodyMediumFamily,
-                                                  color: const Color(0xFF7A7A7A),
+                                                  color: Color(0xFF7A7A7A),
                                                   fontSize: 12.0,
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.normal,
@@ -354,9 +354,9 @@ class _ArticlesWidgetState extends State<ArticlesWidget> {
                             ),
                           ),
                           Align(
-                            alignment: const AlignmentDirectional(1.0, 0.0),
+                            alignment: AlignmentDirectional(1.0, 0.0),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 22.0, 0.0),
                               child: Container(
                                 width: 50.0,
@@ -399,7 +399,7 @@ class _ArticlesWidgetState extends State<ArticlesWidget> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(
+                      padding: EdgeInsetsDirectional.fromSTEB(
                           22.0, 24.0, 22.0, 22.0),
                       child: Container(
                         width: double.infinity,

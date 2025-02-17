@@ -19,13 +19,9 @@ class MainPageModel extends FlutterFlowModel<MainPageWidget> {
       ? pageViewController1!.page!.round()
       : 0;
   // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode1;
+  FocusNode? textFieldFocusNode;
   TextEditingController? textController1;
   String? Function(BuildContext, String?)? textController1Validator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode2;
-  TextEditingController? textController2;
-  String? Function(BuildContext, String?)? textController2Validator;
   // State field(s) for PageView widget.
   PageController? pageViewController2;
 
@@ -34,6 +30,10 @@ class MainPageModel extends FlutterFlowModel<MainPageWidget> {
           pageViewController2!.page != null
       ? pageViewController2!.page!.round()
       : 0;
+  bool isDataUploading = false;
+  FFUploadedFile uploadedLocalFile =
+      FFUploadedFile(bytes: Uint8List.fromList([]));
+
   // State field(s) for Email widget.
   FocusNode? emailFocusNode;
   TextEditingController? emailTextController;
@@ -45,11 +45,8 @@ class MainPageModel extends FlutterFlowModel<MainPageWidget> {
   @override
   void dispose() {
     tabBarController?.dispose();
-    textFieldFocusNode1?.dispose();
+    textFieldFocusNode?.dispose();
     textController1?.dispose();
-
-    textFieldFocusNode2?.dispose();
-    textController2?.dispose();
 
     emailFocusNode?.dispose();
     emailTextController?.dispose();

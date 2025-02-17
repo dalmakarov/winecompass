@@ -68,4 +68,5 @@ abstract class FFAppConstants {
     'vlada-lesnichenko-znachitelnaya-chast-sostava-vina',
     'karina-sogoyan-chego-poka-kategoricheski-net-v-ros'
   ];
+  static const int zeroVal = 0;
 }

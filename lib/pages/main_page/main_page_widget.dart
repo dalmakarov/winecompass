@@ -3,9 +3,11 @@ import '/flutter_flow/flutter_flow_button_tabbar.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/upload_data.dart';
 import 'dart:async';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -58,10 +60,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
           4),
     )..addListener(() => safeSetState(() {}));
     _model.textController1 ??= TextEditingController();
-    _model.textFieldFocusNode1 ??= FocusNode();
-
-    _model.textController2 ??= TextEditingController();
-    _model.textFieldFocusNode2 ??= FocusNode();
+    _model.textFieldFocusNode ??= FocusNode();
 
     _model.emailTextController ??=
         TextEditingController(text: FFAppState().userMail);
@@ -133,7 +132,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                       BoxShadow(
                                         color: FlutterFlowTheme.of(context)
                                             .primaryText,
-                                        offset: const Offset(
+                                        offset: Offset(
                                           0.0,
                                           2.0,
                                         ),
@@ -141,7 +140,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                     ],
                                   ),
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 2.0, 0.0, 0.0),
                                     child: Builder(
                                       builder: (context) {
@@ -151,7 +150,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                             )?.toList() ??
                                             [];
 
-                                        return SizedBox(
+                                        return Container(
                                           width: double.infinity,
                                           height: double.infinity,
                                           child: Stack(
@@ -180,13 +179,13 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                       Flexible(
                                                         child: Align(
                                                           alignment:
-                                                              const AlignmentDirectional(
+                                                              AlignmentDirectional(
                                                                   0.0, -1.0),
                                                           child: Stack(
                                                             children: [
                                                               Align(
                                                                 alignment:
-                                                                    const AlignmentDirectional(
+                                                                    AlignmentDirectional(
                                                                         0.0,
                                                                         0.0),
                                                                 child:
@@ -212,11 +211,11 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                               ),
                                                               Align(
                                                                 alignment:
-                                                                    const AlignmentDirectional(
+                                                                    AlignmentDirectional(
                                                                         0.0,
                                                                         1.0),
                                                                 child: Padding(
-                                                                  padding: const EdgeInsetsDirectional
+                                                                  padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           16.0,
                                                                           0.0,
@@ -254,10 +253,10 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                 },
                                               ),
                                               Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     0.0, 1.0),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 0.0, 0.0, 8.0),
                                                   child: smooth_page_indicator
@@ -279,7 +278,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                           .pageViewController1!
                                                           .animateToPage(
                                                         i,
-                                                        duration: const Duration(
+                                                        duration: Duration(
                                                             milliseconds: 500),
                                                         curve: Curves.ease,
                                                       );
@@ -313,186 +312,87 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                     ),
                                   ),
                                 ),
-                                Container(
-                                  width: double.infinity,
-                                  height: 48.0,
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                  ),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            12.0, 0.0, 8.0, 0.0),
-                                        child: Icon(
-                                          FFIcons.kloupe2,
-                                          color: FlutterFlowTheme.of(context)
-                                              .primaryText,
-                                          size: 22.0,
-                                        ),
-                                      ),
-                                      Expanded(
-                                        child: SizedBox(
-                                          width: double.infinity,
-                                          child: TextFormField(
-                                            controller: _model.textController1,
-                                            focusNode:
-                                                _model.textFieldFocusNode1,
-                                            autofocus: false,
-                                            obscureText: false,
-                                            decoration: InputDecoration(
-                                              isDense: true,
-                                              labelStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelMediumFamily,
-                                                        letterSpacing: 0.0,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMediumFamily),
-                                                      ),
-                                              hintText: 'Вино',
-                                              hintStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelMediumFamily,
-                                                        color:
-                                                            const Color(0xFFAFB0B4),
-                                                        letterSpacing: 0.0,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .labelMediumFamily),
-                                                      ),
-                                              enabledBorder: OutlineInputBorder(
-                                                borderSide: const BorderSide(
-                                                  color: Color(0x00000000),
-                                                  width: 1.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(16.0),
-                                              ),
-                                              focusedBorder: OutlineInputBorder(
-                                                borderSide: const BorderSide(
-                                                  color: Color(0x00000000),
-                                                  width: 1.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(16.0),
-                                              ),
-                                              errorBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .error,
-                                                  width: 1.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(16.0),
-                                              ),
-                                              focusedErrorBorder:
-                                                  OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .error,
-                                                  width: 1.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(16.0),
-                                              ),
-                                              filled: true,
-                                              fillColor: const Color(0xFFF5F5FA),
-                                              hoverColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .alternate,
-                                            ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMediumFamily,
-                                                  fontSize: 16.0,
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.w500,
-                                                  useGoogleFonts: GoogleFonts
-                                                          .asMap()
-                                                      .containsKey(
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMediumFamily),
-                                                ),
-                                            cursorColor:
-                                                FlutterFlowTheme.of(context)
-                                                    .primaryText,
-                                            validator: _model
-                                                .textController1Validator
-                                                .asValidator(context),
-                                          ),
-                                        ),
-                                      ),
-                                      Align(
-                                        alignment:
-                                            const AlignmentDirectional(1.0, 0.0),
-                                        child: FFButtonWidget(
-                                          onPressed: () {
-                                            print('Button pressed ...');
-                                          },
-                                          text: 'Отмена',
-                                          options: FFButtonOptions(
-                                            height: 40.0,
+                                Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        context.pushNamed('Search');
+                                      },
+                                      child: Stack(
+                                        children: [
+                                          Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    16.0, 0.0, 16.0, 0.0),
-                                            iconPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 0.0),
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                            textStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .bodyLarge
-                                                    .override(
-                                                      fontFamily:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyLargeFamily,
-                                                      fontSize: 14.0,
-                                                      letterSpacing: 0.0,
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                      useGoogleFonts: GoogleFonts
-                                                              .asMap()
-                                                          .containsKey(
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    12.0, 10.0, 0.0, 0.0),
+                                            child: Icon(
+                                              FFIcons.kloupe2,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              size: 22.0,
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    42.0, 0.0, 12.0, 0.0),
+                                            child: Container(
+                                              width: double.infinity,
+                                              height: 42.0,
+                                              decoration: BoxDecoration(
+                                                color: Color(0xFFF5F5FA),
+                                                borderRadius: BorderRadius.only(
+                                                  bottomLeft:
+                                                      Radius.circular(16.0),
+                                                  bottomRight:
+                                                      Radius.circular(16.0),
+                                                  topLeft:
+                                                      Radius.circular(15.0),
+                                                  topRight:
+                                                      Radius.circular(16.0),
+                                                ),
+                                              ),
+                                              child: Align(
+                                                alignment: AlignmentDirectional(
+                                                    -1.0, 0.0),
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          12.0, 0.0, 0.0, 0.0),
+                                                  child: Text(
+                                                    'Поиск',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
                                                               FlutterFlowTheme.of(
                                                                       context)
-                                                                  .bodyLargeFamily),
-                                                    ),
-                                            elevation: 0.0,
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
+                                                                  .bodyMediumFamily,
+                                                          color:
+                                                              Color(0xFFAFB0B4),
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily),
+                                                        ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
                                           ),
-                                        ),
+                                        ],
                                       ),
-                                    ],
-                                  ),
+                                    ),
+                                  ],
                                 ),
                                 Material(
                                   color: Colors.transparent,
@@ -516,7 +416,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                         .secondaryBackground,
                                     dense: false,
                                     contentPadding:
-                                        const EdgeInsetsDirectional.fromSTEB(
+                                        EdgeInsetsDirectional.fromSTEB(
                                             12.0, 0.0, 12.0, 0.0),
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(8.0),
@@ -548,7 +448,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                     return Container(
                                       width: double.infinity,
                                       height: 220.0,
-                                      decoration: const BoxDecoration(),
+                                      decoration: BoxDecoration(),
                                       child: Stack(
                                         children: [
                                           Builder(
@@ -560,19 +460,19 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                   [];
 
                                               return ListView.separated(
-                                                padding: const EdgeInsets.symmetric(
+                                                padding: EdgeInsets.symmetric(
                                                     horizontal: 3.0),
                                                 primary: false,
                                                 scrollDirection:
                                                     Axis.horizontal,
                                                 itemCount: winesList.length,
                                                 separatorBuilder: (_, __) =>
-                                                    const SizedBox(width: 3.0),
+                                                    SizedBox(width: 3.0),
                                                 itemBuilder:
                                                     (context, winesListIndex) {
                                                   final winesListItem =
                                                       winesList[winesListIndex];
-                                                  return SizedBox(
+                                                  return Container(
                                                     width: 172.0,
                                                     height: 200.0,
                                                     child: Stack(
@@ -649,7 +549,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                             height:
                                                                 double.infinity,
                                                             decoration:
-                                                                const BoxDecoration(
+                                                                BoxDecoration(
                                                               color: Color(
                                                                   0xFFF5F5FA),
                                                               borderRadius:
@@ -671,12 +571,12 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                             ),
                                                             child: Align(
                                                               alignment:
-                                                                  const AlignmentDirectional(
+                                                                  AlignmentDirectional(
                                                                       0.0,
                                                                       -1.0),
                                                               child: Padding(
                                                                 padding:
-                                                                    const EdgeInsetsDirectional
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             4.0,
@@ -687,7 +587,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                                   width: 160.0,
                                                                   height: 156.0,
                                                                   decoration:
-                                                                      const BoxDecoration(
+                                                                      BoxDecoration(
                                                                     gradient:
                                                                         LinearGradient(
                                                                       colors: [
@@ -726,12 +626,12 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                                   ),
                                                                   child: Align(
                                                                     alignment:
-                                                                        const AlignmentDirectional(
+                                                                        AlignmentDirectional(
                                                                             0.0,
                                                                             -1.0),
                                                                     child:
                                                                         Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
                                                                           6.0,
                                                                           13.0,
                                                                           6.0,
@@ -740,9 +640,14 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                                           ClipRRect(
                                                                         borderRadius:
                                                                             BorderRadius.circular(8.0),
-                                                                        child: Image
-                                                                            .network(
-                                                                          '${FFAppState().graphQLimageURL}${getJsonField(
+                                                                        child:
+                                                                            CachedNetworkImage(
+                                                                          fadeInDuration:
+                                                                              Duration(milliseconds: 500),
+                                                                          fadeOutDuration:
+                                                                              Duration(milliseconds: 500),
+                                                                          imageUrl:
+                                                                              '${FFAppState().graphQLimageURL}${getJsonField(
                                                                             winesListItem,
                                                                             r'''$.node.vintages.edges[0].node.images[0].image''',
                                                                           ).toString()}',
@@ -763,7 +668,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                         ),
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       12.0,
                                                                       170.0,
@@ -780,7 +685,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                                 .override(
                                                                   fontFamily:
                                                                       'Onest Cyr',
-                                                                  color: const Color(
+                                                                  color: Color(
                                                                       0xFF070707),
                                                                   fontSize:
                                                                       12.0,
@@ -830,7 +735,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                         .secondaryBackground,
                                     dense: false,
                                     contentPadding:
-                                        const EdgeInsetsDirectional.fromSTEB(
+                                        EdgeInsetsDirectional.fromSTEB(
                                             12.0, 0.0, 12.0, 0.0),
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(8.0),
@@ -840,7 +745,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                 Container(
                                   width: double.infinity,
                                   height: 72.0,
-                                  decoration: const BoxDecoration(),
+                                  decoration: BoxDecoration(),
                                   child: Stack(
                                     children: [
                                       Builder(
@@ -853,18 +758,18 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                   [];
 
                                           return ListView.separated(
-                                            padding: const EdgeInsets.symmetric(
+                                            padding: EdgeInsets.symmetric(
                                                 horizontal: 3.0),
                                             primary: false,
                                             scrollDirection: Axis.horizontal,
                                             itemCount: ratingsMain.length,
                                             separatorBuilder: (_, __) =>
-                                                const SizedBox(width: 3.0),
+                                                SizedBox(width: 3.0),
                                             itemBuilder:
                                                 (context, ratingsMainIndex) {
                                               final ratingsMainItem =
                                                   ratingsMain[ratingsMainIndex];
-                                              return SizedBox(
+                                              return Container(
                                                 width: 98.0,
                                                 height: 72.0,
                                                 child: Stack(
@@ -895,7 +800,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                       },
                                                       child: Container(
                                                         decoration:
-                                                            const BoxDecoration(
+                                                            BoxDecoration(
                                                           color:
                                                               Color(0xFFF5F5FA),
                                                           borderRadius:
@@ -916,11 +821,11 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                         ),
                                                         child: Align(
                                                           alignment:
-                                                              const AlignmentDirectional(
+                                                              AlignmentDirectional(
                                                                   0.0, 0.0),
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         13.0,
                                                                         13.0,
@@ -977,7 +882,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                         .secondaryBackground,
                                     dense: false,
                                     contentPadding:
-                                        const EdgeInsetsDirectional.fromSTEB(
+                                        EdgeInsetsDirectional.fromSTEB(
                                             12.0, 0.0, 12.0, 0.0),
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(8.0),
@@ -987,7 +892,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                 Container(
                                   width: double.infinity,
                                   height: 222.0,
-                                  decoration: const BoxDecoration(),
+                                  decoration: BoxDecoration(),
                                   child: Stack(
                                     children: [
                                       Builder(
@@ -1000,19 +905,19 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                   [];
 
                                           return ListView.separated(
-                                            padding: const EdgeInsets.symmetric(
+                                            padding: EdgeInsets.symmetric(
                                                 horizontal: 3.0),
                                             primary: false,
                                             scrollDirection: Axis.horizontal,
                                             itemCount: expertArcticles.length,
                                             separatorBuilder: (_, __) =>
-                                                const SizedBox(width: 3.0),
+                                                SizedBox(width: 3.0),
                                             itemBuilder: (context,
                                                 expertArcticlesIndex) {
                                               final expertArcticlesItem =
                                                   expertArcticles[
                                                       expertArcticlesIndex];
-                                              return SizedBox(
+                                              return Container(
                                                 width: 318.0,
                                                 child: Stack(
                                                   children: [
@@ -1042,7 +947,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                       },
                                                       child: Container(
                                                         decoration:
-                                                            const BoxDecoration(
+                                                            BoxDecoration(
                                                           color:
                                                               Color(0xFFF5F5FA),
                                                           borderRadius:
@@ -1063,11 +968,11 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                         ),
                                                         child: Align(
                                                           alignment:
-                                                              const AlignmentDirectional(
+                                                              AlignmentDirectional(
                                                                   0.0, -1.0),
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         4.0,
@@ -1077,7 +982,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                               width: 306.0,
                                                               height: 156.0,
                                                               decoration:
-                                                                  const BoxDecoration(
+                                                                  BoxDecoration(
                                                                 gradient:
                                                                     LinearGradient(
                                                                   colors: [
@@ -1138,7 +1043,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   16.0,
                                                                   182.0,
@@ -1156,7 +1061,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                             .override(
                                                               fontFamily:
                                                                   'Onest Cyr',
-                                                              color: const Color(
+                                                              color: Color(
                                                                   0xFF070707),
                                                               fontSize: 12.0,
                                                               letterSpacing:
@@ -1203,7 +1108,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                         .secondaryBackground,
                                     dense: false,
                                     contentPadding:
-                                        const EdgeInsetsDirectional.fromSTEB(
+                                        EdgeInsetsDirectional.fromSTEB(
                                             12.0, 0.0, 12.0, 0.0),
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(8.0),
@@ -1235,7 +1140,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                     return Container(
                                       width: double.infinity,
                                       height: 220.0,
-                                      decoration: const BoxDecoration(),
+                                      decoration: BoxDecoration(),
                                       child: Stack(
                                         children: [
                                           Builder(
@@ -1248,7 +1153,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                       [];
 
                                               return ListView.separated(
-                                                padding: const EdgeInsets.symmetric(
+                                                padding: EdgeInsets.symmetric(
                                                     horizontal: 3.0),
                                                 primary: false,
                                                 scrollDirection:
@@ -1256,13 +1161,13 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                 itemCount:
                                                     whighRatingWines.length,
                                                 separatorBuilder: (_, __) =>
-                                                    const SizedBox(width: 3.0),
+                                                    SizedBox(width: 3.0),
                                                 itemBuilder: (context,
                                                     whighRatingWinesIndex) {
                                                   final whighRatingWinesItem =
                                                       whighRatingWines[
                                                           whighRatingWinesIndex];
-                                                  return SizedBox(
+                                                  return Container(
                                                     width: 172.0,
                                                     height: 200.0,
                                                     child: Stack(
@@ -1339,7 +1244,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                             height:
                                                                 double.infinity,
                                                             decoration:
-                                                                const BoxDecoration(
+                                                                BoxDecoration(
                                                               color: Color(
                                                                   0xFFF5F5FA),
                                                               borderRadius:
@@ -1361,12 +1266,12 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                             ),
                                                             child: Align(
                                                               alignment:
-                                                                  const AlignmentDirectional(
+                                                                  AlignmentDirectional(
                                                                       0.0,
                                                                       -1.0),
                                                               child: Padding(
                                                                 padding:
-                                                                    const EdgeInsetsDirectional
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             4.0,
@@ -1377,7 +1282,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                                   width: 160.0,
                                                                   height: 156.0,
                                                                   decoration:
-                                                                      const BoxDecoration(
+                                                                      BoxDecoration(
                                                                     gradient:
                                                                         LinearGradient(
                                                                       colors: [
@@ -1416,12 +1321,12 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                                   ),
                                                                   child: Align(
                                                                     alignment:
-                                                                        const AlignmentDirectional(
+                                                                        AlignmentDirectional(
                                                                             0.0,
                                                                             -1.0),
                                                                     child:
                                                                         Padding(
-                                                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
                                                                           6.0,
                                                                           13.0,
                                                                           6.0,
@@ -1453,11 +1358,11 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                         ),
                                                         Align(
                                                           alignment:
-                                                              const AlignmentDirectional(
+                                                              AlignmentDirectional(
                                                                   -1.0, 1.0),
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         8.0,
                                                                         0.0,
@@ -1474,7 +1379,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                                   .override(
                                                                     fontFamily:
                                                                         'Onest Cyr',
-                                                                    color: const Color(
+                                                                    color: Color(
                                                                         0xFF070707),
                                                                     fontSize:
                                                                         12.0,
@@ -1525,7 +1430,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                         .secondaryBackground,
                                     dense: false,
                                     contentPadding:
-                                        const EdgeInsetsDirectional.fromSTEB(
+                                        EdgeInsetsDirectional.fromSTEB(
                                             12.0, 0.0, 12.0, 0.0),
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(8.0),
@@ -1535,7 +1440,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                 Container(
                                   width: double.infinity,
                                   height: 131.0,
-                                  decoration: const BoxDecoration(),
+                                  decoration: BoxDecoration(),
                                   child: Stack(
                                     children: [
                                       Builder(
@@ -1548,29 +1453,29 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                   [];
 
                                           return ListView.separated(
-                                            padding: const EdgeInsets.symmetric(
+                                            padding: EdgeInsets.symmetric(
                                                 horizontal: 3.0),
                                             primary: false,
                                             scrollDirection: Axis.horizontal,
                                             itemCount: russiaWinemaking.length,
                                             separatorBuilder: (_, __) =>
-                                                const SizedBox(width: 3.0),
+                                                SizedBox(width: 3.0),
                                             itemBuilder: (context,
                                                 russiaWinemakingIndex) {
                                               final russiaWinemakingItem =
                                                   russiaWinemaking[
                                                       russiaWinemakingIndex];
-                                              return SizedBox(
+                                              return Container(
                                                 width: 242.0,
                                                 child: Stack(
                                                   children: [
                                                     Align(
                                                       alignment:
-                                                          const AlignmentDirectional(
+                                                          AlignmentDirectional(
                                                               0.0, -1.0),
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     4.0,
@@ -1605,7 +1510,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                             width: 242.0,
                                                             height: 131.0,
                                                             decoration:
-                                                                const BoxDecoration(
+                                                                BoxDecoration(
                                                               gradient:
                                                                   LinearGradient(
                                                                 colors: [
@@ -1664,7 +1569,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   16.0,
                                                                   22.0,
@@ -1710,13 +1615,13 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                     ],
                                   ),
                                 ),
-                              ].divide(const SizedBox(height: 10.0)),
+                              ].divide(SizedBox(height: 10.0)),
                             ),
                           ),
                         ),
                         KeepAliveWidgetWrapper(
                           builder: (context) => Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 8.0, 0.0, 8.0, 0.0),
                             child: SingleChildScrollView(
                               primary: false,
@@ -1735,7 +1640,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                       children: [
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 0.0, 8.0, 0.0),
                                           child: Icon(
                                             FFIcons.kloupe2,
@@ -1745,13 +1650,13 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                           ),
                                         ),
                                         Expanded(
-                                          child: SizedBox(
+                                          child: Container(
                                             width: double.infinity,
                                             child: TextFormField(
                                               controller:
-                                                  _model.textController2,
+                                                  _model.textController1,
                                               focusNode:
-                                                  _model.textFieldFocusNode2,
+                                                  _model.textFieldFocusNode,
                                               autofocus: false,
                                               obscureText: false,
                                               decoration: InputDecoration(
@@ -1782,7 +1687,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                                       context)
                                                                   .labelMediumFamily,
                                                           color:
-                                                              const Color(0xFFAFB0B4),
+                                                              Color(0xFFAFB0B4),
                                                           letterSpacing: 0.0,
                                                           useGoogleFonts: GoogleFonts
                                                                   .asMap()
@@ -1793,7 +1698,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                         ),
                                                 enabledBorder:
                                                     OutlineInputBorder(
-                                                  borderSide: const BorderSide(
+                                                  borderSide: BorderSide(
                                                     color: Color(0x00000000),
                                                     width: 1.0,
                                                   ),
@@ -1803,7 +1708,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                 ),
                                                 focusedBorder:
                                                     OutlineInputBorder(
-                                                  borderSide: const BorderSide(
+                                                  borderSide: BorderSide(
                                                     color: Color(0x00000000),
                                                     width: 1.0,
                                                   ),
@@ -1835,7 +1740,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                           16.0),
                                                 ),
                                                 filled: true,
-                                                fillColor: const Color(0xFFF5F5FA),
+                                                fillColor: Color(0xFFF5F5FA),
                                                 hoverColor:
                                                     FlutterFlowTheme.of(context)
                                                         .alternate,
@@ -1863,14 +1768,14 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .primaryText,
                                               validator: _model
-                                                  .textController2Validator
+                                                  .textController1Validator
                                                   .asValidator(context),
                                             ),
                                           ),
                                         ),
                                         Align(
                                           alignment:
-                                              const AlignmentDirectional(1.0, 0.0),
+                                              AlignmentDirectional(1.0, 0.0),
                                           child: FFButtonWidget(
                                             onPressed: () {
                                               print('Button pressed ...');
@@ -1878,10 +1783,10 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                             text: 'Отмена',
                                             options: FFButtonOptions(
                                               height: 40.0,
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       16.0, 0.0, 16.0, 0.0),
-                                              iconPadding: const EdgeInsetsDirectional
+                                              iconPadding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
                                               color:
                                                   FlutterFlowTheme.of(context)
@@ -1915,7 +1820,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         12.0, 0.0, 12.0, 0.0),
                                     child: Container(
                                       width: double.infinity,
@@ -1934,7 +1839,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                             scrollDirection: Axis.horizontal,
                                             itemCount: articles.length,
                                             separatorBuilder: (_, __) =>
-                                                const SizedBox(width: 8.0),
+                                                SizedBox(width: 8.0),
                                             itemBuilder:
                                                 (context, articlesIndex) {
                                               final articlesItem =
@@ -1958,12 +1863,12 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                     color: articlesItem ==
                                                             FFAppState()
                                                                 .activeArticleItem
-                                                        ? const Color(0xFF143161)
+                                                        ? Color(0xFF143161)
                                                         : FlutterFlowTheme.of(
                                                                 context)
                                                             .alternate,
                                                     borderRadius:
-                                                        const BorderRadius.only(
+                                                        BorderRadius.only(
                                                       bottomLeft:
                                                           Radius.circular(14.0),
                                                       bottomRight:
@@ -1976,7 +1881,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                   ),
                                                   child: Align(
                                                     alignment:
-                                                        const AlignmentDirectional(
+                                                        AlignmentDirectional(
                                                             0.0, 0.0),
                                                     child: Text(
                                                       articlesItem,
@@ -2044,7 +1949,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                     .secondaryBackground,
                                             dense: false,
                                             contentPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     12.0, 0.0, 12.0, 0.0),
                                             shape: RoundedRectangleBorder(
                                               borderRadius:
@@ -2055,11 +1960,11 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                         Container(
                                           width: double.infinity,
                                           height: 220.0,
-                                          decoration: const BoxDecoration(),
+                                          decoration: BoxDecoration(),
                                           child: Stack(
                                             children: [
                                               Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     0.0, 0.0),
                                                 child: Builder(
                                                   builder: (context) {
@@ -2070,7 +1975,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
 
                                                     return ListView.separated(
                                                       padding:
-                                                          const EdgeInsets.symmetric(
+                                                          EdgeInsets.symmetric(
                                                               horizontal: 3.0),
                                                       primary: false,
                                                       scrollDirection:
@@ -2079,7 +1984,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                           popularWines.length,
                                                       separatorBuilder: (_,
                                                               __) =>
-                                                          const SizedBox(width: 3.0),
+                                                          SizedBox(width: 3.0),
                                                       itemBuilder: (context,
                                                           popularWinesIndex) {
                                                         final popularWinesItem =
@@ -2118,7 +2023,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                             final stackGetWineDetailsVariableResponse =
                                                                 snapshot.data!;
 
-                                                            return SizedBox(
+                                                            return Container(
                                                               width: 172.0,
                                                               height: 200.0,
                                                               child: Stack(
@@ -2195,7 +2100,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                                       height: double
                                                                           .infinity,
                                                                       decoration:
-                                                                          const BoxDecoration(
+                                                                          BoxDecoration(
                                                                         color: Color(
                                                                             0xFFF5F5FA),
                                                                         borderRadius:
@@ -2212,12 +2117,12 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                                       ),
                                                                       child:
                                                                           Align(
-                                                                        alignment: const AlignmentDirectional(
+                                                                        alignment: AlignmentDirectional(
                                                                             0.0,
                                                                             -1.0),
                                                                         child:
                                                                             Padding(
-                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
                                                                               0.0,
                                                                               4.0,
                                                                               0.0,
@@ -2229,7 +2134,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                                             height:
                                                                                 156.0,
                                                                             decoration:
-                                                                                const BoxDecoration(
+                                                                                BoxDecoration(
                                                                               gradient: LinearGradient(
                                                                                 colors: [
                                                                                   Color(0xFFFCFCFE),
@@ -2251,9 +2156,9 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                                             ),
                                                                             child:
                                                                                 Align(
-                                                                              alignment: const AlignmentDirectional(0.0, -1.0),
+                                                                              alignment: AlignmentDirectional(0.0, -1.0),
                                                                               child: Padding(
-                                                                                padding: const EdgeInsetsDirectional.fromSTEB(6.0, 13.0, 6.0, 13.0),
+                                                                                padding: EdgeInsetsDirectional.fromSTEB(6.0, 13.0, 6.0, 13.0),
                                                                                 child: ClipRRect(
                                                                                   borderRadius: BorderRadius.circular(8.0),
                                                                                   child: Image.network(
@@ -2274,7 +2179,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                                     ),
                                                                   ),
                                                                   Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             12.0,
                                                                             170.0,
@@ -2293,7 +2198,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                                             fontFamily:
                                                                                 'Onest Cyr',
                                                                             color:
-                                                                                const Color(0xFF070707),
+                                                                                Color(0xFF070707),
                                                                             fontSize:
                                                                                 12.0,
                                                                             letterSpacing:
@@ -2342,7 +2247,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                     .secondaryBackground,
                                             dense: false,
                                             contentPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     12.0, 0.0, 12.0, 0.0),
                                             shape: RoundedRectangleBorder(
                                               borderRadius:
@@ -2353,7 +2258,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                         Container(
                                           width: double.infinity,
                                           height: 160.0,
-                                          decoration: const BoxDecoration(),
+                                          decoration: BoxDecoration(),
                                           child: Stack(
                                             children: [
                                               Builder(
@@ -2365,7 +2270,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
 
                                                   return ListView.separated(
                                                     padding:
-                                                        const EdgeInsets.symmetric(
+                                                        EdgeInsets.symmetric(
                                                             horizontal: 3.0),
                                                     primary: false,
                                                     scrollDirection:
@@ -2373,7 +2278,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                     itemCount:
                                                         selectionArtItem.length,
                                                     separatorBuilder: (_, __) =>
-                                                        const SizedBox(width: 3.0),
+                                                        SizedBox(width: 3.0),
                                                     itemBuilder: (context,
                                                         selectionArtItemIndex) {
                                                       final selectionArtItemItem =
@@ -2415,7 +2320,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                             children: [
                                                               Padding(
                                                                 padding:
-                                                                    const EdgeInsetsDirectional
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             4.0,
@@ -2469,7 +2374,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                                         ).image,
                                                                       ),
                                                                       gradient:
-                                                                          const LinearGradient(
+                                                                          LinearGradient(
                                                                         colors: [
                                                                           Color(
                                                                               0xFFFCFCFE),
@@ -2488,7 +2393,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                                             1.0),
                                                                       ),
                                                                       borderRadius:
-                                                                          const BorderRadius
+                                                                          BorderRadius
                                                                               .only(
                                                                         bottomLeft:
                                                                             Radius.circular(28.0),
@@ -2520,7 +2425,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                                 ),
                                                               ),
                                                               Padding(
-                                                                padding: const EdgeInsetsDirectional
+                                                                padding: EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         16.0,
                                                                         22.0,
@@ -2594,7 +2499,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                     .secondaryBackground,
                                             dense: false,
                                             contentPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     12.0, 0.0, 12.0, 0.0),
                                             shape: RoundedRectangleBorder(
                                               borderRadius:
@@ -2605,7 +2510,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                         Container(
                                           width: double.infinity,
                                           height: 220.0,
-                                          decoration: const BoxDecoration(),
+                                          decoration: BoxDecoration(),
                                           child: Stack(
                                             children: [
                                               Builder(
@@ -2617,7 +2522,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
 
                                                   return ListView.separated(
                                                     padding:
-                                                        const EdgeInsets.symmetric(
+                                                        EdgeInsets.symmetric(
                                                             horizontal: 3.0),
                                                     primary: false,
                                                     scrollDirection:
@@ -2625,7 +2530,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                     itemCount:
                                                         highRateWines.length,
                                                     separatorBuilder: (_, __) =>
-                                                        const SizedBox(width: 3.0),
+                                                        SizedBox(width: 3.0),
                                                     itemBuilder: (context,
                                                         highRateWinesIndex) {
                                                       final highRateWinesItem =
@@ -2664,7 +2569,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                           final stackGetWineDetailsVariableResponse =
                                                               snapshot.data!;
 
-                                                          return SizedBox(
+                                                          return Container(
                                                             width: 172.0,
                                                             height: 200.0,
                                                             child: Stack(
@@ -2740,7 +2645,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                                     height: double
                                                                         .infinity,
                                                                     decoration:
-                                                                        const BoxDecoration(
+                                                                        BoxDecoration(
                                                                       color: Color(
                                                                           0xFFF5F5FA),
                                                                       borderRadius:
@@ -2759,12 +2664,12 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                                     child:
                                                                         Align(
                                                                       alignment:
-                                                                          const AlignmentDirectional(
+                                                                          AlignmentDirectional(
                                                                               0.0,
                                                                               -1.0),
                                                                       child:
                                                                           Padding(
-                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
                                                                             0.0,
                                                                             4.0,
                                                                             0.0,
@@ -2776,7 +2681,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                                           height:
                                                                               156.0,
                                                                           decoration:
-                                                                              const BoxDecoration(
+                                                                              BoxDecoration(
                                                                             gradient:
                                                                                 LinearGradient(
                                                                               colors: [
@@ -2801,10 +2706,10 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                                           child:
                                                                               Align(
                                                                             alignment:
-                                                                                const AlignmentDirectional(0.0, -1.0),
+                                                                                AlignmentDirectional(0.0, -1.0),
                                                                             child:
                                                                                 Padding(
-                                                                              padding: const EdgeInsetsDirectional.fromSTEB(6.0, 13.0, 6.0, 13.0),
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(6.0, 13.0, 6.0, 13.0),
                                                                               child: ClipRRect(
                                                                                 borderRadius: BorderRadius.circular(8.0),
                                                                                 child: Image.network(
@@ -2825,7 +2730,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding: const EdgeInsetsDirectional
+                                                                  padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           12.0,
                                                                           170.0,
@@ -2844,7 +2749,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                                           fontFamily:
                                                                               'Onest Cyr',
                                                                           color:
-                                                                              const Color(0xFF070707),
+                                                                              Color(0xFF070707),
                                                                           fontSize:
                                                                               12.0,
                                                                           letterSpacing:
@@ -2892,7 +2797,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                     .secondaryBackground,
                                             dense: false,
                                             contentPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     12.0, 0.0, 12.0, 0.0),
                                             shape: RoundedRectangleBorder(
                                               borderRadius:
@@ -2907,7 +2812,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                     .toList();
 
                                             return ListView.separated(
-                                              padding: const EdgeInsets.symmetric(
+                                              padding: EdgeInsets.symmetric(
                                                   vertical: 3.0),
                                               primary: false,
                                               shrinkWrap: true,
@@ -2915,7 +2820,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                               itemCount:
                                                   articlesNewbiesItems.length,
                                               separatorBuilder: (_, __) =>
-                                                  const SizedBox(height: 3.0),
+                                                  SizedBox(height: 3.0),
                                               itemBuilder: (context,
                                                   articlesNewbiesItemsIndex) {
                                                 final articlesNewbiesItemsItem =
@@ -2974,7 +2879,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                       child: Container(
                                                         width: double.infinity,
                                                         decoration:
-                                                            const BoxDecoration(
+                                                            BoxDecoration(
                                                           color:
                                                               Color(0xFFF5F5FA),
                                                           borderRadius:
@@ -3006,7 +2911,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                                 width: 140.0,
                                                                 height: 140.0,
                                                                 decoration:
-                                                                    const BoxDecoration(
+                                                                    BoxDecoration(
                                                                   gradient:
                                                                       LinearGradient(
                                                                     colors: [
@@ -3045,12 +2950,12 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                                 ),
                                                                 child: Align(
                                                                   alignment:
-                                                                      const AlignmentDirectional(
+                                                                      AlignmentDirectional(
                                                                           0.0,
                                                                           -1.0),
                                                                   child:
                                                                       Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             6.0,
                                                                             13.0,
@@ -3081,7 +2986,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                               ),
                                                               Padding(
                                                                 padding:
-                                                                    const EdgeInsetsDirectional
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             8.0,
                                                                             0.0,
@@ -3092,7 +2997,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                                   width: 210.0,
                                                                   height: 100.0,
                                                                   decoration:
-                                                                      const BoxDecoration(),
+                                                                      BoxDecoration(),
                                                                   child: Text(
                                                                     getJsonField(
                                                                       articlesFavItemArticlesResponse
@@ -3147,13 +3052,13 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primaryText,
-                                                offset: const Offset(
+                                                offset: Offset(
                                                   0.0,
                                                   2.0,
                                                 ),
                                               )
                                             ],
-                                            borderRadius: const BorderRadius.only(
+                                            borderRadius: BorderRadius.only(
                                               bottomLeft: Radius.circular(32.0),
                                               bottomRight:
                                                   Radius.circular(32.0),
@@ -3163,7 +3068,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                           ),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 2.0, 0.0, 0.0),
                                             child: Builder(
                                               builder: (context) {
@@ -3171,7 +3076,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                     FFAppConstants.news
                                                         .toList();
 
-                                                return SizedBox(
+                                                return Container(
                                                   width: double.infinity,
                                                   height: double.infinity,
                                                   child: Stack(
@@ -3203,7 +3108,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                               Flexible(
                                                                 child: Align(
                                                                   alignment:
-                                                                      const AlignmentDirectional(
+                                                                      AlignmentDirectional(
                                                                           0.0,
                                                                           -1.0),
                                                                   child: FutureBuilder<
@@ -3244,7 +3149,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                                         children: [
                                                                           Align(
                                                                             alignment:
-                                                                                const AlignmentDirectional(0.0, 0.0),
+                                                                                AlignmentDirectional(0.0, 0.0),
                                                                             child:
                                                                                 InkWell(
                                                                               splashColor: Colors.transparent,
@@ -3278,10 +3183,10 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                                           ),
                                                                           Align(
                                                                             alignment:
-                                                                                const AlignmentDirectional(0.0, 1.0),
+                                                                                AlignmentDirectional(0.0, 1.0),
                                                                             child:
                                                                                 Padding(
-                                                                              padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 24.0),
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 24.0),
                                                                               child: Text(
                                                                                 getJsonField(
                                                                                   stackArticlesResponse.jsonBody,
@@ -3309,11 +3214,11 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                       ),
                                                       Align(
                                                         alignment:
-                                                            const AlignmentDirectional(
+                                                            AlignmentDirectional(
                                                                 0.0, 1.0),
                                                         child: Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       0.0,
@@ -3340,7 +3245,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                                   .pageViewController2!
                                                                   .animateToPage(
                                                                 i,
-                                                                duration: const Duration(
+                                                                duration: Duration(
                                                                     milliseconds:
                                                                         500),
                                                                 curve:
@@ -3403,7 +3308,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                     .secondaryBackground,
                                             dense: false,
                                             contentPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     12.0, 0.0, 12.0, 0.0),
                                             shape: RoundedRectangleBorder(
                                               borderRadius:
@@ -3418,7 +3323,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                     .toList();
 
                                             return ListView.separated(
-                                              padding: const EdgeInsets.symmetric(
+                                              padding: EdgeInsets.symmetric(
                                                   vertical: 3.0),
                                               primary: false,
                                               shrinkWrap: true,
@@ -3426,7 +3331,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                               itemCount:
                                                   newArticlesItems.length,
                                               separatorBuilder: (_, __) =>
-                                                  const SizedBox(height: 3.0),
+                                                  SizedBox(height: 3.0),
                                               itemBuilder: (context,
                                                   newArticlesItemsIndex) {
                                                 final newArticlesItemsItem =
@@ -3484,7 +3389,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                       child: Container(
                                                         width: double.infinity,
                                                         decoration:
-                                                            const BoxDecoration(
+                                                            BoxDecoration(
                                                           color:
                                                               Color(0xFFF5F5FA),
                                                           borderRadius:
@@ -3516,7 +3421,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                                 width: 140.0,
                                                                 height: 140.0,
                                                                 decoration:
-                                                                    const BoxDecoration(
+                                                                    BoxDecoration(
                                                                   gradient:
                                                                       LinearGradient(
                                                                     colors: [
@@ -3555,12 +3460,12 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                                 ),
                                                                 child: Align(
                                                                   alignment:
-                                                                      const AlignmentDirectional(
+                                                                      AlignmentDirectional(
                                                                           0.0,
                                                                           -1.0),
                                                                   child:
                                                                       Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             6.0,
                                                                             13.0,
@@ -3591,7 +3496,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                               ),
                                                               Padding(
                                                                 padding:
-                                                                    const EdgeInsetsDirectional
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             8.0,
                                                                             0.0,
@@ -3602,7 +3507,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                                   width: 210.0,
                                                                   height: 100.0,
                                                                   decoration:
-                                                                      const BoxDecoration(),
+                                                                      BoxDecoration(),
                                                                   child: Text(
                                                                     getJsonField(
                                                                       newArtItemArticlesResponse
@@ -3645,8 +3550,8 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                       ],
                                     ),
                                 ]
-                                    .divide(const SizedBox(height: 12.0))
-                                    .addToStart(const SizedBox(height: 12.0)),
+                                    .divide(SizedBox(height: 12.0))
+                                    .addToStart(SizedBox(height: 12.0)),
                               ),
                             ),
                           ),
@@ -3680,7 +3585,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                         .secondaryBackground,
                                     dense: false,
                                     contentPadding:
-                                        const EdgeInsetsDirectional.fromSTEB(
+                                        EdgeInsetsDirectional.fromSTEB(
                                             12.0, 0.0, 12.0, 0.0),
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(8.0),
@@ -3688,7 +3593,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       12.0, 0.0, 12.0, 0.0),
                                   child: Container(
                                     width: double.infinity,
@@ -3707,7 +3612,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                           scrollDirection: Axis.horizontal,
                                           itemCount: favorites.length,
                                           separatorBuilder: (_, __) =>
-                                              const SizedBox(width: 8.0),
+                                              SizedBox(width: 8.0),
                                           itemBuilder:
                                               (context, favoritesIndex) {
                                             final favoritesItem =
@@ -3731,12 +3636,12 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                   color: favoritesItem ==
                                                           FFAppState()
                                                               .activeFavoriteItem
-                                                      ? const Color(0xFF143161)
+                                                      ? Color(0xFF143161)
                                                       : FlutterFlowTheme.of(
                                                               context)
                                                           .alternate,
                                                   borderRadius:
-                                                      const BorderRadius.only(
+                                                      BorderRadius.only(
                                                     bottomLeft:
                                                         Radius.circular(14.0),
                                                     bottomRight:
@@ -3749,7 +3654,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                 ),
                                                 child: Align(
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           0.0, 0.0),
                                                   child: Text(
                                                     favoritesItem,
@@ -3791,7 +3696,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                 ),
                                 if (FFAppState().activeFavoriteItem == 'Вина')
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         12.0, 0.0, 12.0, 0.0),
                                     child: Builder(
                                       builder: (context) {
@@ -3799,14 +3704,14 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                             FFAppConstants.FavWines.toList();
 
                                         return ListView.separated(
-                                          padding: const EdgeInsets.symmetric(
+                                          padding: EdgeInsets.symmetric(
                                               vertical: 6.0),
                                           primary: false,
                                           shrinkWrap: true,
                                           scrollDirection: Axis.vertical,
                                           itemCount: favWines.length,
                                           separatorBuilder: (_, __) =>
-                                              const SizedBox(height: 6.0),
+                                              SizedBox(height: 6.0),
                                           itemBuilder:
                                               (context, favWinesIndex) {
                                             final favWinesItem =
@@ -3902,7 +3807,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                   },
                                                   child: Container(
                                                     width: double.infinity,
-                                                    decoration: const BoxDecoration(
+                                                    decoration: BoxDecoration(
                                                       color: Color(0xFFF5F5FA),
                                                       borderRadius:
                                                           BorderRadius.only(
@@ -3932,7 +3837,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                             width: 100.0,
                                                             height: 156.0,
                                                             decoration:
-                                                                const BoxDecoration(
+                                                                BoxDecoration(
                                                               gradient:
                                                                   LinearGradient(
                                                                 colors: [
@@ -3972,11 +3877,11 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                             ),
                                                             child: Align(
                                                               alignment:
-                                                                  const AlignmentDirectional(
+                                                                  AlignmentDirectional(
                                                                       0.0,
                                                                       -1.0),
                                                               child: Padding(
-                                                                padding: const EdgeInsetsDirectional
+                                                                padding: EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         6.0,
                                                                         13.0,
@@ -4007,7 +3912,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         8.0,
                                                                         0.0,
@@ -4017,7 +3922,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                               width: 250.0,
                                                               height: 66.0,
                                                               decoration:
-                                                                  const BoxDecoration(),
+                                                                  BoxDecoration(),
                                                               child: Text(
                                                                 getJsonField(
                                                                   winesFavItemGetWineDetailsVariableResponse
@@ -4063,7 +3968,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                   ),
                                 if (FFAppState().activeFavoriteItem == 'Статьи')
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         12.0, 0.0, 12.0, 0.0),
                                     child: Builder(
                                       builder: (context) {
@@ -4071,14 +3976,14 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                             FFAppConstants.FavArticles.toList();
 
                                         return ListView.separated(
-                                          padding: const EdgeInsets.symmetric(
+                                          padding: EdgeInsets.symmetric(
                                               vertical: 3.0),
                                           primary: false,
                                           shrinkWrap: true,
                                           scrollDirection: Axis.vertical,
                                           itemCount: favArticles.length,
                                           separatorBuilder: (_, __) =>
-                                              const SizedBox(height: 3.0),
+                                              SizedBox(height: 3.0),
                                           itemBuilder:
                                               (context, favArticlesIndex) {
                                             final favArticlesItem =
@@ -4133,7 +4038,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                   },
                                                   child: Container(
                                                     width: double.infinity,
-                                                    decoration: const BoxDecoration(
+                                                    decoration: BoxDecoration(
                                                       color: Color(0xFFF5F5FA),
                                                       borderRadius:
                                                           BorderRadius.only(
@@ -4163,7 +4068,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                             width: 140.0,
                                                             height: 140.0,
                                                             decoration:
-                                                                const BoxDecoration(
+                                                                BoxDecoration(
                                                               gradient:
                                                                   LinearGradient(
                                                                 colors: [
@@ -4203,11 +4108,11 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                             ),
                                                             child: Align(
                                                               alignment:
-                                                                  const AlignmentDirectional(
+                                                                  AlignmentDirectional(
                                                                       0.0,
                                                                       -1.0),
                                                               child: Padding(
-                                                                padding: const EdgeInsetsDirectional
+                                                                padding: EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         6.0,
                                                                         13.0,
@@ -4239,7 +4144,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         8.0,
                                                                         0.0,
@@ -4249,7 +4154,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                               width: 210.0,
                                                               height: 100.0,
                                                               decoration:
-                                                                  const BoxDecoration(),
+                                                                  BoxDecoration(),
                                                               child: Text(
                                                                 getJsonField(
                                                                   articlesFavItemArticlesResponse
@@ -4296,7 +4201,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                 if (FFAppState().activeFavoriteItem ==
                                     'Винодельни')
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         12.0, 0.0, 12.0, 0.0),
                                     child: Container(
                                       width: double.infinity,
@@ -4321,8 +4226,8 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                     ),
                                   ),
                               ]
-                                  .divide(const SizedBox(height: 12.0))
-                                  .addToStart(const SizedBox(height: 12.0)),
+                                  .divide(SizedBox(height: 12.0))
+                                  .addToStart(SizedBox(height: 12.0)),
                             ),
                           ),
                         ),
@@ -4343,14 +4248,14 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                       children: [
                                         Container(
                                           height: 311.0,
-                                          decoration: const BoxDecoration(),
+                                          decoration: BoxDecoration(),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
                                               Flexible(
                                                 child: Align(
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           0.0, 0.0),
                                                   child: Stack(
                                                     children: [
@@ -4369,7 +4274,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                       ),
                                                       Align(
                                                         alignment:
-                                                            const AlignmentDirectional(
+                                                            AlignmentDirectional(
                                                                 0.0, 0.0),
                                                         child: ClipRRect(
                                                           borderRadius:
@@ -4387,7 +4292,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                       ),
                                                       Align(
                                                         alignment:
-                                                            const AlignmentDirectional(
+                                                            AlignmentDirectional(
                                                                 0.0, 1.0),
                                                         child: Container(
                                                           width:
@@ -4399,7 +4304,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                                     .of(context)
                                                                 .secondaryBackground,
                                                             borderRadius:
-                                                                const BorderRadius
+                                                                BorderRadius
                                                                     .only(
                                                               bottomLeft: Radius
                                                                   .circular(
@@ -4435,7 +4340,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                           fontFamily:
                                                               'Onest Cyr',
                                                           color:
-                                                              const Color(0xFF1F1F1F),
+                                                              Color(0xFF1F1F1F),
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.bold,
@@ -4448,7 +4353,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                   ),
                                                   dense: false,
                                                   contentPadding:
-                                                      const EdgeInsetsDirectional
+                                                      EdgeInsetsDirectional
                                                           .fromSTEB(14.0, 0.0,
                                                               12.0, 0.0),
                                                   shape: RoundedRectangleBorder(
@@ -4463,7 +4368,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 0.0, 12.0, 0.0),
                                           child: Container(
                                             width: double.infinity,
@@ -4473,7 +4378,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                   FlutterFlowTheme.of(context)
                                                       .secondaryBackground,
                                             ),
-                                            child: SizedBox(
+                                            child: Container(
                                               width: double.infinity,
                                               child: TextFormField(
                                                 controller:
@@ -4483,7 +4388,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                 onChanged: (_) =>
                                                     EasyDebounce.debounce(
                                                   '_model.emailTextController',
-                                                  const Duration(milliseconds: 2000),
+                                                  Duration(milliseconds: 2000),
                                                   () => safeSetState(() {}),
                                                 ),
                                                 autofocus: false,
@@ -4512,7 +4417,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                       .override(
                                                         fontFamily: 'Onest Cyr',
                                                         color:
-                                                            const Color(0xFFAFB0B4),
+                                                            Color(0xFFAFB0B4),
                                                         letterSpacing: 0.0,
                                                         useGoogleFonts:
                                                             GoogleFonts.asMap()
@@ -4527,7 +4432,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                   focusedErrorBorder:
                                                       InputBorder.none,
                                                   contentPadding:
-                                                      const EdgeInsetsDirectional
+                                                      EdgeInsetsDirectional
                                                           .fromSTEB(12.0, 8.0,
                                                               0.0, 0.0),
                                                   hoverColor:
@@ -4572,7 +4477,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 0.0, 12.0, 0.0),
                                           child: Container(
                                             width: double.infinity,
@@ -4595,7 +4500,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                 ),
                                                 Align(
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           0.0, 0.0),
                                                   child: RichText(
                                                     textScaler:
@@ -4631,7 +4536,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                                 fontFamily: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMediumFamily,
-                                                                color: const Color(
+                                                                color: Color(
                                                                     0xFF143161),
                                                                 letterSpacing:
                                                                     0.0,
@@ -4682,7 +4587,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                     ),
                                                   ),
                                                 ),
-                                              ].divide(const SizedBox(width: 4.0)),
+                                              ].divide(SizedBox(width: 4.0)),
                                             ),
                                           ),
                                         ),
@@ -4690,7 +4595,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         12.0, 0.0, 12.0, 0.0),
                                     child: Container(
                                       width: double.infinity,
@@ -4724,7 +4629,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                           ),
                                           Align(
                                             alignment:
-                                                const AlignmentDirectional(0.0, 0.0),
+                                                AlignmentDirectional(0.0, 0.0),
                                             child: InkWell(
                                               splashColor: Colors.transparent,
                                               focusColor: Colors.transparent,
@@ -4785,7 +4690,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                               ),
                                             ),
                                           ),
-                                        ].divide(const SizedBox(width: 4.0)),
+                                        ].divide(SizedBox(width: 4.0)),
                                       ),
                                     ),
                                   ),
@@ -4795,17 +4700,17 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                           0
                                       : _isKeyboardVisible))
                                     Align(
-                                      alignment: const AlignmentDirectional(0.0, 1.0),
+                                      alignment: AlignmentDirectional(0.0, 1.0),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 12.0),
                                         child: Container(
                                           width: double.infinity,
                                           height: 24.0,
-                                          decoration: const BoxDecoration(),
+                                          decoration: BoxDecoration(),
                                           child: Align(
                                             alignment:
-                                                const AlignmentDirectional(0.0, 0.0),
+                                                AlignmentDirectional(0.0, 0.0),
                                             child: Text(
                                               'Только для лиц старше 18 лет',
                                               style:
@@ -4814,7 +4719,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                       .override(
                                                         fontFamily: 'Onest Cyr',
                                                         color:
-                                                            const Color(0x1F1F1F1F),
+                                                            Color(0x1F1F1F1F),
                                                         letterSpacing: 0.0,
                                                         useGoogleFonts:
                                                             GoogleFonts.asMap()
@@ -4835,7 +4740,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                     ),
                   ),
                   Align(
-                    alignment: const Alignment(0.0, 0),
+                    alignment: Alignment(0.0, 0),
                     child: FlutterFlowButtonTabBar(
                       useToggleButtonStyle: true,
                       labelStyle: FlutterFlowTheme.of(context)
@@ -4847,18 +4752,18 @@ class _MainPageWidgetState extends State<MainPageWidget>
                             useGoogleFonts: GoogleFonts.asMap().containsKey(
                                 FlutterFlowTheme.of(context).titleMediumFamily),
                           ),
-                      unselectedLabelStyle: const TextStyle(),
-                      backgroundColor: const Color(0xFFF5F5FA),
+                      unselectedLabelStyle: TextStyle(),
+                      backgroundColor: Color(0xFFF5F5FA),
                       borderWidth: 0.0,
                       borderRadius: 32.0,
                       elevation: 1.0,
                       buttonMargin:
-                          const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
-                      padding: const EdgeInsets.all(34.0),
+                          EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
+                      padding: EdgeInsets.all(34.0),
                       tabs: [
                         Opacity(
                           opacity: _model.tabBarCurrentIndex == 0 ? 1.0 : 0.4,
-                          child: const Tab(
+                          child: Tab(
                             icon: Icon(
                               Icons.home_rounded,
                               color: Color(0xFF143161),
@@ -4870,7 +4775,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                         ),
                         Opacity(
                           opacity: _model.tabBarCurrentIndex == 1 ? 1.0 : 0.4,
-                          child: const Tab(
+                          child: Tab(
                             icon: Icon(
                               Icons.apps_rounded,
                               color: Color(0xFF143161),
@@ -4882,7 +4787,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                         ),
                         Opacity(
                           opacity: _model.tabBarCurrentIndex == 2 ? 1.0 : 0.4,
-                          child: const Tab(
+                          child: Tab(
                             icon: Icon(
                               Icons.camera_enhance,
                               color: Color(0xFF143161),
@@ -4894,7 +4799,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                         ),
                         Opacity(
                           opacity: _model.tabBarCurrentIndex == 3 ? 1.0 : 0.4,
-                          child: const Tab(
+                          child: Tab(
                             icon: Icon(
                               Icons.star_rounded,
                               color: Color(0xFF143161),
@@ -4906,7 +4811,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                         ),
                         Opacity(
                           opacity: _model.tabBarCurrentIndex == 4 ? 1.0 : 0.4,
-                          child: const Tab(
+                          child: Tab(
                             icon: Icon(
                               Icons.person,
                               color: Color(0xFF143161),
@@ -4934,6 +4839,58 @@ class _MainPageWidgetState extends State<MainPageWidget>
                             FFAppState().ActiveTabIndex =
                                 _model.tabBarCurrentIndex;
                             safeSetState(() {});
+                            final selectedMedia =
+                                await selectMediaWithSourceBottomSheet(
+                              context: context,
+                              allowPhoto: true,
+                              includeDimensions: true,
+                              includeBlurHash: true,
+                              backgroundColor:
+                                  FlutterFlowTheme.of(context).primaryText,
+                              textColor: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              pickerFontFamily: 'Roboto',
+                            );
+                            if (selectedMedia != null &&
+                                selectedMedia.every((m) => validateFileFormat(
+                                    m.storagePath, context))) {
+                              safeSetState(() => _model.isDataUploading = true);
+                              var selectedUploadedFiles = <FFUploadedFile>[];
+
+                              try {
+                                showUploadMessage(
+                                  context,
+                                  'Uploading file...',
+                                  showLoading: true,
+                                );
+                                selectedUploadedFiles = selectedMedia
+                                    .map((m) => FFUploadedFile(
+                                          name: m.storagePath.split('/').last,
+                                          bytes: m.bytes,
+                                          height: m.dimensions?.height,
+                                          width: m.dimensions?.width,
+                                          blurHash: m.blurHash,
+                                        ))
+                                    .toList();
+                              } finally {
+                                ScaffoldMessenger.of(context)
+                                    .hideCurrentSnackBar();
+                                _model.isDataUploading = false;
+                              }
+                              if (selectedUploadedFiles.length ==
+                                  selectedMedia.length) {
+                                safeSetState(() {
+                                  _model.uploadedLocalFile =
+                                      selectedUploadedFiles.first;
+                                });
+                                showUploadMessage(context, 'Success!');
+                              } else {
+                                safeSetState(() {});
+                                showUploadMessage(
+                                    context, 'Failed to upload data');
+                                return;
+                              }
+                            }
                           },
                           () async {
                             FFAppState().ActiveTabIndex =

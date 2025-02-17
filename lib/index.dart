@@ -13,3 +13,4 @@ export '/pages/profile/registration_page/registration_page_widget.dart'
 export '/pages/profile/pass_page/pass_page_widget.dart' show PassPageWidget;
 export '/pages/profile/country_choose/country_choose_widget.dart'
     show CountryChooseWidget;
+export '/dump/dump_widget.dart' show DumpWidget;

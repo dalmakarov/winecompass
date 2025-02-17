@@ -11,7 +11,7 @@ const _kPrivateApiFunctionName = 'ffPrivateApiCall';
 
 class GetAllDataCall {
   static Future<ApiCallResponse> call() async {
-    const ffApiRequestBody = '''
+    final ffApiRequestBody = '''
 {
   "query": "query GetAllData { tags(isMain: true) { edges { node { id name isMain widgetType tabType articles { edges { node { id title slug coverThumbnail { medium } } } } wines { edges { node { id name slug } } } } } } }"
 }''';
@@ -96,16 +96,20 @@ class GetWineDetailsVariableCall {
         r'''$.data.wines.edges[*].node.vintages.edges[*].node''',
         true,
       ) as List?;
-  static List? allData(dynamic response) => getJsonField(
+  static List<String>? allGrapes(dynamic response) => (getJsonField(
         response,
-        r'''$''',
+        r'''$.data.wines.edges[*].node.wineGrapes[*].grape.variety''',
         true,
-      ) as List?;
+      ) as List?)
+          ?.withoutNulls
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
 }
 
 class WinesCall {
   static Future<ApiCallResponse> call() async {
-    const ffApiRequestBody = '''
+    final ffApiRequestBody = '''
 {
   "query": "query GetWeeklyWines { tags(name: \\"Вина недели\\") { edges { node { name wines { edges { node { slug name color { name } winery { name } vintages { edges { node { year description gastronomy vintageRatings { score rating { labelThumbnail { medium } } id } images { id title image isPrimary } } } } } } } } } } }"
 }''';
@@ -135,7 +139,7 @@ class WinesCall {
 
 class HighRatingWinesCall {
   static Future<ApiCallResponse> call() async {
-    const ffApiRequestBody = '''
+    final ffApiRequestBody = '''
 {
   "query": "query GetHighRatedWines { tags(name: \\"Вина с высоким рейтингом\\") { edges { node { name wines { edges { node { slug name color { name } winery { name } vintages { edges { node { year images { id title image isPrimary } description } } } } } } } } } }"
 }''';
@@ -194,7 +198,7 @@ class ArticlesCall {
 
 class WHighRatingWineCall {
   static Future<ApiCallResponse> call() async {
-    const ffApiRequestBody = '''
+    final ffApiRequestBody = '''
 {
   "query": "query GetHighRatedWines { tags(name: \\"Вина с высоким рейтингом\\") { edges { node { name wines { edges { node { slug name color { name } winery { name } vintages { edges { node { year description gastronomy images { id title image isPrimary } vintageRatings { id score rating { label } } } } } } } } } } } }"
 }''';
@@ -262,12 +266,123 @@ class YearButtonCopyCall {
 
 class AuthCall {
   static Future<ApiCallResponse> call() async {
-    const ffApiRequestBody = '''
+    final ffApiRequestBody = '''
 {
   "query": "query MyQuery {\\n  me {\\n    email\\n    firstName\\n    isActive\\n    dateJoined\\n  }\\n}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Auth',
+      apiUrl: 'https://kultovo.ru/api/graphql#',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class WineSearchCall {
+  static Future<ApiCallResponse> call({
+    String? term = 'бельбек',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "query": "query WineSearch(\$term: String!) { search(searchTerm: \$term) { wines { edgeCount edges { node { slug name vintages { edges { node { gastronomy slug year images { image imageThumbnail { low } } vintageRatings { score rating { labelThumbnail { low } } } } } } } } } } }",
+  "variables": {
+    "term": "${escapeStringForJson(term)}"
+  }
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'WineSearch',
+      apiUrl: 'https://kultovo.ru/api/graphql#',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class ArticleSearchCall {
+  static Future<ApiCallResponse> call({
+    String? term = 'сира',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "query": "query ArticleSearch(\$term: String!) { search(searchTerm: \$term) { articles { edges { node { title slug coverThumbnail { low } } } } } }",
+  "variables": {
+    "term": "${escapeStringForJson(term)}"
+  }
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'ArticleSearch',
+      apiUrl: 'https://kultovo.ru/api/graphql#',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class IncentiveSearchCall {
+  static Future<ApiCallResponse> call() async {
+    final ffApiRequestBody = '''
+{
+  "query": "query IncentiveSearch { searchIncentive { randomQuery } }"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'IncentiveSearch',
+      apiUrl: 'https://kultovo.ru/api/graphql#',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class WinerySearchCall {
+  static Future<ApiCallResponse> call({
+    String? term = 'сира',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "query": "query WinerySearch(\$term: String!) { search(searchTerm: \$term) { wineries { edges { node { name slug wines { edgeCount edges { node { slug name vintages { edges { node { images { imageThumbnail { low } } vintageRatings { score } } } } region { name } } } } popularVintages { edges { node { slug year images { imageThumbnail { low } } wine { name slug } vintageRatings { score } } } } } } } } }",
+  "variables": {
+    "term": "${escapeStringForJson(term)}"
+  }
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'WinerySearch',
       apiUrl: 'https://kultovo.ru/api/graphql#',
       callType: ApiCallType.POST,
       headers: {},

@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
@@ -14,7 +15,7 @@ class WineWidget extends StatefulWidget {
     super.key,
     String? slug,
     this.favWine,
-  }) : slug = slug ?? 'kokur-saryi-pandas';
+  }) : this.slug = slug ?? 'kokur-saryi-pandas';
 
   final String slug;
 
@@ -87,13 +88,13 @@ class _WineWidgetState extends State<WineWidget> {
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    SizedBox(
+                    Container(
                       height: 360.0,
                       child: Stack(
                         children: [
                           Container(
                             width: double.infinity,
-                            decoration: const BoxDecoration(
+                            decoration: BoxDecoration(
                               color: Color(0xFFF2F2F2),
                               borderRadius: BorderRadius.only(
                                 bottomLeft: Radius.circular(28.0),
@@ -102,24 +103,56 @@ class _WineWidgetState extends State<WineWidget> {
                                 topRight: Radius.circular(28.0),
                               ),
                             ),
-                            child: Align(
-                              alignment: const AlignmentDirectional(0.0, 0.0),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(8.0),
-                                child: Image.network(
-                                  '${FFAppState().graphQLimageURL}${getJsonField(
-                                    wineGetWineDetailsVariableResponse.jsonBody,
-                                    r'''$.data.wines.edges[0].node.vintages.edges[0].node.images[0].image''',
-                                  ).toString()}',
-                                  width: 120.0,
-                                  height: 313.0,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
+                            child: Stack(
+                              children: [
+                                if (getJsonField(
+                                      wineGetWineDetailsVariableResponse
+                                          .jsonBody,
+                                      r'''$.data.wines.edges[0].node.vintages.edges[0].node.images[0].image''',
+                                    ) !=
+                                    null)
+                                  Align(
+                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 4.0, 0.0, 0.0),
+                                      child: ClipRRect(
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                        child: Image.network(
+                                          '${FFAppState().graphQLimageURL}${getJsonField(
+                                            wineGetWineDetailsVariableResponse
+                                                .jsonBody,
+                                            r'''$.data.wines.edges[0].node.vintages.edges[0].node.images[0].image''',
+                                          ).toString()}',
+                                          fit: BoxFit.contain,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                if (getJsonField(
+                                      wineGetWineDetailsVariableResponse
+                                          .jsonBody,
+                                      r'''$.data.wines.edges[0].node.vintages.edges[0].node.images[0].image''',
+                                    ) ==
+                                    null)
+                                  Align(
+                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(8.0),
+                                      child: SvgPicture.asset(
+                                        'assets/images/emptyWine.svg',
+                                        width: 90.0,
+                                        height: 313.0,
+                                        fit: BoxFit.contain,
+                                      ),
+                                    ),
+                                  ),
+                              ],
                             ),
                           ),
                           Align(
-                            alignment: const AlignmentDirectional(1.0, -1.0),
+                            alignment: AlignmentDirectional(1.0, -1.0),
                             child: InkWell(
                               splashColor: Colors.transparent,
                               focusColor: Colors.transparent,
@@ -136,15 +169,15 @@ class _WineWidgetState extends State<WineWidget> {
                               child: Container(
                                 width: 80.0,
                                 height: 80.0,
-                                decoration: const BoxDecoration(),
+                                decoration: BoxDecoration(),
                                 child: Stack(
                                   children: [
                                     Align(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                      alignment: AlignmentDirectional(0.0, 0.0),
                                       child: Container(
                                         width: 32.0,
                                         height: 32.0,
-                                        decoration: const BoxDecoration(
+                                        decoration: BoxDecoration(
                                           color: Color(0xFFECECEC),
                                           borderRadius: BorderRadius.only(
                                             bottomLeft: Radius.circular(24.0),
@@ -153,7 +186,7 @@ class _WineWidgetState extends State<WineWidget> {
                                             topRight: Radius.circular(24.0),
                                           ),
                                         ),
-                                        child: const Icon(
+                                        child: Icon(
                                           Icons.close_rounded,
                                           color: Color(0xFF706F6F),
                                           size: 24.0,
@@ -177,11 +210,11 @@ class _WineWidgetState extends State<WineWidget> {
                       child: Stack(
                         children: [
                           Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: Container(
                               width: 62.0,
                               height: 5.0,
-                              decoration: const BoxDecoration(
+                              decoration: BoxDecoration(
                                 color: Color(0xFFECECEC),
                                 borderRadius: BorderRadius.only(
                                   bottomLeft: Radius.circular(24.0),
@@ -197,7 +230,7 @@ class _WineWidgetState extends State<WineWidget> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
                       child: Stack(
                         children: [
                           Row(
@@ -231,7 +264,7 @@ class _WineWidgetState extends State<WineWidget> {
                                                       .secondaryBackground,
                                             ),
                                             child: Align(
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   -1.0, 0.0),
                                               child: Text(
                                                 getJsonField(
@@ -290,8 +323,8 @@ class _WineWidgetState extends State<WineWidget> {
                                         child: Icon(
                                           Icons.favorite_rounded,
                                           color: FFAppState().favorWine
-                                              ? const Color(0xFFD5386C)
-                                              : const Color(0xFF28303F),
+                                              ? Color(0xFFD5386C)
+                                              : Color(0xFF28303F),
                                           size: 24.0,
                                         ),
                                       ),
@@ -337,40 +370,41 @@ class _WineWidgetState extends State<WineWidget> {
                         ],
                       ),
                     ),
-                    Material(
-                      color: Colors.transparent,
-                      child: ListTile(
-                        subtitle: Text(
-                          FFAppState().WineGastronomy,
-                          style: FlutterFlowTheme.of(context)
-                              .labelMedium
-                              .override(
-                                fontFamily: FlutterFlowTheme.of(context)
-                                    .labelMediumFamily,
-                                letterSpacing: 0.0,
-                                useGoogleFonts: GoogleFonts.asMap().containsKey(
-                                    FlutterFlowTheme.of(context)
-                                        .labelMediumFamily),
-                              ),
-                        ),
-                        tileColor:
-                            FlutterFlowTheme.of(context).secondaryBackground,
-                        dense: false,
-                        contentPadding: const EdgeInsetsDirectional.fromSTEB(
-                            12.0, 0.0, 12.0, 24.0),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(0.0),
+                    if (FFAppState().WineGastronomy != 'null')
+                      Material(
+                        color: Colors.transparent,
+                        child: ListTile(
+                          subtitle: Text(
+                            FFAppState().WineGastronomy,
+                            style: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
+                                  fontFamily: FlutterFlowTheme.of(context)
+                                      .labelMediumFamily,
+                                  letterSpacing: 0.0,
+                                  useGoogleFonts: GoogleFonts.asMap()
+                                      .containsKey(FlutterFlowTheme.of(context)
+                                          .labelMediumFamily),
+                                ),
+                          ),
+                          tileColor:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          dense: false,
+                          contentPadding: EdgeInsetsDirectional.fromSTEB(
+                              12.0, 0.0, 12.0, 24.0),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(0.0),
+                          ),
                         ),
                       ),
-                    ),
-                    if (FFAppState().WinesRate.isNotEmpty)
+                    if (FFAppState().WinesRate.length >= 1)
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             12.0, 0.0, 12.0, 12.0),
                         child: Container(
                           width: double.infinity,
                           height: 72.0,
-                          decoration: const BoxDecoration(
+                          decoration: BoxDecoration(
                             color: Colors.white,
                           ),
                           child: Builder(
@@ -382,12 +416,12 @@ class _WineWidgetState extends State<WineWidget> {
                                 scrollDirection: Axis.horizontal,
                                 itemCount: years.length,
                                 separatorBuilder: (_, __) =>
-                                    const SizedBox(width: 4.0),
+                                    SizedBox(width: 4.0),
                                 itemBuilder: (context, yearsIndex) {
                                   final yearsItem = years[yearsIndex];
                                   return Container(
                                     width: 104.0,
-                                    decoration: const BoxDecoration(
+                                    decoration: BoxDecoration(
                                       color: Color(0xFFF2F2F2),
                                       borderRadius: BorderRadius.only(
                                         bottomLeft: Radius.circular(22.0),
@@ -404,13 +438,13 @@ class _WineWidgetState extends State<WineWidget> {
                                         Container(
                                           width: 80.0,
                                           height: 30.0,
-                                          decoration: const BoxDecoration(
+                                          decoration: BoxDecoration(
                                             color: Color(0xFFF5F5FA),
                                           ),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
-                                              const Align(
+                                              Align(
                                                 alignment: AlignmentDirectional(
                                                     -1.0, 0.0),
                                                 child: Padding(
@@ -425,7 +459,7 @@ class _WineWidgetState extends State<WineWidget> {
                                                 ),
                                               ),
                                               Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     0.0, 0.0),
                                                 child: Text(
                                                   valueOrDefault<String>(
@@ -456,12 +490,12 @@ class _WineWidgetState extends State<WineWidget> {
                                                       ),
                                                 ),
                                               ),
-                                            ].divide(const SizedBox(width: 2.0)),
+                                            ].divide(SizedBox(width: 2.0)),
                                           ),
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 8.0),
                                           child: ClipRRect(
                                             borderRadius:
@@ -491,7 +525,7 @@ class _WineWidgetState extends State<WineWidget> {
                       ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
                       child: Container(
                         width: double.infinity,
                         height: 48.0,
@@ -508,7 +542,7 @@ class _WineWidgetState extends State<WineWidget> {
                               padding: EdgeInsets.zero,
                               scrollDirection: Axis.horizontal,
                               itemCount: yearsButtons.length,
-                              separatorBuilder: (_, __) => const SizedBox(width: 4.0),
+                              separatorBuilder: (_, __) => SizedBox(width: 4.0),
                               itemBuilder: (context, yearsButtonsIndex) {
                                 final yearsButtonsItem =
                                     yearsButtons[yearsButtonsIndex];
@@ -573,8 +607,8 @@ class _WineWidgetState extends State<WineWidget> {
                                     width: 104.0,
                                     height: 44.0,
                                     decoration: BoxDecoration(
-                                      color: const Color(0xFFF2F2F2),
-                                      borderRadius: const BorderRadius.only(
+                                      color: Color(0xFFF2F2F2),
+                                      borderRadius: BorderRadius.only(
                                         bottomLeft: Radius.circular(14.0),
                                         bottomRight: Radius.circular(14.0),
                                         topLeft: Radius.circular(14.0),
@@ -583,12 +617,12 @@ class _WineWidgetState extends State<WineWidget> {
                                       border: Border.all(
                                         color: yearsButtonsIndex ==
                                                 FFAppState().SelectedYear
-                                            ? const Color(0xFF154E78)
-                                            : const Color(0x00000000),
+                                            ? Color(0xFF154E78)
+                                            : Color(0x00000000),
                                       ),
                                     ),
                                     child: Align(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                      alignment: AlignmentDirectional(0.0, 0.0),
                                       child: Text(
                                         valueOrDefault<String>(
                                           FFAppState()
@@ -640,7 +674,7 @@ class _WineWidgetState extends State<WineWidget> {
                         tileColor:
                             FlutterFlowTheme.of(context).secondaryBackground,
                         dense: false,
-                        contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                        contentPadding: EdgeInsetsDirectional.fromSTEB(
                             12.0, 10.0, 0.0, 0.0),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(0.0),
@@ -649,7 +683,7 @@ class _WineWidgetState extends State<WineWidget> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 12.0),
+                          EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
                       child: Container(
                         width: double.infinity,
                         decoration: BoxDecoration(
@@ -659,35 +693,37 @@ class _WineWidgetState extends State<WineWidget> {
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            Text(
-                              getJsonField(
-                                wineGetWineDetailsVariableResponse.jsonBody,
-                                r'''$.data.wines.edges[0].node.vintages.edges[0].node.description''',
-                              ).toString(),
-                              textAlign: TextAlign.start,
-                              maxLines: 6,
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: FlutterFlowTheme.of(context)
-                                        .bodyMediumFamily,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.normal,
-                                    useGoogleFonts: GoogleFonts.asMap()
-                                        .containsKey(
-                                            FlutterFlowTheme.of(context)
-                                                .bodyMediumFamily),
-                                  ),
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 12.0),
+                              child: Text(
+                                getJsonField(
+                                  wineGetWineDetailsVariableResponse.jsonBody,
+                                  r'''$.data.wines.edges[0].node.vintages.edges[0].node.description''',
+                                ).toString(),
+                                textAlign: TextAlign.start,
+                                maxLines: 6,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: FlutterFlowTheme.of(context)
+                                          .bodyMediumFamily,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.normal,
+                                      useGoogleFonts: GoogleFonts.asMap()
+                                          .containsKey(
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMediumFamily),
+                                    ),
+                              ),
                             ),
                             Container(
                               width: double.infinity,
                               height: 62.0,
-                              decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                              ),
+                              decoration: BoxDecoration(),
                               child: ListView(
                                 padding: EdgeInsets.zero,
+                                primary: false,
                                 scrollDirection: Axis.horizontal,
                                 children: [
                                   if (getJsonField(
@@ -699,7 +735,7 @@ class _WineWidgetState extends State<WineWidget> {
                                     Container(
                                       width: 80.0,
                                       height: 31.0,
-                                      decoration: const BoxDecoration(
+                                      decoration: BoxDecoration(
                                         color: Color(0xFFF2F2F2),
                                         borderRadius: BorderRadius.only(
                                           bottomLeft: Radius.circular(14.0),
@@ -713,9 +749,9 @@ class _WineWidgetState extends State<WineWidget> {
                                         children: [
                                           Align(
                                             alignment:
-                                                const AlignmentDirectional(-1.0, 0.0),
+                                                AlignmentDirectional(-1.0, 0.0),
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       10.0, 10.0, 0.0, 4.0),
                                               child: Text(
@@ -747,10 +783,10 @@ class _WineWidgetState extends State<WineWidget> {
                                               ) !=
                                               null)
                                             Align(
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   -1.0, -1.0),
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         10.0, 0.0, 10.0, 0.0),
                                                 child: Text(
@@ -787,7 +823,7 @@ class _WineWidgetState extends State<WineWidget> {
                                       null)
                                     Container(
                                       height: 31.0,
-                                      decoration: const BoxDecoration(
+                                      decoration: BoxDecoration(
                                         color: Color(0xFFF2F2F2),
                                         borderRadius: BorderRadius.only(
                                           bottomLeft: Radius.circular(14.0),
@@ -797,7 +833,7 @@ class _WineWidgetState extends State<WineWidget> {
                                         ),
                                       ),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             10.0, 0.0, 10.0, 0.0),
                                         child: SingleChildScrollView(
                                           primary: false,
@@ -807,7 +843,7 @@ class _WineWidgetState extends State<WineWidget> {
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 10.0, 0.0, 4.0),
                                                 child: Text(
@@ -833,80 +869,62 @@ class _WineWidgetState extends State<WineWidget> {
                                                 ),
                                               ),
                                               Container(
-                                                height: 20.0,
-                                                decoration: const BoxDecoration(
-                                                  color: Color(0xFFF5F5FA),
-                                                ),
+                                                width: 200.0,
+                                                height: 31.0,
                                                 child: Builder(
                                                   builder: (context) {
-                                                    final grapes =
+                                                    final grapesItems =
                                                         GetWineDetailsVariableCall
-                                                                .allData(
+                                                                .allGrapes(
                                                               wineGetWineDetailsVariableResponse
                                                                   .jsonBody,
                                                             )?.toList() ??
                                                             [];
 
                                                     return ListView.separated(
-                                                      padding:
-                                                          const EdgeInsets.fromLTRB(
-                                                        2.0,
-                                                        0,
-                                                        2.0,
-                                                        0,
-                                                      ),
-                                                      primary: false,
+                                                      padding: EdgeInsets.zero,
+                                                      shrinkWrap: true,
                                                       scrollDirection:
                                                           Axis.horizontal,
-                                                      itemCount: grapes.length,
+                                                      itemCount:
+                                                          grapesItems.length,
                                                       separatorBuilder: (_,
                                                               __) =>
-                                                          const SizedBox(width: 4.0),
+                                                          SizedBox(width: 2.0),
                                                       itemBuilder: (context,
-                                                          grapesIndex) {
-                                                        final grapesItem =
-                                                            grapes[grapesIndex];
-                                                        return SingleChildScrollView(
-                                                          scrollDirection:
-                                                              Axis.horizontal,
-                                                          child: Row(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            children: [
-                                                              Text(
-                                                                valueOrDefault<
-                                                                    String>(
-                                                                  functions.removeBrackets(
-                                                                      (getJsonField(
-                                                                    grapesItem,
-                                                                    r'''$.data.wines.edges[*].node.wineGrapes[*].grape.variety''',
-                                                                    true,
-                                                                  ) as List)
-                                                                          .map<String>((s) =>
-                                                                              s.toString())
-                                                                          .toList()),
-                                                                  'n/a',
-                                                                ),
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Onest Cyr',
-                                                                      letterSpacing:
-                                                                          0.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .bold,
-                                                                      useGoogleFonts: GoogleFonts
-                                                                              .asMap()
-                                                                          .containsKey(
-                                                                              'Onest Cyr'),
-                                                                    ),
-                                                              ),
-                                                            ],
+                                                          grapesItemsIndex) {
+                                                        final grapesItemsItem =
+                                                            grapesItems[
+                                                                grapesItemsIndex];
+                                                        return Text(
+                                                          valueOrDefault<
+                                                              String>(
+                                                            functions.listWithCommas(
+                                                                (getJsonField(
+                                                              wineGetWineDetailsVariableResponse
+                                                                  .jsonBody,
+                                                              r'''$.data.wines.edges[*].node.wineGrapes[*].grape.variety''',
+                                                              true,
+                                                            ) as List)
+                                                                    .map<String>(
+                                                                        (s) => s
+                                                                            .toString())
+                                                                    .toList()),
+                                                            'm',
                                                           ),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Onest Cyr',
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        'Onest Cyr'),
+                                                              ),
                                                         );
                                                       },
                                                     );
@@ -921,7 +939,7 @@ class _WineWidgetState extends State<WineWidget> {
                                   Container(
                                     width: 101.0,
                                     height: 31.0,
-                                    decoration: const BoxDecoration(
+                                    decoration: BoxDecoration(
                                       color: Color(0xFFF2F2F2),
                                       borderRadius: BorderRadius.only(
                                         bottomLeft: Radius.circular(14.0),
@@ -935,10 +953,10 @@ class _WineWidgetState extends State<WineWidget> {
                                       children: [
                                         Align(
                                           alignment:
-                                              const AlignmentDirectional(-1.0, 0.0),
+                                              AlignmentDirectional(-1.0, 0.0),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     10.0, 10.0, 0.0, 4.0),
                                             child: Text(
                                               'Винодельня',
@@ -964,10 +982,10 @@ class _WineWidgetState extends State<WineWidget> {
                                         ),
                                         Align(
                                           alignment:
-                                              const AlignmentDirectional(-1.0, -1.0),
+                                              AlignmentDirectional(-1.0, -1.0),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     10.0, 0.0, 10.0, 0.0),
                                             child: Text(
                                               getJsonField(
@@ -1009,7 +1027,7 @@ class _WineWidgetState extends State<WineWidget> {
                                     Container(
                                       width: 109.0,
                                       height: 31.0,
-                                      decoration: const BoxDecoration(
+                                      decoration: BoxDecoration(
                                         color: Color(0xFFF2F2F2),
                                         borderRadius: BorderRadius.only(
                                           bottomLeft: Radius.circular(14.0),
@@ -1023,9 +1041,9 @@ class _WineWidgetState extends State<WineWidget> {
                                         children: [
                                           Align(
                                             alignment:
-                                                const AlignmentDirectional(-1.0, 0.0),
+                                                AlignmentDirectional(-1.0, 0.0),
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       10.0, 10.0, 0.0, 4.0),
                                               child: Text(
@@ -1057,10 +1075,10 @@ class _WineWidgetState extends State<WineWidget> {
                                               ) !=
                                               null)
                                             Align(
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   -1.0, -1.0),
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         10.0, 0.0, 10.0, 0.0),
                                                 child: Text(
@@ -1097,7 +1115,7 @@ class _WineWidgetState extends State<WineWidget> {
                                   Container(
                                     width: 109.0,
                                     height: 31.0,
-                                    decoration: const BoxDecoration(
+                                    decoration: BoxDecoration(
                                       color: Color(0xFFF2F2F2),
                                       borderRadius: BorderRadius.only(
                                         bottomLeft: Radius.circular(14.0),
@@ -1111,10 +1129,10 @@ class _WineWidgetState extends State<WineWidget> {
                                       children: [
                                         Align(
                                           alignment:
-                                              const AlignmentDirectional(-1.0, 0.0),
+                                              AlignmentDirectional(-1.0, 0.0),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     10.0, 10.0, 0.0, 4.0),
                                             child: Text(
                                               'Страна, Регион',
@@ -1140,10 +1158,10 @@ class _WineWidgetState extends State<WineWidget> {
                                         ),
                                         Align(
                                           alignment:
-                                              const AlignmentDirectional(-1.0, -1.0),
+                                              AlignmentDirectional(-1.0, -1.0),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     10.0, 0.0, 10.0, 0.0),
                                             child: Text(
                                               getJsonField(
@@ -1171,92 +1189,98 @@ class _WineWidgetState extends State<WineWidget> {
                                       ],
                                     ),
                                   ),
-                                  Container(
-                                    width: 145.0,
-                                    height: 31.0,
-                                    decoration: const BoxDecoration(
-                                      color: Color(0xFFF2F2F2),
-                                      borderRadius: BorderRadius.only(
-                                        bottomLeft: Radius.circular(14.0),
-                                        bottomRight: Radius.circular(14.0),
-                                        topLeft: Radius.circular(14.0),
-                                        topRight: Radius.circular(14.0),
+                                  if (getJsonField(
+                                        wineGetWineDetailsVariableResponse
+                                            .jsonBody,
+                                        r'''$.data.wines.edges[0].node.appellation.name''',
+                                      ) !=
+                                      null)
+                                    Container(
+                                      width: 145.0,
+                                      height: 31.0,
+                                      decoration: BoxDecoration(
+                                        color: Color(0xFFF2F2F2),
+                                        borderRadius: BorderRadius.only(
+                                          bottomLeft: Radius.circular(14.0),
+                                          bottomRight: Radius.circular(14.0),
+                                          topLeft: Radius.circular(14.0),
+                                          topRight: Radius.circular(14.0),
+                                        ),
+                                      ),
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Align(
+                                            alignment:
+                                                AlignmentDirectional(-1.0, 0.0),
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      10.0, 10.0, 0.0, 4.0),
+                                              child: Text(
+                                                'Аппеласьен',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
+                                                          fontSize: 12.0,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily),
+                                                        ),
+                                              ),
+                                            ),
+                                          ),
+                                          Align(
+                                            alignment: AlignmentDirectional(
+                                                -1.0, -1.0),
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      10.0, 0.0, 10.0, 0.0),
+                                              child: Text(
+                                                getJsonField(
+                                                  wineGetWineDetailsVariableResponse
+                                                      .jsonBody,
+                                                  r'''$.data.wines.edges[0].node.appellation.name''',
+                                                ).toString(),
+                                                maxLines: 1,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .bodyMediumFamily,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          useGoogleFonts: GoogleFonts
+                                                                  .asMap()
+                                                              .containsKey(
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMediumFamily),
+                                                        ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Align(
-                                          alignment:
-                                              const AlignmentDirectional(-1.0, 0.0),
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    10.0, 10.0, 0.0, 4.0),
-                                            child: Text(
-                                              'Аппеласьен',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMediumFamily,
-                                                        fontSize: 12.0,
-                                                        letterSpacing: 0.0,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMediumFamily),
-                                                      ),
-                                            ),
-                                          ),
-                                        ),
-                                        Align(
-                                          alignment:
-                                              const AlignmentDirectional(-1.0, -1.0),
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    10.0, 0.0, 10.0, 0.0),
-                                            child: Text(
-                                              getJsonField(
-                                                wineGetWineDetailsVariableResponse
-                                                    .jsonBody,
-                                                r'''$.data.wines.edges[0].node.appellation.name''',
-                                              ).toString(),
-                                              maxLines: 1,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMediumFamily,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        useGoogleFonts: GoogleFonts
-                                                                .asMap()
-                                                            .containsKey(
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMediumFamily),
-                                                      ),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
                                   Container(
                                     width: 91.0,
                                     height: 31.0,
-                                    decoration: const BoxDecoration(
+                                    decoration: BoxDecoration(
                                       color: Color(0xFFF2F2F2),
                                       borderRadius: BorderRadius.only(
                                         bottomLeft: Radius.circular(14.0),
@@ -1270,10 +1294,10 @@ class _WineWidgetState extends State<WineWidget> {
                                       children: [
                                         Align(
                                           alignment:
-                                              const AlignmentDirectional(-1.0, 0.0),
+                                              AlignmentDirectional(-1.0, 0.0),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     10.0, 10.0, 0.0, 4.0),
                                             child: Text(
                                               'Крепость',
@@ -1299,10 +1323,10 @@ class _WineWidgetState extends State<WineWidget> {
                                         ),
                                         Align(
                                           alignment:
-                                              const AlignmentDirectional(-1.0, -1.0),
+                                              AlignmentDirectional(-1.0, -1.0),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     10.0, 0.0, 10.0, 0.0),
                                             child: Text(
                                               getJsonField(
@@ -1335,10 +1359,10 @@ class _WineWidgetState extends State<WineWidget> {
                                       ],
                                     ),
                                   ),
-                                ].divide(const SizedBox(width: 10.0)),
+                                ].divide(SizedBox(width: 6.0)),
                               ),
                             ),
-                          ].divide(const SizedBox(height: 20.0)),
+                          ].addToEnd(SizedBox(height: 12.0)),
                         ),
                       ),
                     ),

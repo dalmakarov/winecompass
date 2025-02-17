@@ -84,13 +84,13 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                       children: [
                         Container(
                           height: 311.0,
-                          decoration: const BoxDecoration(),
+                          decoration: BoxDecoration(),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Flexible(
                                 child: Align(
-                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  alignment: AlignmentDirectional(0.0, 0.0),
                                   child: Stack(
                                     children: [
                                       ClipRRect(
@@ -105,7 +105,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                       ),
                                       Align(
                                         alignment:
-                                            const AlignmentDirectional(0.0, 0.0),
+                                            AlignmentDirectional(0.0, 0.0),
                                         child: ClipRRect(
                                           borderRadius:
                                               BorderRadius.circular(8.0),
@@ -119,7 +119,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                       ),
                                       Align(
                                         alignment:
-                                            const AlignmentDirectional(-1.0, -1.0),
+                                            AlignmentDirectional(-1.0, -1.0),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
                                           focusColor: Colors.transparent,
@@ -131,19 +131,19 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                           child: Container(
                                             width: 80.0,
                                             height: 80.0,
-                                            decoration: const BoxDecoration(),
+                                            decoration: BoxDecoration(),
                                             child: Stack(
                                               children: [
                                                 Opacity(
                                                   opacity: 0.5,
                                                   child: Align(
                                                     alignment:
-                                                        const AlignmentDirectional(
+                                                        AlignmentDirectional(
                                                             0.0, 0.0),
                                                     child: Container(
                                                       width: 55.0,
                                                       height: 36.0,
-                                                      decoration: const BoxDecoration(
+                                                      decoration: BoxDecoration(
                                                         color:
                                                             Color(0xFFECECEC),
                                                         borderRadius:
@@ -167,7 +167,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                 ),
                                                 Align(
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           0.0, 0.0),
                                                   child: Icon(
                                                     Icons.west,
@@ -184,14 +184,14 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                       ),
                                       Align(
                                         alignment:
-                                            const AlignmentDirectional(0.0, 1.0),
+                                            AlignmentDirectional(0.0, 1.0),
                                         child: Container(
                                           width: double.infinity,
                                           height: 40.0,
                                           decoration: BoxDecoration(
                                             color: FlutterFlowTheme.of(context)
                                                 .secondaryBackground,
-                                            borderRadius: const BorderRadius.only(
+                                            borderRadius: BorderRadius.only(
                                               bottomLeft: Radius.circular(0.0),
                                               bottomRight: Radius.circular(0.0),
                                               topLeft: Radius.circular(32.0),
@@ -214,7 +214,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                         .titleLarge
                                         .override(
                                           fontFamily: 'Onest Cyr',
-                                          color: const Color(0xFF1F1F1F),
+                                          color: Color(0xFF1F1F1F),
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.bold,
                                           useGoogleFonts: GoogleFonts.asMap()
@@ -223,7 +223,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                   ),
                                   dense: false,
                                   contentPadding:
-                                      const EdgeInsetsDirectional.fromSTEB(
+                                      EdgeInsetsDirectional.fromSTEB(
                                           14.0, 0.0, 12.0, 0.0),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(8.0),
@@ -234,7 +234,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               12.0, 0.0, 12.0, 0.0),
                           child: Container(
                             width: double.infinity,
@@ -242,14 +242,14 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
                             ),
-                            child: SizedBox(
+                            child: Container(
                               width: double.infinity,
                               child: TextFormField(
                                 controller: _model.emailTextController,
                                 focusNode: _model.emailFocusNode,
                                 onChanged: (_) => EasyDebounce.debounce(
                                   '_model.emailTextController',
-                                  const Duration(milliseconds: 2000),
+                                  Duration(milliseconds: 2000),
                                   () => safeSetState(() {}),
                                 ),
                                 autofocus: false,
@@ -272,7 +272,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                       .labelMedium
                                       .override(
                                         fontFamily: 'Onest Cyr',
-                                        color: const Color(0xFFAFB0B4),
+                                        color: Color(0xFFAFB0B4),
                                         letterSpacing: 0.0,
                                         useGoogleFonts: GoogleFonts.asMap()
                                             .containsKey('Onest Cyr'),
@@ -312,7 +312,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               12.0, 0.0, 12.0, 0.0),
                           child: Container(
                             width: double.infinity,
@@ -331,7 +331,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                   size: 24.0,
                                 ),
                                 Align(
-                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  alignment: AlignmentDirectional(0.0, 0.0),
                                   child: RichText(
                                     textScaler:
                                         MediaQuery.of(context).textScaler,
@@ -362,7 +362,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                                 fontFamily:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMediumFamily,
-                                                color: const Color(0xFF143161),
+                                                color: Color(0xFF143161),
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w600,
                                                 useGoogleFonts: GoogleFonts
@@ -408,16 +408,16 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                     ),
                                   ),
                                 ),
-                              ].divide(const SizedBox(width: 4.0)),
+                              ].divide(SizedBox(width: 4.0)),
                             ),
                           ),
                         ),
-                      ].divide(const SizedBox(height: 8.0)),
+                      ].divide(SizedBox(height: 8.0)),
                     ),
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
                     child: Container(
                       width: double.infinity,
                       height: 40.0,
@@ -446,7 +446,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                             ),
                           ),
                           Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: InkWell(
                               splashColor: Colors.transparent,
                               focusColor: Colors.transparent,
@@ -494,7 +494,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                               ),
                             ),
                           ),
-                        ].divide(const SizedBox(width: 4.0)),
+                        ].divide(SizedBox(width: 4.0)),
                       ),
                     ),
                   ),
@@ -502,23 +502,23 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                       ? MediaQuery.viewInsetsOf(context).bottom > 0
                       : _isKeyboardVisible))
                     Align(
-                      alignment: const AlignmentDirectional(0.0, 1.0),
+                      alignment: AlignmentDirectional(0.0, 1.0),
                       child: Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
                         child: Container(
                           width: double.infinity,
                           height: 24.0,
-                          decoration: const BoxDecoration(),
+                          decoration: BoxDecoration(),
                           child: Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: Text(
                               'Только для лиц старше 18 лет',
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Onest Cyr',
-                                    color: const Color(0x1F1F1F1F),
+                                    color: Color(0x1F1F1F1F),
                                     letterSpacing: 0.0,
                                     useGoogleFonts: GoogleFonts.asMap()
                                         .containsKey('Onest Cyr'),

@@ -24,3 +24,18 @@ bool checkEMail(String? email) {
   final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
   return emailRegex.hasMatch(email);
 }
+
+String? listWithCommas(List<String>? listTextStrings) {
+  if (listTextStrings == null || listTextStrings.isEmpty) {
+    return null;
+  }
+
+  String result = '';
+  for (int i = 0; i < listTextStrings.length; i++) {
+    result += listTextStrings[i];
+    if (i < listTextStrings.length - 1) {
+      result += ', ';
+    }
+  }
+  return result;
+}

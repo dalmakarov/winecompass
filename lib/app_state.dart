@@ -60,6 +60,9 @@ class FFAppState extends ChangeNotifier {
       _activeFavoriteItem =
           prefs.getString('ff_activeFavoriteItem') ?? _activeFavoriteItem;
     });
+    _safeInit(() {
+      _IncentiveValue = prefs.getString('ff_IncentiveValue') ?? _IncentiveValue;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -79,6 +82,13 @@ class FFAppState extends ChangeNotifier {
   String get debugVal => _debugVal;
   set debugVal(String value) {
     _debugVal = value;
+  }
+
+  /// bottle mock image
+  String _graphQLEmptyWineImage = 'https://kultovo.ru/media/emptyWine.svg';
+  String get graphQLEmptyWineImage => _graphQLEmptyWineImage;
+  set graphQLEmptyWineImage(String value) {
+    _graphQLEmptyWineImage = value;
   }
 
   String _debugVal2 = '';
@@ -302,6 +312,37 @@ class FFAppState extends ChangeNotifier {
   String get activeArticleItem => _activeArticleItem;
   set activeArticleItem(String value) {
     _activeArticleItem = value;
+  }
+
+  String _IncentiveValue = '';
+  String get IncentiveValue => _IncentiveValue;
+  set IncentiveValue(String value) {
+    _IncentiveValue = value;
+    prefs.setString('ff_IncentiveValue', value);
+  }
+
+  String _searchNullCheckWines = '';
+  String get searchNullCheckWines => _searchNullCheckWines;
+  set searchNullCheckWines(String value) {
+    _searchNullCheckWines = value;
+  }
+
+  String _searchNullCheckArticles = '';
+  String get searchNullCheckArticles => _searchNullCheckArticles;
+  set searchNullCheckArticles(String value) {
+    _searchNullCheckArticles = value;
+  }
+
+  String _searchNullCheckWineries = '';
+  String get searchNullCheckWineries => _searchNullCheckWineries;
+  set searchNullCheckWineries(String value) {
+    _searchNullCheckWineries = value;
+  }
+
+  String _scannedMedia = '';
+  String get scannedMedia => _scannedMedia;
+  set scannedMedia(String value) {
+    _scannedMedia = value;
   }
 }
 

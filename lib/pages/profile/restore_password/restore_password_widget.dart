@@ -66,13 +66,13 @@ class _RestorePasswordWidgetState extends State<RestorePasswordWidget> {
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      SizedBox(
+                      Container(
                         width: 60.0,
                         height: 40.0,
                         child: Stack(
                           children: [
                             Align(
-                              alignment: const AlignmentDirectional(0.0, 0.0),
+                              alignment: AlignmentDirectional(0.0, 0.0),
                               child: InkWell(
                                 splashColor: Colors.transparent,
                                 focusColor: Colors.transparent,
@@ -84,7 +84,7 @@ class _RestorePasswordWidgetState extends State<RestorePasswordWidget> {
                                 child: Container(
                                   width: 65.0,
                                   height: 48.0,
-                                  decoration: const BoxDecoration(
+                                  decoration: BoxDecoration(
                                     color: Color(0xFFF2F2F2),
                                     borderRadius: BorderRadius.only(
                                       bottomLeft: Radius.circular(24.0),
@@ -97,7 +97,7 @@ class _RestorePasswordWidgetState extends State<RestorePasswordWidget> {
                               ),
                             ),
                             Align(
-                              alignment: const AlignmentDirectional(0.0, 0.0),
+                              alignment: AlignmentDirectional(0.0, 0.0),
                               child: InkWell(
                                 splashColor: Colors.transparent,
                                 focusColor: Colors.transparent,
@@ -106,7 +106,7 @@ class _RestorePasswordWidgetState extends State<RestorePasswordWidget> {
                                 onTap: () async {
                                   context.pushNamed('loginPage');
                                 },
-                                child: const Icon(
+                                child: Icon(
                                   Icons.west,
                                   color: Color(0xFF28303F),
                                   size: 20.0,
@@ -116,7 +116,7 @@ class _RestorePasswordWidgetState extends State<RestorePasswordWidget> {
                           ],
                         ),
                       ),
-                    ].addToStart(const SizedBox(width: 12.0)),
+                    ].addToStart(SizedBox(width: 12.0)),
                   ),
                 ),
                 Material(
@@ -135,7 +135,7 @@ class _RestorePasswordWidgetState extends State<RestorePasswordWidget> {
                     tileColor: FlutterFlowTheme.of(context).secondaryBackground,
                     dense: false,
                     contentPadding:
-                        const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8.0),
                     ),
@@ -157,14 +157,14 @@ class _RestorePasswordWidgetState extends State<RestorePasswordWidget> {
                     tileColor: FlutterFlowTheme.of(context).secondaryBackground,
                     dense: false,
                     contentPadding:
-                        const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8.0),
                     ),
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
                   child: Container(
                     width: double.infinity,
                     height: 68.0,
@@ -175,14 +175,14 @@ class _RestorePasswordWidgetState extends State<RestorePasswordWidget> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Expanded(
-                          child: SizedBox(
+                          child: Container(
                             width: double.infinity,
                             child: TextFormField(
                               controller: _model.emailTextController,
                               focusNode: _model.emailFocusNode,
                               onChanged: (_) => EasyDebounce.debounce(
                                 '_model.emailTextController',
-                                const Duration(milliseconds: 2000),
+                                Duration(milliseconds: 2000),
                                 () => safeSetState(() {}),
                               ),
                               autofocus: false,
@@ -206,7 +206,7 @@ class _RestorePasswordWidgetState extends State<RestorePasswordWidget> {
                                     .labelMedium
                                     .override(
                                       fontFamily: 'Onest Cyr',
-                                      color: const Color(0xFFAFB0B4),
+                                      color: Color(0xFFAFB0B4),
                                       letterSpacing: 0.0,
                                       useGoogleFonts: GoogleFonts.asMap()
                                           .containsKey('Onest Cyr'),
@@ -220,7 +220,7 @@ class _RestorePasswordWidgetState extends State<RestorePasswordWidget> {
                                   borderRadius: BorderRadius.circular(16.0),
                                 ),
                                 focusedBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
@@ -241,7 +241,7 @@ class _RestorePasswordWidgetState extends State<RestorePasswordWidget> {
                                   borderRadius: BorderRadius.circular(16.0),
                                 ),
                                 filled: true,
-                                fillColor: const Color(0xFFF5F5FA),
+                                fillColor: Color(0xFFF5F5FA),
                                 hoverColor:
                                     FlutterFlowTheme.of(context).alternate,
                                 suffixIcon: _model
@@ -251,7 +251,7 @@ class _RestorePasswordWidgetState extends State<RestorePasswordWidget> {
                                           _model.emailTextController?.clear();
                                           safeSetState(() {});
                                         },
-                                        child: const Icon(
+                                        child: Icon(
                                           Icons.clear,
                                           size: 22,
                                         ),
@@ -287,9 +287,9 @@ class _RestorePasswordWidgetState extends State<RestorePasswordWidget> {
                         if (!functions
                             .checkEMail(_model.emailTextController.text))
                           Align(
-                            alignment: const AlignmentDirectional(-1.0, 0.0),
+                            alignment: AlignmentDirectional(-1.0, 0.0),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   2.0, 0.0, 0.0, 4.0),
                               child: Text(
                                 _model.emailTextController.text == ''
@@ -300,7 +300,7 @@ class _RestorePasswordWidgetState extends State<RestorePasswordWidget> {
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Onest Cyr',
-                                      color: const Color(0xFFE7000A),
+                                      color: Color(0xFFE7000A),
                                       fontSize: 12.0,
                                       letterSpacing: 0.0,
                                       useGoogleFonts: GoogleFonts.asMap()
@@ -314,7 +314,7 @@ class _RestorePasswordWidgetState extends State<RestorePasswordWidget> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 12.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 12.0),
                   child: Container(
                     width: double.infinity,
                     height: 48.0,
@@ -323,7 +323,7 @@ class _RestorePasswordWidgetState extends State<RestorePasswordWidget> {
                     ),
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
                       child: FFButtonWidget(
                         onPressed: (functions.checkEMail(
                                     _model.emailTextController.text) ==
@@ -348,11 +348,11 @@ class _RestorePasswordWidgetState extends State<RestorePasswordWidget> {
                         options: FFButtonOptions(
                           width: double.infinity,
                           height: 40.0,
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               16.0, 0.0, 16.0, 0.0),
-                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          color: const Color(0xFF143161),
+                          color: Color(0xFF143161),
                           textStyle: FlutterFlowTheme.of(context)
                               .bodyLarge
                               .override(
@@ -368,7 +368,7 @@ class _RestorePasswordWidgetState extends State<RestorePasswordWidget> {
                               ),
                           elevation: 0.0,
                           borderRadius: BorderRadius.circular(20.0),
-                          disabledColor: const Color(0xFFA2ADBF),
+                          disabledColor: Color(0xFFA2ADBF),
                         ),
                       ),
                     ),

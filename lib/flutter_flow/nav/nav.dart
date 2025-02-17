@@ -37,7 +37,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       errorBuilder: (context, state) => appStateNotifier.showSplashImage
           ? Builder(
               builder: (context) => Container(
-                color: Colors.transparent,
+                color: Color(0xFFF2F2F2),
                 child: Center(
                   child: Image.asset(
                     'assets/images/icon.png',
@@ -47,7 +47,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 ),
               ),
             )
-          : const MainPageWidget(),
+          : MainPageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
@@ -55,7 +55,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, _) => appStateNotifier.showSplashImage
               ? Builder(
                   builder: (context) => Container(
-                    color: Colors.transparent,
+                    color: Color(0xFFF2F2F2),
                     child: Center(
                       child: Image.asset(
                         'assets/images/icon.png',
@@ -65,17 +65,17 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                     ),
                   ),
                 )
-              : const MainPageWidget(),
+              : MainPageWidget(),
         ),
         FFRoute(
           name: 'MainPage',
           path: '/mainPage',
-          builder: (context, params) => const MainPageWidget(),
+          builder: (context, params) => MainPageWidget(),
         ),
         FFRoute(
           name: 'Search',
           path: '/search',
-          builder: (context, params) => const SearchWidget(),
+          builder: (context, params) => SearchWidget(),
         ),
         FFRoute(
           name: 'Wine',
@@ -104,32 +104,37 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'profilePage',
           path: '/profilePage',
-          builder: (context, params) => const ProfilePageWidget(),
+          builder: (context, params) => ProfilePageWidget(),
         ),
         FFRoute(
           name: 'loginPage',
           path: '/loginPage',
-          builder: (context, params) => const LoginPageWidget(),
+          builder: (context, params) => LoginPageWidget(),
         ),
         FFRoute(
           name: 'restorePassword',
           path: '/restorePassword',
-          builder: (context, params) => const RestorePasswordWidget(),
+          builder: (context, params) => RestorePasswordWidget(),
         ),
         FFRoute(
           name: 'registrationPage',
           path: '/registrationPage',
-          builder: (context, params) => const RegistrationPageWidget(),
+          builder: (context, params) => RegistrationPageWidget(),
         ),
         FFRoute(
           name: 'passPage',
           path: '/passPage',
-          builder: (context, params) => const PassPageWidget(),
+          builder: (context, params) => PassPageWidget(),
         ),
         FFRoute(
           name: 'countryChoose',
           path: '/countryChoose',
-          builder: (context, params) => const CountryChooseWidget(),
+          builder: (context, params) => CountryChooseWidget(),
+        ),
+        FFRoute(
+          name: 'dump',
+          path: '/dump',
+          builder: (context, params) => DumpWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -295,7 +300,7 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() => const TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() => TransitionInfo(hasTransition: false);
 }
 
 class RootPageContext {

@@ -69,13 +69,13 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          SizedBox(
+                          Container(
                             width: 60.0,
                             height: 40.0,
                             child: Stack(
                               children: [
                                 Align(
-                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  alignment: AlignmentDirectional(0.0, 0.0),
                                   child: InkWell(
                                     splashColor: Colors.transparent,
                                     focusColor: Colors.transparent,
@@ -87,7 +87,7 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
                                     child: Container(
                                       width: 65.0,
                                       height: 48.0,
-                                      decoration: const BoxDecoration(
+                                      decoration: BoxDecoration(
                                         color: Color(0xFFF2F2F2),
                                         borderRadius: BorderRadius.only(
                                           bottomLeft: Radius.circular(24.0),
@@ -100,7 +100,7 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
                                   ),
                                 ),
                                 Align(
-                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  alignment: AlignmentDirectional(0.0, 0.0),
                                   child: InkWell(
                                     splashColor: Colors.transparent,
                                     focusColor: Colors.transparent,
@@ -109,7 +109,7 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
                                     onTap: () async {
                                       context.pushNamed('loginPage');
                                     },
-                                    child: const Icon(
+                                    child: Icon(
                                       Icons.west,
                                       color: Color(0xFF28303F),
                                       size: 20.0,
@@ -119,7 +119,7 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
                               ],
                             ),
                           ),
-                        ].addToStart(const SizedBox(width: 12.0)),
+                        ].addToStart(SizedBox(width: 12.0)),
                       ),
                     ),
                     Material(
@@ -139,7 +139,7 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
                         tileColor:
                             FlutterFlowTheme.of(context).secondaryBackground,
                         dense: false,
-                        contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                        contentPadding: EdgeInsetsDirectional.fromSTEB(
                             12.0, 0.0, 12.0, 0.0),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8.0),
@@ -156,14 +156,14 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Expanded(
-                            child: SizedBox(
+                            child: Container(
                               width: double.infinity,
                               child: TextFormField(
                                 controller: _model.textController1,
                                 focusNode: _model.textFieldFocusNode,
                                 onChanged: (_) => EasyDebounce.debounce(
                                   '_model.textController1',
-                                  const Duration(milliseconds: 2000),
+                                  Duration(milliseconds: 2000),
                                   () => safeSetState(() {}),
                                 ),
                                 autofocus: false,
@@ -188,7 +188,7 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
                                       .override(
                                         fontFamily: FlutterFlowTheme.of(context)
                                             .labelMediumFamily,
-                                        color: const Color(0xFFAFB0B4),
+                                        color: Color(0xFFAFB0B4),
                                         letterSpacing: 0.0,
                                         useGoogleFonts: GoogleFonts.asMap()
                                             .containsKey(
@@ -204,7 +204,7 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
                                     borderRadius: BorderRadius.circular(16.0),
                                   ),
                                   focusedBorder: OutlineInputBorder(
-                                    borderSide: const BorderSide(
+                                    borderSide: BorderSide(
                                       color: Color(0x00000000),
                                       width: 1.0,
                                     ),
@@ -225,7 +225,7 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
                                     borderRadius: BorderRadius.circular(16.0),
                                   ),
                                   filled: true,
-                                  fillColor: const Color(0xFFF5F5FA),
+                                  fillColor: Color(0xFFF5F5FA),
                                   hoverColor:
                                       FlutterFlowTheme.of(context).alternate,
                                   suffixIcon:
@@ -235,7 +235,7 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
                                                 _model.textController1?.clear();
                                                 safeSetState(() {});
                                               },
-                                              child: const Icon(
+                                              child: Icon(
                                                 Icons.clear,
                                                 size: 22,
                                               ),
@@ -271,13 +271,13 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
                             ),
                           ),
                         ]
-                            .addToStart(const SizedBox(width: 12.0))
-                            .addToEnd(const SizedBox(width: 12.0)),
+                            .addToStart(SizedBox(width: 12.0))
+                            .addToEnd(SizedBox(width: 12.0)),
                       ),
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
                       child: Container(
                         width: double.infinity,
                         height: 68.0,
@@ -289,14 +289,14 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Expanded(
-                              child: SizedBox(
+                              child: Container(
                                 width: double.infinity,
                                 child: TextFormField(
                                   controller: _model.emailTextController,
                                   focusNode: _model.emailFocusNode,
                                   onChanged: (_) => EasyDebounce.debounce(
                                     '_model.emailTextController',
-                                    const Duration(milliseconds: 2000),
+                                    Duration(milliseconds: 2000),
                                     () => safeSetState(() {}),
                                   ),
                                   autofocus: false,
@@ -321,7 +321,7 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
                                         .labelMedium
                                         .override(
                                           fontFamily: 'Onest Cyr',
-                                          color: const Color(0xFFAFB0B4),
+                                          color: Color(0xFFAFB0B4),
                                           letterSpacing: 0.0,
                                           useGoogleFonts: GoogleFonts.asMap()
                                               .containsKey('Onest Cyr'),
@@ -335,7 +335,7 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
                                       borderRadius: BorderRadius.circular(16.0),
                                     ),
                                     focusedBorder: OutlineInputBorder(
-                                      borderSide: const BorderSide(
+                                      borderSide: BorderSide(
                                         color: Color(0x00000000),
                                         width: 1.0,
                                       ),
@@ -358,7 +358,7 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
                                       borderRadius: BorderRadius.circular(16.0),
                                     ),
                                     filled: true,
-                                    fillColor: const Color(0xFFF5F5FA),
+                                    fillColor: Color(0xFFF5F5FA),
                                     hoverColor:
                                         FlutterFlowTheme.of(context).alternate,
                                     suffixIcon: _model.emailTextController!.text
@@ -369,7 +369,7 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
                                                   ?.clear();
                                               safeSetState(() {});
                                             },
-                                            child: const Icon(
+                                            child: Icon(
                                               Icons.clear,
                                               size: 22,
                                             ),
@@ -405,9 +405,9 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
                             if (!functions
                                 .checkEMail(_model.emailTextController.text))
                               Align(
-                                alignment: const AlignmentDirectional(-1.0, 0.0),
+                                alignment: AlignmentDirectional(-1.0, 0.0),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       2.0, 0.0, 0.0, 4.0),
                                   child: Text(
                                     _model.emailTextController.text ==
@@ -419,7 +419,7 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Onest Cyr',
-                                          color: const Color(0xFFE7000A),
+                                          color: Color(0xFFE7000A),
                                           fontSize: 12.0,
                                           letterSpacing: 0.0,
                                           useGoogleFonts: GoogleFonts.asMap()
@@ -494,7 +494,7 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
                                       .override(
                                         fontFamily: FlutterFlowTheme.of(context)
                                             .bodyMediumFamily,
-                                        color: const Color(0xFF873E56),
+                                        color: Color(0xFF873E56),
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w500,
                                         useGoogleFonts: GoogleFonts.asMap()
@@ -524,7 +524,7 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
                                       .override(
                                         fontFamily: FlutterFlowTheme.of(context)
                                             .bodyMediumFamily,
-                                        color: const Color(0xFF873E56),
+                                        color: Color(0xFF873E56),
                                         letterSpacing: 0.0,
                                         useGoogleFonts: GoogleFonts.asMap()
                                             .containsKey(
@@ -547,8 +547,8 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
                             ),
                           ),
                         ]
-                            .addToStart(const SizedBox(width: 12.0))
-                            .addToEnd(const SizedBox(width: 12.0)),
+                            .addToStart(SizedBox(width: 12.0))
+                            .addToEnd(SizedBox(width: 12.0)),
                       ),
                     ),
                     Container(
@@ -558,7 +558,7 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
                         color: FlutterFlowTheme.of(context).secondaryBackground,
                       ),
                       child: Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             12.0, 0.0, 12.0, 0.0),
                         child: FFButtonWidget(
                           onPressed: ((_model.textController1.text == '') ||
@@ -580,11 +580,11 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
                           options: FFButtonOptions(
                             width: double.infinity,
                             height: 40.0,
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 16.0, 0.0, 16.0, 0.0),
-                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            color: const Color(0xFF143161),
+                            color: Color(0xFF143161),
                             textStyle: FlutterFlowTheme.of(context)
                                 .bodyLarge
                                 .override(
@@ -600,12 +600,12 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
                                 ),
                             elevation: 0.0,
                             borderRadius: BorderRadius.circular(20.0),
-                            disabledColor: const Color(0xFFA2ADBF),
+                            disabledColor: Color(0xFFA2ADBF),
                           ),
                         ),
                       ),
                     ),
-                  ].divide(const SizedBox(height: 10.0)),
+                  ].divide(SizedBox(height: 10.0)),
                 ),
               ),
               Container(
@@ -615,13 +615,13 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
                   color: FlutterFlowTheme.of(context).secondaryBackground,
                 ),
                 child: Align(
-                  alignment: const AlignmentDirectional(0.0, 0.0),
+                  alignment: AlignmentDirectional(0.0, 0.0),
                   child: Text(
                     'Только для лиц старше 18 лет',
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily:
                               FlutterFlowTheme.of(context).bodyMediumFamily,
-                          color: const Color(0x1F1F1F1F),
+                          color: Color(0x1F1F1F1F),
                           letterSpacing: 0.0,
                           useGoogleFonts: GoogleFonts.asMap().containsKey(
                               FlutterFlowTheme.of(context).bodyMediumFamily),

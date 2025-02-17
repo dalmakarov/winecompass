@@ -82,13 +82,13 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                   children: [
                     Container(
                       height: 311.0,
-                      decoration: const BoxDecoration(),
+                      decoration: BoxDecoration(),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Flexible(
                             child: Align(
-                              alignment: const AlignmentDirectional(0.0, 0.0),
+                              alignment: AlignmentDirectional(0.0, 0.0),
                               child: Stack(
                                 children: [
                                   ClipRRect(
@@ -101,7 +101,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                     ),
                                   ),
                                   Align(
-                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                    alignment: AlignmentDirectional(0.0, 0.0),
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(8.0),
                                       child: SvgPicture.asset(
@@ -113,7 +113,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                     ),
                                   ),
                                   Align(
-                                    alignment: const AlignmentDirectional(-1.0, -1.0),
+                                    alignment: AlignmentDirectional(-1.0, -1.0),
                                     child: InkWell(
                                       splashColor: Colors.transparent,
                                       focusColor: Colors.transparent,
@@ -136,18 +136,18 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                       child: Container(
                                         width: 80.0,
                                         height: 80.0,
-                                        decoration: const BoxDecoration(),
+                                        decoration: BoxDecoration(),
                                         child: Stack(
                                           children: [
                                             Opacity(
                                               opacity: 0.5,
                                               child: Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     0.0, 0.0),
                                                 child: Container(
                                                   width: 55.0,
                                                   height: 36.0,
-                                                  decoration: const BoxDecoration(
+                                                  decoration: BoxDecoration(
                                                     color: Color(0xFFECECEC),
                                                     borderRadius:
                                                         BorderRadius.only(
@@ -165,7 +165,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                               ),
                                             ),
                                             Align(
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   0.0, 0.0),
                                               child: Icon(
                                                 Icons.west,
@@ -181,14 +181,14 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                     ),
                                   ),
                                   Align(
-                                    alignment: const AlignmentDirectional(0.0, 1.0),
+                                    alignment: AlignmentDirectional(0.0, 1.0),
                                     child: Container(
                                       width: double.infinity,
                                       height: 40.0,
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context)
                                             .secondaryBackground,
-                                        borderRadius: const BorderRadius.only(
+                                        borderRadius: BorderRadius.only(
                                           bottomLeft: Radius.circular(0.0),
                                           bottomRight: Radius.circular(0.0),
                                           topLeft: Radius.circular(32.0),
@@ -210,7 +210,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                     .titleLarge
                                     .override(
                                       fontFamily: 'Onest Cyr',
-                                      color: const Color(0xFF1F1F1F),
+                                      color: Color(0xFF1F1F1F),
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.bold,
                                       useGoogleFonts: GoogleFonts.asMap()
@@ -218,7 +218,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                     ),
                               ),
                               dense: false,
-                              contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                              contentPadding: EdgeInsetsDirectional.fromSTEB(
                                   14.0, 0.0, 12.0, 0.0),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(8.0),
@@ -230,7 +230,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
                       child: Container(
                         width: double.infinity,
                         height: 68.0,
@@ -242,14 +242,14 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Expanded(
-                              child: SizedBox(
+                              child: Container(
                                 width: double.infinity,
                                 child: TextFormField(
                                   controller: _model.emailTextController,
                                   focusNode: _model.emailFocusNode,
                                   onChanged: (_) => EasyDebounce.debounce(
                                     '_model.emailTextController',
-                                    const Duration(milliseconds: 2000),
+                                    Duration(milliseconds: 2000),
                                     () async {
                                       FFAppState().emailMatch =
                                           functions.checkEMail(
@@ -279,7 +279,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                         .labelMedium
                                         .override(
                                           fontFamily: 'Onest Cyr',
-                                          color: const Color(0xFFAFB0B4),
+                                          color: Color(0xFFAFB0B4),
                                           letterSpacing: 0.0,
                                           useGoogleFonts: GoogleFonts.asMap()
                                               .containsKey('Onest Cyr'),
@@ -293,7 +293,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                       borderRadius: BorderRadius.circular(16.0),
                                     ),
                                     focusedBorder: OutlineInputBorder(
-                                      borderSide: const BorderSide(
+                                      borderSide: BorderSide(
                                         color: Color(0x00000000),
                                         width: 1.0,
                                       ),
@@ -316,7 +316,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                       borderRadius: BorderRadius.circular(16.0),
                                     ),
                                     filled: true,
-                                    fillColor: const Color(0xFFF5F5FA),
+                                    fillColor: Color(0xFFF5F5FA),
                                     hoverColor:
                                         FlutterFlowTheme.of(context).alternate,
                                     suffixIcon: _model.emailTextController!.text
@@ -332,7 +332,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                               safeSetState(() {});
                                               safeSetState(() {});
                                             },
-                                            child: const Icon(
+                                            child: Icon(
                                               Icons.clear,
                                               size: 22,
                                             ),
@@ -368,9 +368,9 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                             if (!functions
                                 .checkEMail(_model.emailTextController.text))
                               Align(
-                                alignment: const AlignmentDirectional(-1.0, 0.0),
+                                alignment: AlignmentDirectional(-1.0, 0.0),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       2.0, 0.0, 0.0, 4.0),
                                   child: Text(
                                     _model.emailTextController.text ==
@@ -382,7 +382,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Onest Cyr',
-                                          color: const Color(0xFFE7000A),
+                                          color: Color(0xFFE7000A),
                                           fontSize: 12.0,
                                           letterSpacing: 0.0,
                                           useGoogleFonts: GoogleFonts.asMap()
@@ -397,7 +397,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                       child: Container(
                         width: double.infinity,
                         height: 90.0,
@@ -413,16 +413,16 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                               children: [
                                 Expanded(
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 2.0, 0.0, 0.0),
-                                    child: SizedBox(
+                                    child: Container(
                                       width: double.infinity,
                                       child: TextFormField(
                                         controller: _model.textController2,
                                         focusNode: _model.textFieldFocusNode,
                                         onChanged: (_) => EasyDebounce.debounce(
                                           '_model.textController2',
-                                          const Duration(milliseconds: 2000),
+                                          Duration(milliseconds: 2000),
                                           () => safeSetState(() {}),
                                         ),
                                         autofocus: false,
@@ -452,7 +452,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                 fontFamily:
                                                     FlutterFlowTheme.of(context)
                                                         .labelMediumFamily,
-                                                color: const Color(0xFFAFB0B4),
+                                                color: Color(0xFFAFB0B4),
                                                 letterSpacing: 0.0,
                                                 useGoogleFonts: GoogleFonts
                                                         .asMap()
@@ -472,7 +472,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                 BorderRadius.circular(16.0),
                                           ),
                                           focusedBorder: OutlineInputBorder(
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Color(0x00000000),
                                               width: 1.0,
                                             ),
@@ -501,7 +501,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                 BorderRadius.circular(16.0),
                                           ),
                                           filled: true,
-                                          fillColor: const Color(0xFFF5F5FA),
+                                          fillColor: Color(0xFFF5F5FA),
                                           hoverColor:
                                               FlutterFlowTheme.of(context)
                                                   .alternate,
@@ -553,13 +553,13 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                   ),
                                 ),
                               ]
-                                  .addToStart(const SizedBox(width: 12.0))
-                                  .addToEnd(const SizedBox(width: 12.0)),
+                                  .addToStart(SizedBox(width: 12.0))
+                                  .addToEnd(SizedBox(width: 12.0)),
                             ),
                             Align(
-                              alignment: const AlignmentDirectional(-1.0, 0.0),
+                              alignment: AlignmentDirectional(-1.0, 0.0),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     14.0, 4.0, 0.0, 0.0),
                                 child: InkWell(
                                   splashColor: Colors.transparent,
@@ -575,7 +575,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Onest Cyr',
-                                          color: const Color(0xFF1F1F1F),
+                                          color: Color(0xFF1F1F1F),
                                           letterSpacing: 0.0,
                                           useGoogleFonts: GoogleFonts.asMap()
                                               .containsKey('Onest Cyr'),
@@ -595,7 +595,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                         color: FlutterFlowTheme.of(context).secondaryBackground,
                       ),
                       child: Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             12.0, 0.0, 12.0, 0.0),
                         child: FFButtonWidget(
                           onPressed: ((_model.emailTextController.text == '') ||
@@ -616,14 +616,14 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                       context: context,
                                       builder: (alertDialogContext) {
                                         return AlertDialog(
-                                          title: const Text('Ошибка'),
+                                          title: Text('Ошибка'),
                                           content:
-                                              const Text('Пользователь не найден'),
+                                              Text('Пользователь не найден'),
                                           actions: [
                                             TextButton(
                                               onPressed: () => Navigator.pop(
                                                   alertDialogContext),
-                                              child: const Text('Назад'),
+                                              child: Text('Назад'),
                                             ),
                                           ],
                                         );
@@ -636,11 +636,11 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                           text: 'Войти',
                           options: FFButtonOptions(
                             width: double.infinity,
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 16.0, 0.0, 16.0, 0.0),
-                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            color: const Color(0xFF143161),
+                            color: Color(0xFF143161),
                             textStyle:
                                 FlutterFlowTheme.of(context).bodyLarge.override(
                                       fontFamily: 'Onest Cyr',
@@ -653,7 +653,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                     ),
                             elevation: 0.0,
                             borderRadius: BorderRadius.circular(20.0),
-                            disabledColor: const Color(0xFFA2ADBF),
+                            disabledColor: Color(0xFFA2ADBF),
                           ),
                         ),
                       ),
@@ -665,7 +665,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                         color: FlutterFlowTheme.of(context).secondaryBackground,
                       ),
                       child: Align(
-                        alignment: const AlignmentDirectional(0.0, 0.0),
+                        alignment: AlignmentDirectional(0.0, 0.0),
                         child: InkWell(
                           splashColor: Colors.transparent,
                           focusColor: Colors.transparent,
@@ -699,7 +699,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                       .override(
                                         fontFamily: FlutterFlowTheme.of(context)
                                             .bodyMediumFamily,
-                                        color: const Color(0xFF143161),
+                                        color: Color(0xFF143161),
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
                                         useGoogleFonts: GoogleFonts.asMap()
@@ -732,22 +732,22 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                   ? MediaQuery.viewInsetsOf(context).bottom > 0
                   : _isKeyboardVisible))
                 Align(
-                  alignment: const AlignmentDirectional(0.0, 1.0),
+                  alignment: AlignmentDirectional(0.0, 1.0),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
                     child: Container(
                       width: double.infinity,
                       height: 24.0,
-                      decoration: const BoxDecoration(),
+                      decoration: BoxDecoration(),
                       child: Align(
-                        alignment: const AlignmentDirectional(0.0, 0.0),
+                        alignment: AlignmentDirectional(0.0, 0.0),
                         child: Text(
                           'Только для лиц старше 18 лет',
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Onest Cyr',
-                                    color: const Color(0x1F1F1F1F),
+                                    color: Color(0x1F1F1F1F),
                                     letterSpacing: 0.0,
                                     useGoogleFonts: GoogleFonts.asMap()
                                         .containsKey('Onest Cyr'),

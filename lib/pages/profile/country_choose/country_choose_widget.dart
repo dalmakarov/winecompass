@@ -61,13 +61,13 @@ class _CountryChooseWidgetState extends State<CountryChooseWidget> {
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      SizedBox(
+                      Container(
                         width: 60.0,
                         height: 40.0,
                         child: Stack(
                           children: [
                             Align(
-                              alignment: const AlignmentDirectional(0.0, 0.0),
+                              alignment: AlignmentDirectional(0.0, 0.0),
                               child: InkWell(
                                 splashColor: Colors.transparent,
                                 focusColor: Colors.transparent,
@@ -79,7 +79,7 @@ class _CountryChooseWidgetState extends State<CountryChooseWidget> {
                                 child: Container(
                                   width: 55.0,
                                   height: 40.0,
-                                  decoration: const BoxDecoration(
+                                  decoration: BoxDecoration(
                                     color: Color(0xFFF2F2F2),
                                     borderRadius: BorderRadius.only(
                                       bottomLeft: Radius.circular(24.0),
@@ -92,7 +92,7 @@ class _CountryChooseWidgetState extends State<CountryChooseWidget> {
                               ),
                             ),
                             Align(
-                              alignment: const AlignmentDirectional(0.0, 0.0),
+                              alignment: AlignmentDirectional(0.0, 0.0),
                               child: InkWell(
                                 splashColor: Colors.transparent,
                                 focusColor: Colors.transparent,
@@ -101,7 +101,7 @@ class _CountryChooseWidgetState extends State<CountryChooseWidget> {
                                 onTap: () async {
                                   context.safePop();
                                 },
-                                child: const Icon(
+                                child: Icon(
                                   Icons.west,
                                   color: Color(0xFF28303F),
                                   size: 20.0,
@@ -111,7 +111,7 @@ class _CountryChooseWidgetState extends State<CountryChooseWidget> {
                           ],
                         ),
                       ),
-                    ].addToStart(const SizedBox(width: 12.0)),
+                    ].addToStart(SizedBox(width: 12.0)),
                   ),
                 ),
                 Material(
@@ -130,7 +130,7 @@ class _CountryChooseWidgetState extends State<CountryChooseWidget> {
                     tileColor: FlutterFlowTheme.of(context).secondaryBackground,
                     dense: false,
                     contentPadding:
-                        const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8.0),
                     ),
@@ -147,9 +147,9 @@ class _CountryChooseWidgetState extends State<CountryChooseWidget> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Align(
-                        alignment: const AlignmentDirectional(-1.0, 0.0),
+                        alignment: AlignmentDirectional(-1.0, 0.0),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               12.0, 0.0, 12.0, 0.0),
                           child: FlutterFlowDropDown<String>(
                             controller: _model.dropDownValueController1 ??=
@@ -195,7 +195,7 @@ class _CountryChooseWidgetState extends State<CountryChooseWidget> {
                             borderColor: FlutterFlowTheme.of(context).secondary,
                             borderWidth: 0.0,
                             borderRadius: 8.0,
-                            margin: const EdgeInsetsDirectional.fromSTEB(
+                            margin: EdgeInsetsDirectional.fromSTEB(
                                 12.0, 0.0, 12.0, 0.0),
                             hidesUnderline: true,
                             isOverButton: false,
@@ -207,9 +207,9 @@ class _CountryChooseWidgetState extends State<CountryChooseWidget> {
                       if (_model.dropDownValue1 != null &&
                           _model.dropDownValue1 != '')
                         Align(
-                          alignment: const AlignmentDirectional(-1.0, 0.0),
+                          alignment: AlignmentDirectional(-1.0, 0.0),
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 12.0, 0.0, 12.0, 0.0),
                             child: FlutterFlowDropDown<String>(
                               controller: _model.dropDownValueController2 ??=
@@ -250,7 +250,7 @@ class _CountryChooseWidgetState extends State<CountryChooseWidget> {
                                   FlutterFlowTheme.of(context).secondary,
                               borderWidth: 0.0,
                               borderRadius: 8.0,
-                              margin: const EdgeInsetsDirectional.fromSTEB(
+                              margin: EdgeInsetsDirectional.fromSTEB(
                                   12.0, 0.0, 12.0, 0.0),
                               hidesUnderline: true,
                               isOverButton: false,
@@ -273,7 +273,7 @@ class _CountryChooseWidgetState extends State<CountryChooseWidget> {
                     children: [
                       Expanded(
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               12.0, 0.0, 12.0, 0.0),
                           child: FFButtonWidget(
                             onPressed: () async {
@@ -287,9 +287,9 @@ class _CountryChooseWidgetState extends State<CountryChooseWidget> {
                             options: FFButtonOptions(
                               width: double.infinity,
                               height: 40.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   16.0, 0.0, 16.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context)
                                   .primaryBackground,
@@ -298,7 +298,7 @@ class _CountryChooseWidgetState extends State<CountryChooseWidget> {
                                   .override(
                                     fontFamily: FlutterFlowTheme.of(context)
                                         .bodyLargeFamily,
-                                    color: const Color(0xFF143161),
+                                    color: Color(0xFF143161),
                                     fontSize: 14.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w600,
@@ -315,7 +315,7 @@ class _CountryChooseWidgetState extends State<CountryChooseWidget> {
                       ),
                       Expanded(
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               12.0, 0.0, 12.0, 0.0),
                           child: FFButtonWidget(
                             onPressed: ((_model.dropDownValue1 == null ||
@@ -334,11 +334,11 @@ class _CountryChooseWidgetState extends State<CountryChooseWidget> {
                             options: FFButtonOptions(
                               width: double.infinity,
                               height: 40.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   16.0, 0.0, 16.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
-                              color: const Color(0xFF143161),
+                              color: Color(0xFF143161),
                               textStyle: FlutterFlowTheme.of(context)
                                   .bodyLarge
                                   .override(
@@ -355,7 +355,7 @@ class _CountryChooseWidgetState extends State<CountryChooseWidget> {
                                   ),
                               elevation: 0.0,
                               borderRadius: BorderRadius.circular(20.0),
-                              disabledColor: const Color(0xFFA2ADBF),
+                              disabledColor: Color(0xFFA2ADBF),
                             ),
                           ),
                         ),
@@ -363,7 +363,7 @@ class _CountryChooseWidgetState extends State<CountryChooseWidget> {
                     ],
                   ),
                 ),
-              ].divide(const SizedBox(height: 10.0)),
+              ].divide(SizedBox(height: 10.0)),
             ),
           ),
         ),
