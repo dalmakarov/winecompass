@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:async';
 import '/flutter_flow/custom_functions.dart' as functions;
+import '/index.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -15,6 +16,9 @@ export 'login_page_model.dart';
 
 class LoginPageWidget extends StatefulWidget {
   const LoginPageWidget({super.key});
+
+  static String routeName = 'loginPage';
+  static String routePath = '/loginPage';
 
   @override
   State<LoginPageWidget> createState() => _LoginPageWidgetState();
@@ -120,17 +124,20 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                       hoverColor: Colors.transparent,
                                       highlightColor: Colors.transparent,
                                       onTap: () async {
-                                        context.goNamed('MainPage');
+                                        context
+                                            .goNamed(MainPageWidget.routeName);
 
                                         if (FFAppState().userLoggedIn ==
                                             false) {
                                           FFAppState().ActiveTabIndex = 0;
 
-                                          context.pushNamed('MainPage');
+                                          context.pushNamed(
+                                              MainPageWidget.routeName);
                                         } else {
                                           FFAppState().ActiveTabIndex = 4;
 
-                                          context.pushNamed('MainPage');
+                                          context.pushNamed(
+                                              MainPageWidget.routeName);
                                         }
                                       },
                                       child: Container(
@@ -567,7 +574,8 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
-                                    context.pushNamed('restorePassword');
+                                    context.pushNamed(
+                                        RestorePasswordWidget.routeName);
                                   },
                                   child: Text(
                                     'Забыли пароль?',
@@ -606,7 +614,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                           FFAppState().userMail) ||
                                       (_model.textController2.text ==
                                           FFAppState().userPassword)) {
-                                    context.goNamed('MainPage');
+                                    context.goNamed(MainPageWidget.routeName);
 
                                     FFAppState().ActiveTabIndex = 4;
                                     FFAppState().userLoggedIn = true;
@@ -672,7 +680,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
-                            context.pushNamed('registrationPage');
+                            context.pushNamed(RegistrationPageWidget.routeName);
                           },
                           child: RichText(
                             textScaler: MediaQuery.of(context).textScaler,

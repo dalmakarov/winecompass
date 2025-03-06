@@ -1,3 +1,4 @@
+import '';
 import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -17,6 +18,9 @@ class ArticlesWidget extends StatefulWidget {
   }) : this.slug = slug ?? 'kokur-saryi-pandas';
 
   final String slug;
+
+  static String routeName = 'Articles';
+  static String routePath = '/articles';
 
   @override
   State<ArticlesWidget> createState() => _ArticlesWidgetState();

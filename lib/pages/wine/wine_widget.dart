@@ -1,3 +1,4 @@
+import '';
 import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -21,6 +22,9 @@ class WineWidget extends StatefulWidget {
 
   /// Favorite icon
   final bool? favWine;
+
+  static String routeName = 'Wine';
+  static String routePath = '/wine';
 
   @override
   State<WineWidget> createState() => _WineWidgetState();

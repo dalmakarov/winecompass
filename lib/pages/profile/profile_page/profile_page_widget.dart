@@ -1,6 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:async';
+import '/index.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +16,9 @@ export 'profile_page_model.dart';
 
 class ProfilePageWidget extends StatefulWidget {
   const ProfilePageWidget({super.key});
+
+  static String routeName = 'profilePage';
+  static String routePath = '/profilePage';
 
   @override
   State<ProfilePageWidget> createState() => _ProfilePageWidgetState();
@@ -126,7 +130,8 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                           hoverColor: Colors.transparent,
                                           highlightColor: Colors.transparent,
                                           onTap: () async {
-                                            context.pushNamed('MainPage');
+                                            context.pushNamed(
+                                                MainPageWidget.routeName);
                                           },
                                           child: Container(
                                             width: 80.0,
@@ -437,7 +442,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                               FFAppState().ActiveTabIndex = 0;
                               safeSetState(() {});
 
-                              context.pushNamed('MainPage');
+                              context.pushNamed(MainPageWidget.routeName);
                             },
                             child: Icon(
                               Icons.logout_rounded,
@@ -457,7 +462,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                                 FFAppState().ActiveTabIndex = 0;
                                 safeSetState(() {});
 
-                                context.pushNamed('MainPage');
+                                context.pushNamed(MainPageWidget.routeName);
                               },
                               child: RichText(
                                 textScaler: MediaQuery.of(context).textScaler,

@@ -1,7 +1,9 @@
+import '';
 import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/index.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +17,9 @@ export 'search_model.dart';
 /// from Main Screen
 class SearchWidget extends StatefulWidget {
   const SearchWidget({super.key});
+
+  static String routeName = 'Search';
+  static String routePath = '/search';
 
   @override
   State<SearchWidget> createState() => _SearchWidgetState();
@@ -412,7 +417,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
                                       context.pushNamed(
-                                        'Wine',
+                                        WineWidget.routeName,
                                         queryParameters: {
                                           'slug': serializeParam(
                                             getJsonField(
@@ -860,7 +865,7 @@ class _SearchWidgetState extends State<SearchWidget> {
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
                                       context.pushNamed(
-                                        'Articles',
+                                        ArticlesWidget.routeName,
                                         queryParameters: {
                                           'slug': serializeParam(
                                             getJsonField(

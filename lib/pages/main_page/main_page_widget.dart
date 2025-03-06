@@ -5,6 +5,8 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
 import 'dart:async';
+import '/custom_code/actions/index.dart' as actions;
+import '/index.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
 import 'package:cached_network_image/cached_network_image.dart';
@@ -22,6 +24,9 @@ export 'main_page_model.dart';
 
 class MainPageWidget extends StatefulWidget {
   const MainPageWidget({super.key});
+
+  static String routeName = 'MainPage';
+  static String routePath = '/mainPage';
 
   @override
   State<MainPageWidget> createState() => _MainPageWidgetState();
@@ -321,7 +326,8 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                       hoverColor: Colors.transparent,
                                       highlightColor: Colors.transparent,
                                       onTap: () async {
-                                        context.pushNamed('Search');
+                                        context
+                                            .pushNamed(SearchWidget.routeName);
                                       },
                                       child: Stack(
                                         children: [
@@ -488,7 +494,8 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                               .transparent,
                                                           onTap: () async {
                                                             context.pushNamed(
-                                                              'Wine',
+                                                              WineWidget
+                                                                  .routeName,
                                                               queryParameters: {
                                                                 'slug':
                                                                     serializeParam(
@@ -785,7 +792,8 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                           Colors.transparent,
                                                       onTap: () async {
                                                         context.pushNamed(
-                                                          'Articles',
+                                                          ArticlesWidget
+                                                              .routeName,
                                                           queryParameters: {
                                                             'slug':
                                                                 serializeParam(
@@ -932,7 +940,8 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                           Colors.transparent,
                                                       onTap: () async {
                                                         context.pushNamed(
-                                                          'Articles',
+                                                          ArticlesWidget
+                                                              .routeName,
                                                           queryParameters: {
                                                             'slug':
                                                                 serializeParam(
@@ -1183,7 +1192,8 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                               .transparent,
                                                           onTap: () async {
                                                             context.pushNamed(
-                                                              'Wine',
+                                                              WineWidget
+                                                                  .routeName,
                                                               queryParameters: {
                                                                 'slug':
                                                                     serializeParam(
@@ -1492,7 +1502,8 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                               .transparent,
                                                           onTap: () async {
                                                             context.pushNamed(
-                                                              'Articles',
+                                                              ArticlesWidget
+                                                                  .routeName,
                                                               queryParameters: {
                                                                 'slug':
                                                                     serializeParam(
@@ -2045,7 +2056,8 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                                         () async {
                                                                       context
                                                                           .pushNamed(
-                                                                        'Wine',
+                                                                        WineWidget
+                                                                            .routeName,
                                                                         queryParameters:
                                                                             {
                                                                           'slug':
@@ -2341,7 +2353,8 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                                       () async {
                                                                     context
                                                                         .pushNamed(
-                                                                      'Articles',
+                                                                      ArticlesWidget
+                                                                          .routeName,
                                                                       queryParameters:
                                                                           {
                                                                         'slug':
@@ -2589,7 +2602,8 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                                       () async {
                                                                     context
                                                                         .pushNamed(
-                                                                      'Wine',
+                                                                      WineWidget
+                                                                          .routeName,
                                                                       queryParameters:
                                                                           {
                                                                         'slug':
@@ -2866,7 +2880,8 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                           Colors.transparent,
                                                       onTap: () async {
                                                         context.pushNamed(
-                                                          'Articles',
+                                                          ArticlesWidget
+                                                              .routeName,
                                                           queryParameters: {
                                                             'slug':
                                                                 serializeParam(
@@ -3158,7 +3173,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                                               highlightColor: Colors.transparent,
                                                                               onTap: () async {
                                                                                 context.pushNamed(
-                                                                                  'Articles',
+                                                                                  ArticlesWidget.routeName,
                                                                                   queryParameters: {
                                                                                     'slug': serializeParam(
                                                                                       newsBannerItem,
@@ -3376,7 +3391,8 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                           Colors.transparent,
                                                       onTap: () async {
                                                         context.pushNamed(
-                                                          'Articles',
+                                                          ArticlesWidget
+                                                              .routeName,
                                                           queryParameters: {
                                                             'slug':
                                                                 serializeParam(
@@ -3756,7 +3772,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                       Colors.transparent,
                                                   onTap: () async {
                                                     context.pushNamed(
-                                                      'Wine',
+                                                      WineWidget.routeName,
                                                       queryParameters: {
                                                         'slug': serializeParam(
                                                           favWinesItem,
@@ -4027,7 +4043,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                       Colors.transparent,
                                                   onTap: () async {
                                                     context.pushNamed(
-                                                      'Articles',
+                                                      ArticlesWidget.routeName,
                                                       queryParameters: {
                                                         'slug': serializeParam(
                                                           favArticlesItem,
@@ -4617,7 +4633,8 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                               FFAppState().ActiveTabIndex = 0;
                                               safeSetState(() {});
 
-                                              context.pushNamed('MainPage');
+                                              context.pushNamed(
+                                                  MainPageWidget.routeName);
                                             },
                                             child: Icon(
                                               Icons.logout_rounded,
@@ -4642,7 +4659,8 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                                 FFAppState().ActiveTabIndex = 0;
                                                 safeSetState(() {});
 
-                                                context.pushNamed('MainPage');
+                                                context.pushNamed(
+                                                    MainPageWidget.routeName);
                                               },
                                               child: RichText(
                                                 textScaler:
@@ -4842,14 +4860,10 @@ class _MainPageWidgetState extends State<MainPageWidget>
                             final selectedMedia =
                                 await selectMediaWithSourceBottomSheet(
                               context: context,
+                              maxWidth: 240.00,
+                              maxHeight: 400.00,
+                              imageQuality: 100,
                               allowPhoto: true,
-                              includeDimensions: true,
-                              includeBlurHash: true,
-                              backgroundColor:
-                                  FlutterFlowTheme.of(context).primaryText,
-                              textColor: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                              pickerFontFamily: 'Roboto',
                             );
                             if (selectedMedia != null &&
                                 selectedMedia.every((m) => validateFileFormat(
@@ -4891,6 +4905,34 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                 return;
                               }
                             }
+
+                            _model.searchOutput =
+                                await actions.sendGraphQLUploadRequest(
+                              _model.uploadedLocalFile,
+                            );
+                            FFAppState().searchOutputVar = _model.searchOutput!;
+                            FFAppState().fullScanSlug = getJsonField(
+                              FFAppState().searchOutputVar,
+                              r'''$.data.vintageSearch.full[*].vintage.wine.slug''',
+                            ).toString();
+                            FFAppState().partialScanSlug = getJsonField(
+                              FFAppState().searchOutputVar,
+                              r'''$.data.vintageSearch.partial[*].vintage.wine.slug''',
+                            ).toString();
+                            if ((FFAppState().fullScanSlug != '') ||
+                                (FFAppState().partialScanSlug != '')) {
+                              context.pushNamed(
+                                WineWidget.routeName,
+                                queryParameters: {
+                                  'slug': serializeParam(
+                                    '${FFAppState().fullScanSlug != 'null' ? FFAppState().fullScanSlug : ''}${FFAppState().partialScanSlug != 'null' ? FFAppState().partialScanSlug : ''}',
+                                    ParamType.String,
+                                  ),
+                                }.withoutNulls,
+                              );
+                            }
+
+                            safeSetState(() {});
                           },
                           () async {
                             FFAppState().ActiveTabIndex =
@@ -4903,7 +4945,7 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                   _model.tabBarCurrentIndex;
                               safeSetState(() {});
                             } else {
-                              context.pushNamed('loginPage');
+                              context.pushNamed(LoginPageWidget.routeName);
                             }
 
                             FFAppState().ActiveTabIndex =

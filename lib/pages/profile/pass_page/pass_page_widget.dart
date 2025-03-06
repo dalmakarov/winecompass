@@ -1,6 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/index.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -10,6 +11,9 @@ export 'pass_page_model.dart';
 
 class PassPageWidget extends StatefulWidget {
   const PassPageWidget({super.key});
+
+  static String routeName = 'passPage';
+  static String routePath = '/passPage';
 
   @override
   State<PassPageWidget> createState() => _PassPageWidgetState();
@@ -79,7 +83,8 @@ class _PassPageWidgetState extends State<PassPageWidget> {
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
-                                    context.pushNamed('registrationPage');
+                                    context.pushNamed(
+                                        RegistrationPageWidget.routeName);
                                   },
                                   child: Container(
                                     width: 55.0,
@@ -104,7 +109,8 @@ class _PassPageWidgetState extends State<PassPageWidget> {
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
-                                    context.pushNamed('registrationPage');
+                                    context.pushNamed(
+                                        RegistrationPageWidget.routeName);
                                   },
                                   child: Icon(
                                     Icons.west,
@@ -388,7 +394,8 @@ class _PassPageWidgetState extends State<PassPageWidget> {
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
-                                    context.pushNamed('restorePassword');
+                                    context.pushNamed(
+                                        RestorePasswordWidget.routeName);
                                   },
                                   child: Text(
                                     _model.textController2.text == ''
@@ -433,7 +440,8 @@ class _PassPageWidgetState extends State<PassPageWidget> {
                                     _model.textController2.text;
                                 FFAppState().userLoggedIn = true;
 
-                                context.pushNamed('countryChoose');
+                                context
+                                    .pushNamed(CountryChooseWidget.routeName);
                               },
                         text: 'Продолжить',
                         options: FFButtonOptions(

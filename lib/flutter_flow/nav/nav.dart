@@ -5,8 +5,9 @@ import 'package:provider/provider.dart';
 
 import '/backend/schema/structs/index.dart';
 
-import '/index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+
+import '/index.dart';
 
 export 'package:go_router/go_router.dart';
 export 'serialization_util.dart';
@@ -68,18 +69,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               : MainPageWidget(),
         ),
         FFRoute(
-          name: 'MainPage',
-          path: '/mainPage',
+          name: MainPageWidget.routeName,
+          path: MainPageWidget.routePath,
           builder: (context, params) => MainPageWidget(),
         ),
         FFRoute(
-          name: 'Search',
-          path: '/search',
+          name: SearchWidget.routeName,
+          path: SearchWidget.routePath,
           builder: (context, params) => SearchWidget(),
         ),
         FFRoute(
-          name: 'Wine',
-          path: '/wine',
+          name: WineWidget.routeName,
+          path: WineWidget.routePath,
           builder: (context, params) => WineWidget(
             slug: params.getParam(
               'slug',
@@ -92,8 +93,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'Articles',
-          path: '/articles',
+          name: ArticlesWidget.routeName,
+          path: ArticlesWidget.routePath,
           builder: (context, params) => ArticlesWidget(
             slug: params.getParam(
               'slug',
@@ -102,38 +103,38 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'profilePage',
-          path: '/profilePage',
+          name: ProfilePageWidget.routeName,
+          path: ProfilePageWidget.routePath,
           builder: (context, params) => ProfilePageWidget(),
         ),
         FFRoute(
-          name: 'loginPage',
-          path: '/loginPage',
+          name: LoginPageWidget.routeName,
+          path: LoginPageWidget.routePath,
           builder: (context, params) => LoginPageWidget(),
         ),
         FFRoute(
-          name: 'restorePassword',
-          path: '/restorePassword',
+          name: RestorePasswordWidget.routeName,
+          path: RestorePasswordWidget.routePath,
           builder: (context, params) => RestorePasswordWidget(),
         ),
         FFRoute(
-          name: 'registrationPage',
-          path: '/registrationPage',
+          name: RegistrationPageWidget.routeName,
+          path: RegistrationPageWidget.routePath,
           builder: (context, params) => RegistrationPageWidget(),
         ),
         FFRoute(
-          name: 'passPage',
-          path: '/passPage',
+          name: PassPageWidget.routeName,
+          path: PassPageWidget.routePath,
           builder: (context, params) => PassPageWidget(),
         ),
         FFRoute(
-          name: 'countryChoose',
-          path: '/countryChoose',
+          name: CountryChooseWidget.routeName,
+          path: CountryChooseWidget.routePath,
           builder: (context, params) => CountryChooseWidget(),
         ),
         FFRoute(
-          name: 'dump',
-          path: '/dump',
+          name: DumpWidget.routeName,
+          path: DumpWidget.routePath,
           builder: (context, params) => DumpWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),

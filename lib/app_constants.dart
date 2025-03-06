@@ -69,4 +69,5 @@ abstract class FFAppConstants {
     'karina-sogoyan-chego-poka-kategoricheski-net-v-ros'
   ];
   static const int zeroVal = 0;
+  static const String kultovoru = 'https://kultovo.ru/api/graphql#';
 }

@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -11,6 +12,9 @@ export 'country_choose_model.dart';
 
 class CountryChooseWidget extends StatefulWidget {
   const CountryChooseWidget({super.key});
+
+  static String routeName = 'countryChoose';
+  static String routePath = '/countryChoose';
 
   @override
   State<CountryChooseWidget> createState() => _CountryChooseWidgetState();
@@ -281,7 +285,7 @@ class _CountryChooseWidgetState extends State<CountryChooseWidget> {
                               FFAppState().ActiveTabIndex = 4;
                               safeSetState(() {});
 
-                              context.pushNamed('MainPage');
+                              context.pushNamed(MainPageWidget.routeName);
                             },
                             text: 'Пропустить',
                             options: FFButtonOptions(
@@ -328,7 +332,7 @@ class _CountryChooseWidgetState extends State<CountryChooseWidget> {
                                         _model.dropDownValue1!;
                                     FFAppState().ActiveTabIndex = 4;
 
-                                    context.pushNamed('MainPage');
+                                    context.pushNamed(MainPageWidget.routeName);
                                   },
                             text: 'Продолжить',
                             options: FFButtonOptions(

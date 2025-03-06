@@ -2,6 +2,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import '/index.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -13,6 +14,9 @@ export 'restore_password_model.dart';
 
 class RestorePasswordWidget extends StatefulWidget {
   const RestorePasswordWidget({super.key});
+
+  static String routeName = 'restorePassword';
+  static String routePath = '/restorePassword';
 
   @override
   State<RestorePasswordWidget> createState() => _RestorePasswordWidgetState();
@@ -79,7 +83,7 @@ class _RestorePasswordWidgetState extends State<RestorePasswordWidget> {
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
-                                  context.pushNamed('loginPage');
+                                  context.pushNamed(LoginPageWidget.routeName);
                                 },
                                 child: Container(
                                   width: 65.0,
@@ -104,7 +108,7 @@ class _RestorePasswordWidgetState extends State<RestorePasswordWidget> {
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
-                                  context.pushNamed('loginPage');
+                                  context.pushNamed(LoginPageWidget.routeName);
                                 },
                                 child: Icon(
                                   Icons.west,

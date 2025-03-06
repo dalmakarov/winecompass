@@ -1,4 +1,5 @@
 import '/flutter_flow/flutter_flow_util.dart';
+import '/index.dart';
 import 'main_page_widget.dart' show MainPageWidget;
 import 'package:flutter/material.dart';
 
@@ -34,6 +35,8 @@ class MainPageModel extends FlutterFlowModel<MainPageWidget> {
   FFUploadedFile uploadedLocalFile =
       FFUploadedFile(bytes: Uint8List.fromList([]));
 
+  // Stores action output result for [Custom Action - sendGraphQLUploadRequest] action in PhotoTab widget.
+  dynamic searchOutput;
   // State field(s) for Email widget.
   FocusNode? emailFocusNode;
   TextEditingController? emailTextController;

@@ -344,6 +344,24 @@ class FFAppState extends ChangeNotifier {
   set scannedMedia(String value) {
     _scannedMedia = value;
   }
+
+  dynamic _searchOutputVar;
+  dynamic get searchOutputVar => _searchOutputVar;
+  set searchOutputVar(dynamic value) {
+    _searchOutputVar = value;
+  }
+
+  String _fullScanSlug = '';
+  String get fullScanSlug => _fullScanSlug;
+  set fullScanSlug(String value) {
+    _fullScanSlug = value;
+  }
+
+  String _partialScanSlug = '';
+  String get partialScanSlug => _partialScanSlug;
+  set partialScanSlug(String value) {
+    _partialScanSlug = value;
+  }
 }
 
 void _safeInit(Function() initializeField) {

@@ -2,6 +2,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import '/index.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -11,6 +12,9 @@ export 'registration_page_model.dart';
 
 class RegistrationPageWidget extends StatefulWidget {
   const RegistrationPageWidget({super.key});
+
+  static String routeName = 'registrationPage';
+  static String routePath = '/registrationPage';
 
   @override
   State<RegistrationPageWidget> createState() => _RegistrationPageWidgetState();
@@ -82,7 +86,8 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
-                                      context.pushNamed('loginPage');
+                                      context
+                                          .pushNamed(LoginPageWidget.routeName);
                                     },
                                     child: Container(
                                       width: 65.0,
@@ -107,7 +112,8 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
-                                      context.pushNamed('loginPage');
+                                      context
+                                          .pushNamed(LoginPageWidget.routeName);
                                     },
                                     child: Icon(
                                       Icons.west,
@@ -574,7 +580,7 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
                                       _model.checkboxValue!;
                                   FFAppState().update(() {});
 
-                                  context.pushNamed('passPage');
+                                  context.pushNamed(PassPageWidget.routeName);
                                 },
                           text: 'Продолжить',
                           options: FFButtonOptions(

@@ -7,6 +7,9 @@ export 'dump_model.dart';
 class DumpWidget extends StatefulWidget {
   const DumpWidget({super.key});
 
+  static String routeName = 'dump';
+  static String routePath = '/dump';
+
   @override
   State<DumpWidget> createState() => _DumpWidgetState();
 }

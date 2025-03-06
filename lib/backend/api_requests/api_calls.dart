@@ -399,6 +399,60 @@ class WinerySearchCall {
   }
 }
 
+class ScannerCallCall {
+  static Future<ApiCallResponse> call({
+    String? input = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+    "query": "mutation VintageSearch(\$input: VintageSearchMutationInput!) {\\n  vintageSearch(input: \$input) {\\n    full {  ## Заменили vintage на full\\n      id\\n      name\\n      slug\\n      winery {\\n        name\\n      }\\n      images {\\n        image\\n        imageThumbnail {\\n          low\\n        }\\n      }\\n    }\\n    partial {  ## Частичные совпадения, если есть\\n      id\\n      name\\n      slug\\n      winery {\\n        name\\n      }\\n    }\\n  }\\n}",
+    "operationName": "VintageSearch"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'ScannerCall',
+      apiUrl: 'https://kultovo.ru/api/graphql#',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class ScanerCall {
+  static Future<ApiCallResponse> call({
+    String? input = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "query": "mutation VintageSearch(\$input: VintageSearchMutationInput!) {\\n  vintageSearch(input: \$input) {\\n    full {  ## Заменили vintage на full\\n      id\\n      name\\n      slug\\n      winery {\\n        name\\n      }\\n      images {\\n        image\\n        imageThumbnail {\\n          low\\n        }\\n      }\\n    }\\n    partial {  ## Частичные совпадения, если есть\\n      id\\n      name\\n      slug\\n      winery {\\n        name\\n      }\\n    }\\n  }\\n}",
+  "operationName": "VintageSearch"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'Scaner',
+      apiUrl: 'https://kultovo.ru/api/graphql#',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
 class ApiPagingParams {
   int nextPageNumber = 0;
   int numItems = 0;
