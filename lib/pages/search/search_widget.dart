@@ -84,274 +84,285 @@ class _SearchWidgetState extends State<SearchWidget> {
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).secondaryBackground,
                   ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Icon(
-                        Icons.search,
-                        color: FlutterFlowTheme.of(context).primaryText,
-                        size: 30.0,
-                      ),
-                      Stack(
-                        children: [
-                          Container(
-                            width: MediaQuery.sizeOf(context).width * 0.7,
-                            child: Stack(
-                              children: [
-                                Container(
-                                  width: double.infinity,
-                                  child: TextFormField(
-                                    controller:
-                                        _model.searchFieldTextController,
-                                    focusNode: _model.searchFieldFocusNode,
-                                    onChanged: (_) => EasyDebounce.debounce(
-                                      '_model.searchFieldTextController',
-                                      Duration(milliseconds: 750),
-                                      () async {
-                                        _model.apiResultWineSearch =
-                                            await WineSearchCall.call(
-                                          term: _model
-                                              .searchFieldTextController.text,
-                                        );
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Icon(
+                          Icons.search,
+                          color: FlutterFlowTheme.of(context).primaryText,
+                          size: 30.0,
+                        ),
+                        Stack(
+                          children: [
+                            Container(
+                              width: MediaQuery.sizeOf(context).width * 0.7,
+                              child: Stack(
+                                children: [
+                                  Container(
+                                    width: double.infinity,
+                                    child: TextFormField(
+                                      controller:
+                                          _model.searchFieldTextController,
+                                      focusNode: _model.searchFieldFocusNode,
+                                      onChanged: (_) => EasyDebounce.debounce(
+                                        '_model.searchFieldTextController',
+                                        Duration(milliseconds: 750),
+                                        () async {
+                                          _model.apiResultWineSearch =
+                                              await WineSearchCall.call(
+                                            term: _model
+                                                .searchFieldTextController.text,
+                                          );
 
-                                        // checkWines
-                                        FFAppState().searchNullCheckWines =
-                                            getJsonField(
-                                          (_model.apiResultWineSearch
-                                                  ?.jsonBody ??
-                                              ''),
-                                          r'''$.data.search.wines.edges[:]''',
-                                        ).toString();
-                                        safeSetState(() {});
-                                        _model.apiResultArticleSearch =
-                                            await ArticleSearchCall.call(
-                                          term: _model
-                                              .searchFieldTextController.text,
-                                        );
+                                          // checkWines
+                                          FFAppState().searchNullCheckWines =
+                                              getJsonField(
+                                            (_model.apiResultWineSearch
+                                                    ?.jsonBody ??
+                                                ''),
+                                            r'''$.data.search.wines.edges[:]''',
+                                          ).toString();
+                                          safeSetState(() {});
+                                          _model.apiResultArticleSearch =
+                                              await ArticleSearchCall.call(
+                                            term: _model
+                                                .searchFieldTextController.text,
+                                          );
 
-                                        // checkArticles
-                                        FFAppState().searchNullCheckArticles =
-                                            getJsonField(
-                                          (_model.apiResultArticleSearch
-                                                  ?.jsonBody ??
-                                              ''),
-                                          r'''$.data.search.articles.edges[:]''',
-                                        ).toString();
-                                        safeSetState(() {});
-                                        _model.apiResultWinerySearch =
-                                            await WinerySearchCall.call(
-                                          term: _model
-                                              .searchFieldTextController.text,
-                                        );
+                                          // checkArticles
+                                          FFAppState().searchNullCheckArticles =
+                                              getJsonField(
+                                            (_model.apiResultArticleSearch
+                                                    ?.jsonBody ??
+                                                ''),
+                                            r'''$.data.search.articles.edges[:]''',
+                                          ).toString();
+                                          safeSetState(() {});
+                                          _model.apiResultWinerySearch =
+                                              await WinerySearchCall.call(
+                                            term: _model
+                                                .searchFieldTextController.text,
+                                          );
 
-                                        // checkWineries
-                                        FFAppState().searchNullCheckWineries =
-                                            getJsonField(
-                                          (_model.apiResultWinerySearch
-                                                  ?.jsonBody ??
-                                              ''),
-                                          r'''$.data.search.wineries.edges[:]''',
-                                        ).toString();
-                                        safeSetState(() {});
+                                          // checkWineries
+                                          FFAppState().searchNullCheckWineries =
+                                              getJsonField(
+                                            (_model.apiResultWinerySearch
+                                                    ?.jsonBody ??
+                                                ''),
+                                            r'''$.data.search.wineries.edges[:]''',
+                                          ).toString();
+                                          safeSetState(() {});
 
-                                        safeSetState(() {});
-                                      },
-                                    ),
-                                    autofocus: _model.incentiveValue != '',
-                                    obscureText: false,
-                                    decoration: InputDecoration(
-                                      isDense: true,
-                                      labelStyle: FlutterFlowTheme.of(context)
-                                          .labelMedium
-                                          .override(
-                                            fontFamily:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelMediumFamily,
-                                            letterSpacing: 0.0,
-                                            useGoogleFonts: GoogleFonts.asMap()
-                                                .containsKey(
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMediumFamily),
+                                          safeSetState(() {});
+                                        },
+                                      ),
+                                      autofocus:
+                                          _model.incentiveValue != '',
+                                      obscureText: false,
+                                      decoration: InputDecoration(
+                                        isDense: true,
+                                        labelStyle: FlutterFlowTheme.of(context)
+                                            .labelMedium
+                                            .override(
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMediumFamily,
+                                              letterSpacing: 0.0,
+                                              useGoogleFonts: GoogleFonts
+                                                      .asMap()
+                                                  .containsKey(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelMediumFamily),
+                                            ),
+                                        hintText: 'Вино',
+                                        hintStyle: FlutterFlowTheme.of(context)
+                                            .labelMedium
+                                            .override(
+                                              fontFamily:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMediumFamily,
+                                              color: Color(0xFFAFB0B4),
+                                              letterSpacing: 0.0,
+                                              useGoogleFonts: GoogleFonts
+                                                      .asMap()
+                                                  .containsKey(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .labelMediumFamily),
+                                            ),
+                                        enabledBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: Color(0x00000000),
+                                            width: 1.0,
                                           ),
-                                      hintText: 'Вино',
-                                      hintStyle: FlutterFlowTheme.of(context)
-                                          .labelMedium
-                                          .override(
-                                            fontFamily:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelMediumFamily,
-                                            color: Color(0xFFAFB0B4),
-                                            letterSpacing: 0.0,
-                                            useGoogleFonts: GoogleFonts.asMap()
-                                                .containsKey(
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMediumFamily),
+                                          borderRadius:
+                                              BorderRadius.circular(16.0),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: Color(0x00000000),
+                                            width: 1.0,
                                           ),
-                                      enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Color(0x00000000),
-                                          width: 1.0,
+                                          borderRadius:
+                                              BorderRadius.circular(16.0),
                                         ),
-                                        borderRadius:
-                                            BorderRadius.circular(16.0),
-                                      ),
-                                      focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Color(0x00000000),
-                                          width: 1.0,
+                                        errorBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: FlutterFlowTheme.of(context)
+                                                .error,
+                                            width: 1.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(16.0),
                                         ),
-                                        borderRadius:
-                                            BorderRadius.circular(16.0),
-                                      ),
-                                      errorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
-                                              .error,
-                                          width: 1.0,
+                                        focusedErrorBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: FlutterFlowTheme.of(context)
+                                                .error,
+                                            width: 1.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(16.0),
                                         ),
-                                        borderRadius:
-                                            BorderRadius.circular(16.0),
-                                      ),
-                                      focusedErrorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
-                                              .error,
-                                          width: 1.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(16.0),
-                                      ),
-                                      filled: true,
-                                      fillColor: Color(0xFFF5F5FA),
-                                      hoverColor: FlutterFlowTheme.of(context)
-                                          .alternate,
-                                      suffixIcon: _model
-                                              .searchFieldTextController!
-                                              .text
-                                              .isNotEmpty
-                                          ? InkWell(
-                                              onTap: () async {
-                                                _model.searchFieldTextController
-                                                    ?.clear();
-                                                _model.apiResultWineSearch =
-                                                    await WineSearchCall.call(
-                                                  term: _model
+                                        filled: true,
+                                        fillColor: Color(0xFFF5F5FA),
+                                        hoverColor: FlutterFlowTheme.of(context)
+                                            .alternate,
+                                        suffixIcon: _model
+                                                .searchFieldTextController!
+                                                .text
+                                                .isNotEmpty
+                                            ? InkWell(
+                                                onTap: () async {
+                                                  _model
                                                       .searchFieldTextController
-                                                      .text,
-                                                );
+                                                      ?.clear();
+                                                  _model.apiResultWineSearch =
+                                                      await WineSearchCall.call(
+                                                    term: _model
+                                                        .searchFieldTextController
+                                                        .text,
+                                                  );
 
-                                                // checkWines
-                                                FFAppState()
-                                                        .searchNullCheckWines =
-                                                    getJsonField(
-                                                  (_model.apiResultWineSearch
-                                                          ?.jsonBody ??
-                                                      ''),
-                                                  r'''$.data.search.wines.edges[:]''',
-                                                ).toString();
-                                                safeSetState(() {});
-                                                _model.apiResultArticleSearch =
-                                                    await ArticleSearchCall
-                                                        .call(
-                                                  term: _model
-                                                      .searchFieldTextController
-                                                      .text,
-                                                );
+                                                  // checkWines
+                                                  FFAppState()
+                                                          .searchNullCheckWines =
+                                                      getJsonField(
+                                                    (_model.apiResultWineSearch
+                                                            ?.jsonBody ??
+                                                        ''),
+                                                    r'''$.data.search.wines.edges[:]''',
+                                                  ).toString();
+                                                  safeSetState(() {});
+                                                  _model.apiResultArticleSearch =
+                                                      await ArticleSearchCall
+                                                          .call(
+                                                    term: _model
+                                                        .searchFieldTextController
+                                                        .text,
+                                                  );
 
-                                                // checkArticles
-                                                FFAppState()
-                                                        .searchNullCheckArticles =
-                                                    getJsonField(
-                                                  (_model.apiResultArticleSearch
-                                                          ?.jsonBody ??
-                                                      ''),
-                                                  r'''$.data.search.articles.edges[:]''',
-                                                ).toString();
-                                                safeSetState(() {});
-                                                _model.apiResultWinerySearch =
-                                                    await WinerySearchCall.call(
-                                                  term: _model
-                                                      .searchFieldTextController
-                                                      .text,
-                                                );
+                                                  // checkArticles
+                                                  FFAppState()
+                                                          .searchNullCheckArticles =
+                                                      getJsonField(
+                                                    (_model.apiResultArticleSearch
+                                                            ?.jsonBody ??
+                                                        ''),
+                                                    r'''$.data.search.articles.edges[:]''',
+                                                  ).toString();
+                                                  safeSetState(() {});
+                                                  _model.apiResultWinerySearch =
+                                                      await WinerySearchCall
+                                                          .call(
+                                                    term: _model
+                                                        .searchFieldTextController
+                                                        .text,
+                                                  );
 
-                                                // checkWineries
-                                                FFAppState()
-                                                        .searchNullCheckWineries =
-                                                    getJsonField(
-                                                  (_model.apiResultWinerySearch
-                                                          ?.jsonBody ??
-                                                      ''),
-                                                  r'''$.data.search.wineries.edges[:]''',
-                                                ).toString();
-                                                safeSetState(() {});
+                                                  // checkWineries
+                                                  FFAppState()
+                                                          .searchNullCheckWineries =
+                                                      getJsonField(
+                                                    (_model.apiResultWinerySearch
+                                                            ?.jsonBody ??
+                                                        ''),
+                                                    r'''$.data.search.wineries.edges[:]''',
+                                                  ).toString();
+                                                  safeSetState(() {});
 
-                                                safeSetState(() {});
-                                                safeSetState(() {});
-                                              },
-                                              child: Icon(
-                                                Icons.clear,
-                                                size: 22,
-                                              ),
-                                            )
-                                          : null,
+                                                  safeSetState(() {});
+                                                  safeSetState(() {});
+                                                },
+                                                child: Icon(
+                                                  Icons.clear,
+                                                  size: 22,
+                                                ),
+                                              )
+                                            : null,
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Onest Cyr',
+                                            fontSize: 16.0,
+                                            letterSpacing: 0.0,
+                                            fontWeight: FontWeight.w500,
+                                            useGoogleFonts: GoogleFonts.asMap()
+                                                .containsKey('Onest Cyr'),
+                                          ),
+                                      cursorColor: FlutterFlowTheme.of(context)
+                                          .primaryText,
+                                      validator: _model
+                                          .searchFieldTextControllerValidator
+                                          .asValidator(context),
                                     ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Onest Cyr',
-                                          fontSize: 16.0,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w500,
-                                          useGoogleFonts: GoogleFonts.asMap()
-                                              .containsKey('Onest Cyr'),
-                                        ),
-                                    cursorColor: FlutterFlowTheme.of(context)
-                                        .primaryText,
-                                    validator: _model
-                                        .searchFieldTextControllerValidator
-                                        .asValidator(context),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                        Align(
+                          alignment: AlignmentDirectional(1.0, 0.0),
+                          child: FFButtonWidget(
+                            onPressed: () async {
+                              context.safePop();
+                            },
+                            text: 'Отмена',
+                            options: FFButtonOptions(
+                              height: 40.0,
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  16.0, 0.0, 16.0, 0.0),
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              color: FlutterFlowTheme.of(context)
+                                  .secondaryBackground,
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .bodyLarge
+                                  .override(
+                                    fontFamily: FlutterFlowTheme.of(context)
+                                        .bodyLargeFamily,
+                                    fontSize: 14.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.w600,
+                                    useGoogleFonts: GoogleFonts.asMap()
+                                        .containsKey(
+                                            FlutterFlowTheme.of(context)
+                                                .bodyLargeFamily),
+                                  ),
+                              elevation: 0.0,
+                              borderRadius: BorderRadius.circular(8.0),
                             ),
                           ),
-                        ],
-                      ),
-                      Align(
-                        alignment: AlignmentDirectional(1.0, 0.0),
-                        child: FFButtonWidget(
-                          onPressed: () async {
-                            context.safePop();
-                          },
-                          text: 'Отмена',
-                          options: FFButtonOptions(
-                            height: 40.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                16.0, 0.0, 16.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
-                            textStyle: FlutterFlowTheme.of(context)
-                                .bodyLarge
-                                .override(
-                                  fontFamily: FlutterFlowTheme.of(context)
-                                      .bodyLargeFamily,
-                                  fontSize: 14.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.w600,
-                                  useGoogleFonts: GoogleFonts.asMap()
-                                      .containsKey(FlutterFlowTheme.of(context)
-                                          .bodyLargeFamily),
-                                ),
-                            elevation: 0.0,
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
                 SingleChildScrollView(
@@ -1021,7 +1032,9 @@ class _SearchWidgetState extends State<SearchWidget> {
                       ),
                     ),
                   ),
-              ],
+              ]
+                  .addToStart(SizedBox(height: 14.0))
+                  .addToEnd(SizedBox(height: 14.0)),
             ),
           ),
         ),

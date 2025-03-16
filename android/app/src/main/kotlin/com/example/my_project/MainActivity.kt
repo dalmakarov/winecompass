@@ -1,4 +1,4 @@
-package danilmadev.winecompass
+package com.dalmakarov.winecompass
 
 import io.flutter.embedding.android.FlutterActivity
 

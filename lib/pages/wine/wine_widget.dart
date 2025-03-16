@@ -3,6 +3,7 @@ import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -163,12 +164,14 @@ class _WineWidgetState extends State<WineWidget> {
                               hoverColor: Colors.transparent,
                               highlightColor: Colors.transparent,
                               onTap: () async {
-                                context.safePop();
+                                context.pushNamed(MainPageWidget.routeName);
+
                                 FFAppState().WinesYear = [];
                                 FFAppState().WinesImage = [];
                                 FFAppState().WinesRate = [];
                                 FFAppState().SelectedYear = 0;
                                 FFAppState().favorWine = false;
+                                FFAppState().ActiveTabIndex = 0;
                               },
                               child: Container(
                                 width: 80.0,

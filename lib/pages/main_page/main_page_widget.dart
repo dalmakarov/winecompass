@@ -4708,6 +4708,99 @@ class _MainPageWidgetState extends State<MainPageWidget>
                                               ),
                                             ),
                                           ),
+                                          Container(
+                                            width: 190.0,
+                                            height: double.infinity,
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                            ),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          28.0, 0.0, 0.0, 0.0),
+                                                  child: Icon(
+                                                    Icons.delete_forever,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText,
+                                                    size: 20.0,
+                                                  ),
+                                                ),
+                                                Align(
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          0.0, 0.0),
+                                                  child: RichText(
+                                                    textScaler:
+                                                        MediaQuery.of(context)
+                                                            .textScaler,
+                                                    text: TextSpan(
+                                                      children: [
+                                                        TextSpan(
+                                                          text:
+                                                              'Удаление аккаунта',
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
+                                                                color: Color(
+                                                                    0xFF143161),
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w600,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily),
+                                                              ),
+                                                          mouseCursor:
+                                                              SystemMouseCursors
+                                                                  .click,
+                                                          recognizer:
+                                                              TapGestureRecognizer()
+                                                                ..onTap =
+                                                                    () async {
+                                                                  await launchURL(
+                                                                      'https://forms.gle/335PsR9khzTvb6fX9');
+                                                                },
+                                                        )
+                                                      ],
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMediumFamily,
+                                                                color: Color(
+                                                                    0xFF710107),
+                                                                fontSize: 10.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                useGoogleFonts: GoogleFonts
+                                                                        .asMap()
+                                                                    .containsKey(
+                                                                        FlutterFlowTheme.of(context)
+                                                                            .bodyMediumFamily),
+                                                              ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
                                         ].divide(SizedBox(width: 4.0)),
                                       ),
                                     ),
@@ -4857,13 +4950,9 @@ class _MainPageWidgetState extends State<MainPageWidget>
                             FFAppState().ActiveTabIndex =
                                 _model.tabBarCurrentIndex;
                             safeSetState(() {});
-                            final selectedMedia =
-                                await selectMediaWithSourceBottomSheet(
-                              context: context,
-                              maxWidth: 240.00,
-                              maxHeight: 400.00,
+                            final selectedMedia = await selectMedia(
                               imageQuality: 100,
-                              allowPhoto: true,
+                              multiImage: false,
                             );
                             if (selectedMedia != null &&
                                 selectedMedia.every((m) => validateFileFormat(
