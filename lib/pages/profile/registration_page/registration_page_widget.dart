@@ -579,6 +579,8 @@ class _RegistrationPageWidgetState extends State<RegistrationPageWidget> {
                                   !_model.checkboxValue!)
                               ? null
                               : () async {
+                                  FFAppState().userMail = '';
+                                  FFAppState().update(() {});
                                   FFAppState().userName =
                                       _model.textController1.text;
                                   FFAppState().userMail =

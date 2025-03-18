@@ -237,7 +237,7 @@ class _WineWidgetState extends State<WineWidget> {
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 12.0),
                       child: Stack(
                         children: [
                           Row(
@@ -377,7 +377,7 @@ class _WineWidgetState extends State<WineWidget> {
                         ],
                       ),
                     ),
-                    if (FFAppState().WineGastronomy != 'null')
+                    if (FFAppState().WineGastronomy != '')
                       Material(
                         color: Colors.transparent,
                         child: ListTile(
@@ -709,7 +709,6 @@ class _WineWidgetState extends State<WineWidget> {
                                   r'''$.data.wines.edges[0].node.vintages.edges[0].node.description''',
                                 ).toString(),
                                 textAlign: TextAlign.start,
-                                maxLines: 6,
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
@@ -927,6 +926,9 @@ class _WineWidgetState extends State<WineWidget> {
                                                                     'Onest Cyr',
                                                                 letterSpacing:
                                                                     0.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
                                                                 useGoogleFonts: GoogleFonts
                                                                         .asMap()
                                                                     .containsKey(
